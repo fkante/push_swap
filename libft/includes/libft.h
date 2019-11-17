@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/17 12:18:46 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/17 14:45:03 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define TRUE					1
 # define FAILURE				-1
 # define SUCCESS				0
+# define BUFF_SIZE				1024	
+# define FD_LIMIT				4864
 
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -126,6 +128,7 @@ char				*ft_strupcase(char *str);
 char				*ft_strlowcase(char *str);
 char				*ft_strchr_str(const char *str, char *find);
 char				*ft_strndup(const char *src, size_t size);
+int					get_next_line(const int fd, char **line);
 
 /*
 ** ############################################################################
