@@ -6,12 +6,13 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:04:17 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/15 18:00:04 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/17 13:34:58 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
+#include "ft_printf.h"
 #include "define.h"
 
 void	ft_shuffle_tab(int32_t *table_int, uint32_t min, uint32_t max)
@@ -80,13 +81,13 @@ int		main(int ac, char **av)
 		nb_test = ft_atoi(av[1]);
 		if (test_gen(nb_test, ft_atoi(av[2]), ft_atoi(av[3])) == SUCCESS)
 		{
-			printf("Success, file test created with %d numbers", nb_test);
+			ft_printf("Success, file test created with %d numbers", nb_test);
 			ret = SUCCESS;
 		}
 		else
-			printf("Failure");
+			ft_printf("Failure");
 	}
 	else
-		printf("Usage: .test_generator [int], [min], [max]");
+		ft_printf("Usage: .test_generator [size], [min], [max]");
 	return (ret);
 }

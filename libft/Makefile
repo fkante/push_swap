@@ -6,7 +6,7 @@
 #    By: fkante <fkante@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2019/11/16 15:47:27 by fkante           ###   ########.fr        #
+#    Updated: 2019/11/17 13:32:22 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,6 +105,7 @@ SRCS += ft_striszero.c
 SRCS += ft_len_printf.c
 SRCS += ft_ftoa.c
 SRCS += ft_fldtoa.c
+SRCS += ft_printf.c
 
 # vectors
 SRCS += vct_del.c
@@ -135,6 +136,7 @@ SRCS += vct_chr_str.c
 SRCS += vct_getchar_at.c
 
 PATH_SRCS += ./vector
+PATH_SRCS += ./ft_printf
 PATH_SRCS += .
 
 vpath %.c $(PATH_SRCS)

@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2019/11/16 15:51:57 by fkante           ###   ########.fr        #
+#    Updated: 2019/11/17 13:32:03 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -143,7 +143,7 @@ fclean: clean
 re: fclean all
 
 .PHONY: clean fclean all re t FORCE git
-#.SILENT: $(NAME) $(OBJS) $(BUILD_DIR) $(LIB_PATH) clean fclean re t FORCE
+.SILENT: $(NAME) $(OBJS) $(BUILD_DIR) $(LIB_PATH) clean fclean re t FORCE
 FORCE:
 
 
