@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_tables.c                                    :+:      :+:    :+:   */
+/*   swap_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/17 13:42:49 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/17 15:55:58 by fkante           ###   ########.fr       */
+/*   Created: 2019/11/19 14:26:28 by fkante            #+#    #+#             */
+/*   Updated: 2019/11/20 18:46:28 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int8_t	create_table_a(const int32_t fd)
+int8_t	swap_stack_a(int *top_stack1, int *top_stack2)
 {
-	char	*line;
 	int32_t ret;
-	int32_t i;
+	int32_t tmp;
 
-	line = NULL;
-	ret = FAILURE;
-	while ((ret = get_next_line(fd, &line)) > 0)
-	{
-		ft_strdel(&line);
-	}
+	ret = SUCCESS;
+
+	tmp = *top_stack1;
+	*top_stack1 = *top_stack2;
+	*top_stack2 = tmp;
 	return (ret);
 }
 
-/*
-int8_t	create_table_b()
+int8_t	swap_stack_b(int *top_stack1, int *top_stack2)
 {
+	int32_t ret;
+	int32_t tmp;
 
+	ret = SUCCESS;
+
+	tmp = *top_stack1;
+	*top_stack1 = *top_stack2;
+	*top_stack2 = tmp;
+	return (ret);
 }
-*/
