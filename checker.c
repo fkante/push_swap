@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/19 17:54:30 by amartinod        ###   ########.fr       */
+/*   Updated: 2019/11/21 16:16:26 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,26 @@ int64_t		ft_atol(const char *str)
 // {
 //
 // }
-//
-void		print_stack(int32_t *stack_a, int32_t *stack_b)
+
+void		print_stack(t_stack *s)
 {
-	ft_printf("%d\n", stack_a[0]);
-	ft_printf("%d\n", stack_a[1]);
-	ft_printf("%d\n", stack_a[2]);
-	ft_printf("%d\n", stack_a[3]);
+	size_t	i;
+	size_t	size_max;
+
+	i = 0;
+	size_max = s->size_a + s->size_b;
+	system("clear");
+
+	ft_printf(" _______________________________   _____________________________\n");
+	ft_printf("|\t\tSTACK A\t\t| |\t\tSTACK B\t\t|\n");
+	ft_printf(" ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔   ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n");
+	ft_printf(" _______________________________   _____________________________\n");
+	while (i < size_max)
+	{
+		ft_printf("|\t\t%d\t\t| |\t\t%d\t\t|\n", s->a[i], s->b[i]);
+		i++;
+	}
+	ft_printf(" ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔   ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n");
 }
 
 uint8_t		check_err(char *str, int8_t ret, size_t j)
@@ -67,7 +80,7 @@ uint8_t		check_err(char *str, int8_t ret, size_t j)
 	return (ret);
 }
 
-uint8_t		parse(char **av, int ac)
+uint8_t		parse(char **av, int32_t ac)
 {
 	size_t	i;
 	size_t	j;
@@ -75,7 +88,7 @@ uint8_t		parse(char **av, int ac)
 
 	i = 1;
 	ret = 1;
-	while (i < ac)
+	while ((int32_t)i < ac)
 	{
 		j = 0;
 		while (av[i][j] != '\0')
@@ -94,69 +107,88 @@ uint8_t		parse(char **av, int ac)
 	return (ret);
 }
 
-uint8_t		check_double(int32_t *stack_a)
+uint8_t		check_no_double(t_stack *s)
 {
-	int32_t		tmp;
-	
+	size_t		i;
+	size_t		j;
+
+	i = 0;
+	while (i < s->size_a)
+	{
+		j = 0;
+		while (j < s->size_a)
+		{
+			if (j != i && s->a[i] == s->a[j])
+				return (FALSE);
+			j++;
+
+		}
+		i++;
+	}
 	return (TRUE);
 }
 
-int32_t		*fill_stack(int32_t *stack_a, size_t start, char **av, int ac)
+t_stack		*fill_stack(t_stack *s, size_t start, char **av, int ac)
 {
 	int64_t		tmp;
 	size_t		i;
 
 	i = 0;
-	while (start < ac)
+	while ((int32_t)start < ac)
 	{
 		tmp = ft_atol(av[start]);
 		if (tmp > INT_MAX || tmp < INT_MIN)
 			return (NULL);
-		stack_a[i] = (int)tmp;
+		s->a[i] = (int)tmp;
 		start++;
 		i++;
 	}
-	return (check_double(stack_a) == FALSE ? NULL : stack_a);
+	if (check_no_double(s) == FALSE)
+		ft_memdel((void**)&s);
+	return (s);
 }
 
-int32_t		*create_stack(char **av, int ac)
+t_stack		*create_stack(char **av, int ac)
 {
-	int32_t		*stack_a;
+	t_stack		*s;
 	size_t		start;
 
-	stack_a = NULL;
+	s = NULL;
 	start = parse(av, ac);
 	if (start != FALSE)
 	{
-		stack_a = (int32_t*)malloc(sizeof(int) * (ac - start));
-		if (stack_a != NULL)
+		s = ft_memalloc(sizeof(t_stack));
+		if (s != NULL)
 		{
-			stack_a = fill_stack(stack_a, start, av, ac);
-			if (stack_a == NULL)
-				ft_memdel((void**)&stack_a);
+			s->a = ft_memalloc(sizeof(int) * (ac - start));
+			s->b = ft_memalloc(sizeof(int) * (ac - start));
+			s->size_a = ac - start;
+			s->size_b = 0;
+			if (s->a == NULL && s->b == NULL)
+				ft_memdel((void**)&s);
+			else
+				s = fill_stack(s, start, av, ac);
 		}
 	}
-	return (stack_a);
+	return (s);
 }
 
 int			main(int ac, char **av)
 {
-	int32_t	*stack_a;
-	int32_t	*stack_b;
+	t_stack		*s;
 
-	stack_a = NULL;
-	stack_b = NULL;
+	s = NULL;
 	if (ac >= 2)
 	{
-		stack_a = create_stack(av, ac);
-		if (stack_a == NULL)
+		s = create_stack(av, ac);
+		if (s == NULL)
 		{
 			ft_printf("Error\n");
 			return (0);
 		}
 		if (ft_strequ(av[1], "-v") == TRUE
 				|| ft_strequ(av[2], "-v") == TRUE)
-			print_stack(stack_a, stack_b);
+			print_stack(s);
 	}
 	else
 		ft_printf("Error\n");
