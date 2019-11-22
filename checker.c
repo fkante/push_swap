@@ -6,11 +6,11 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/21 17:40:19 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/22 13:28:43 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 int64_t		ft_atol(const char *str)
 {
@@ -34,11 +34,6 @@ int64_t		ft_atol(const char *str)
 	}
 	return ((int64_t)tmp * neg);
 }
-
-// void		checker()
-// {
-//
-// }
 
 void		print_stack(t_stack *s)
 {
@@ -80,14 +75,14 @@ uint8_t		check_err(char *str, int8_t ret, size_t j)
 	return (ret);
 }
 
-uint8_t		parse(char **av, int32_t ac)
+uint8_t		parse_args(char **av, int32_t ac)
 {
 	size_t	i;
 	size_t	j;
 	int8_t	ret;
 
-	i = 1;
-	ret = 1;
+	i = 0;
+	ret = 0;
 	while ((int32_t)i < ac)
 	{
 		j = 0;
@@ -151,10 +146,25 @@ t_stack		*fill_stack(t_stack *s, size_t start, char **av, int ac)
 t_stack		*create_stack(char **av, int ac)
 {
 	t_stack		*s;
+	char		**tab;
 	size_t		start;
+	size_t		i;
 
 	s = NULL;
-	start = parse(av, ac);
+	tab = NULL;
+	i = 0;
+	++av;
+	--ac;
+	if (ac == 1)
+	{
+		tab = ft_strsplit(av[0], ' ');
+		if (tab == NULL)
+			return (FALSE);
+		while (tab[i] != '\0')
+			i++;
+	}
+	start = ac > 1 ? parse_args(av, ac) : parse_args(tab, i);
+	ac = i == 0 ? ac : i;
 	if (start != FALSE)
 	{
 		s = ft_memalloc(sizeof(t_stack));
@@ -164,10 +174,12 @@ t_stack		*create_stack(char **av, int ac)
 			s->b = ft_memalloc(sizeof(int) * (ac - start));
 			s->size_a = ac - start;
 			s->size_b = 0;
+			s->color = (ft_strequ(av[0], "-c") == TRUE || ft_strequ(av[1], "-c") == TRUE) ? TRUE : FALSE;
+			s->verbose = (ft_strequ(av[0], "-v") == TRUE || ft_strequ(av[1], "-v") == TRUE) ? TRUE : FALSE;
 			if (s->a == NULL && s->b == NULL)
 				ft_memdel((void**)&s);
 			else
-				s = fill_stack(s, start, av, ac);
+				s = i == 0 ? fill_stack(s, start, av, ac) : fill_stack(s, start, tab, ac);
 		}
 	}
 	return (s);
@@ -186,8 +198,7 @@ int			main(int ac, char **av)
 			ft_printf("Error\n");
 			return (0);
 		}
-		if (ft_strequ(av[1], "-v") == TRUE
-				|| ft_strequ(av[2], "-v") == TRUE)
+		if (s->verbose == TRUE)
 			print_stack(s);
 	}
 	else

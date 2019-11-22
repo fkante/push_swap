@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/17 14:18:27 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/22 11:21:22 by fkante           ###   ########.fr       */
+/*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
+/*   Updated: 2019/11/22 13:20:48 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,37 @@
 
 #include "libft.h"
 #include "ft_printf.h"
+#include "define.h"
 
-typedef struct	s_push
+# define FALSE				0
+# define TRUE				1
+# define VERBOSE 			0
+# define COLOR				0
+
+typedef struct	s_stack
 {
 	int32_t	*a;
 	int32_t	*b;
-	int32_t	size;
-}				st;
+	size_t	size_a;
+	size_t	size_b;
+	uint8_t	color;
+	uint8_t	verbose;
+}				t_stack;
 
-int8_t		create_table_a(const int32_t fd);
-int8_t		init_struct(st *s, char **av);
+t_stack		*create_stack(char **av, int ac);
+t_stack		*fill_stack(t_stack *s, size_t start, char **av, int ac);
+uint8_t		check_no_double(t_stack *s);
+uint8_t		parse(char **av, int32_t ac);
+void		print_stack(t_stack *s);
+
+int8_t		init_struct(t_stack *s, char **av);
 int8_t		swap_stack_a(int *top_stack1, int *top_stack2);
 int8_t		swap_stack_b(int *top_stack1, int *top_stack2);
-int8_t		push_stack_a(st *s);
-int8_t		push_stack_b(st *s);
-int8_t		rotate_stack_a(st *s);
-int8_t		rotate_stack_b(st *s);
-int8_t		reverse_rotate_stack_a(st *s);
-int8_t		reverse_rotate_stack_b(st *s);
+int8_t		push_stack_a(t_stack *s);
+int8_t		push_stack_b(t_stack *s);
+int8_t		rotate_stack_a(t_stack *s);
+int8_t		rotate_stack_b(t_stack *s);
+int8_t		reverse_rotate_stack_a(t_stack *s);
+int8_t		reverse_rotate_stack_b(t_stack *s);
 
 #endif
