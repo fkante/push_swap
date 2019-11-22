@@ -6,7 +6,7 @@
 #    By: fkante <fkante@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2019/11/17 14:17:12 by fkante           ###   ########.fr        #
+#    Updated: 2019/11/22 16:38:00 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,6 +107,7 @@ SRCS += ft_ftoa.c
 SRCS += ft_fldtoa.c
 SRCS += get_next_line.c
 SRCS += ft_printf.c
+SRCS += ft_atol.c
 
 # vectors
 SRCS += vct_del.c

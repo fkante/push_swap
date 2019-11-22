@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/17 14:45:03 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/22 16:38:28 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define TRUE					1
 # define FAILURE				-1
 # define SUCCESS				0
-# define BUFF_SIZE				1024	
+# define BUFF_SIZE				1024
 # define FD_LIMIT				4864
 
 # include <sys/types.h>
@@ -140,6 +140,7 @@ int64_t				ft_absolute(int64_t nb);
 size_t				ft_nb_unitlen(int nb);
 int					ft_fibonacci(int index);
 int					ft_atoi(const char *str);
+int64_t				ft_atol(const char *str);
 char				*ft_itoa(int64_t n);
 char				*ft_u_itoa(uint64_t n);
 char				*ft_d_itoa(double value);
