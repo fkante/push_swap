@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_stack.c                                       :+:      :+:    :+:   */
+/*   init_push_swap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 14:26:28 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/22 11:31:35 by fkante           ###   ########.fr       */
+/*   Created: 2019/11/18 16:43:12 by fkante            #+#    #+#             */
+/*   Updated: 2019/11/22 10:22:35 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int8_t	swap_stack_a(int *top_stack1, int *top_stack2)
+int8_t	init_struct(st *s, char **av)
 {
-	int32_t ret;
-	int32_t tmp;
-
+	int32_t	ret;
+	int32_t i;
+	int32_t j;
+	
+	i = s->size - 1;
+	j = 0;
 	ret = SUCCESS;
-
-	tmp = *top_stack1;
-	*top_stack1 = *top_stack2;
-	*top_stack2 = tmp;
-	return (ret);
-}
-
-int8_t	swap_stack_b(int *top_stack1, int *top_stack2)
-{
-	int32_t ret;
-	int32_t tmp;
-
-	ret = SUCCESS;
-
-	tmp = *top_stack1;
-	*top_stack1 = *top_stack2;
-	*top_stack2 = tmp;
+	if ((s->a = ft_memalloc((s->size) * sizeof(int))) == NULL)
+		ret = FAILURE;
+	while (i > -1)
+	{
+		s->a[i] = ft_atoi(av[j + 1]);
+		i--;
+		j++;
+	}
+	if ((s->b = ft_memalloc((s->size) * sizeof(int))) == NULL)
+		ret = FAILURE;
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 13:52:48 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/20 18:46:35 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/22 11:32:06 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ int		main(int ac, char **av)
 {
 	int32_t ret;
 	int32_t i;
+	int32_t index;
 	st		push;
 
 	if (ac >= 2)
 	{
 		push.size = ac - 1;
+		index = ac - 2;
 		ret = init_struct(&push, av);
-		ft_printf("s.size = %d\n", push.size);
-		for (i = 0; i < ac - 1; i++)
-			ft_printf("stack a[%d] = %d\tstack b[%d] = %d\n", i, push.a[i], i, push.b[i]);
+		ft_printf("---------------\n| s.size = %d |\n---------------\n", push.size);
+		for (i = index; i >= 0; i--)
+			ft_printf("stack a[%d] =\t%d\t\t|\tstack b[%d] =\t%d\n", i, push.a[i], i, push.b[i]);
+		ft_printf("-----------------\n");
 //		i = ac;
 //		while (i > 0)
 //		{
@@ -32,12 +35,13 @@ int		main(int ac, char **av)
 //			i--;
 //		}
 //		push_stack_b(&push);
-//		swap_stack_a(&push.a[0], &push.a[1]);
+//		swap_stack_a(&push.a[index - 1], &push.a[index]);
 //		push_stack_b(&push);
 		rotate_stack_a(&push);
-		ft_printf("\n");
-		for (i = 0; i < ac - 1; i++)
-			ft_printf("stack a[%d] = %d\tstack b[%d] = %d\n", i, push.a[i], i, push.b[i]);
+		reverse_rotate_stack_a(&push);
+		ft_printf("-----------------\n");
+		for (i = index; i >= 0; i--)
+			ft_printf("stack a[%d] =\t%d\t\t|\tstack b[%d] =\t%d\n", i, push.a[i], i, push.b[i]);
 	}
 	return (ret);
 }
