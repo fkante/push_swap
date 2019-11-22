@@ -6,13 +6,13 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 16:43:12 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/22 10:22:35 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/22 13:31:17 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int8_t	init_struct(st *s, char **av)
+int8_t	init_struct(t_stack *s, char **av)
 {
 	int32_t	ret;
 	int32_t i;
