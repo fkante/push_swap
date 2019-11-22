@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 15:25:33 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/22 13:42:38 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/22 13:52:13 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int8_t	push_stack_a(t_stack *s)
 			s->b[i] = s->a[i];
 			s->a[i] = 0;
 		}
-	ft_printf("|\tpa\t|\n");
+		ft_printf("|\tpa\t|\n");
 	}
 	return (ret);
 }
@@ -50,22 +50,19 @@ int8_t	push_stack_b(t_stack *s)
 
 	ret = FAILURE;
 	i = 0;
-	if (s->a[0] != 0)
+	while (i < s->size_init)
 	{
-		while (i < s->size_init)
-		{
-			swap_stack_b(&s->b[i], &s->b[i + 1]);
-			i++;
-			if (i == s->size_init)
-				ret = SUCCESS;
-		}
-		if (ret == SUCCESS)
-		{
-			i = i - 1;
-			s->b[i] = s->a[i];
-			s->a[i] = 0;
-		}
-	ft_printf("|\tpb\t|\n");
+		swap_stack_b(&s->b[i], &s->b[i + 1]);
+		i++;
+		if (i == s->size_init)
+			ret = SUCCESS;
 	}
+	if (ret == SUCCESS)
+	{
+		i = i - 1;
+		s->b[i] = s->a[i];
+		s->a[i] = 0;
+	}
+	ft_printf("|\tpb\t|\n");
 	return (ret);
 }

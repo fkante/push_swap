@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 13:52:48 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/22 13:42:18 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/22 13:50:42 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,20 @@ int		main(int ac, char **av)
 		for (i = index; i >= 0; i--)
 			ft_printf("stack a[%d] =\t%d\t\t|\tstack b[%d] =\t%d\n", i, push.a[i], i, push.b[i]);
 		ft_printf("-----------------\n");
-//		i = ac;
-//		while (i > 0)
-//		{
-//			swap_stack_a(&push.a[i - 1], &push.a[i]);
-//			i--;
-//		}
-//		push_stack_b(&push);
-//		swap_stack_a(&push.a[index - 1], &push.a[index]);
-//		push_stack_b(&push);
-		rotate_stack_a(&push);
-		reverse_rotate_stack_a(&push);
+		//		i = ac;
+		//		while (i > 0)
+		//		{
+		//			swap_stack_a(&push.a[i - 1], &push.a[i]);
+		//			i--;
+		//		}
+		//		push_stack_b(&push);
+		//		swap_stack_a(&push.a[index - 1], &push.a[index]);
+		for (i = 0; i < push.size_init; i++)
+		{
+			push_stack_b(&push);
+			rotate_stack_a(&push);
+		}
+		//	reverse_rotate_stack_a(&push);
 		ft_printf("-----------------\n");
 		for (i = index; i >= 0; i--)
 			ft_printf("stack a[%d] =\t%d\t\t|\tstack b[%d] =\t%d\n", i, push.a[i], i, push.b[i]);
