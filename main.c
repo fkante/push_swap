@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 13:52:48 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/22 13:50:42 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/22 14:06:14 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int		main(int ac, char **av)
 
 	if (ac >= 2)
 	{
-		push.size_init = ac - 1;
+		push.size_global = ac - 1;
 		index = ac - 2;
 		ret = init_struct(&push, av);
-		ft_printf("---------------\n| s.size_init = %d |\n---------------\n", push.size_init);
+		ft_printf("---------------\n| s.size_global = %d |\n---------------\n", push.size_global);
 		for (i = index; i >= 0; i--)
 			ft_printf("stack a[%d] =\t%d\t\t|\tstack b[%d] =\t%d\n", i, push.a[i], i, push.b[i]);
 		ft_printf("-----------------\n");
@@ -36,11 +36,15 @@ int		main(int ac, char **av)
 		//		}
 		//		push_stack_b(&push);
 		//		swap_stack_a(&push.a[index - 1], &push.a[index]);
-		for (i = 0; i < push.size_init; i++)
-		{
+//		for (i = 0; i < push.size_global; i++)
+//		{
 			push_stack_b(&push);
-			rotate_stack_a(&push);
-		}
+			push_stack_b(&push);
+			push_stack_b(&push);
+			push_stack_b(&push);
+			push_stack_b(&push);
+//			rotate_stack_a(&push);
+//		}
 		//	reverse_rotate_stack_a(&push);
 		ft_printf("-----------------\n");
 		for (i = index; i >= 0; i--)
