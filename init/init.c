@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:43 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/22 16:32:58 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/23 19:39:48 by amartinod        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_stack		*create_stack(char **tab, size_t len)
 			s->b = ft_memalloc(sizeof(int) * (len - start));
 			s->size_a = len - start;
 			s->size_b = 0;
+			s->size_init = s->size_a;
 			s->verbose = check_for_bonus(tab, "-v");;
 			s->color = check_for_bonus(tab, "-c");
 			if (s->a == NULL || s->b == NULL)
