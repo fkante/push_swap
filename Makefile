@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2019/11/23 20:12:54 by amartinod        ###   ########.fr        #
+#    Updated: 2019/11/25 11:16:02 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -51,7 +51,8 @@ vpath %.c $(PATH_SRC)
                      #                   				#
                      ####################################
 # main
-SRCS += main
+MAIN_CH = main_checker.c
+MAIN_PS = main_pushswap.c
 
 # push_swap
 SRCS += push_swp
@@ -103,11 +104,11 @@ ALLOBJS += $(LIB_DIR)$(BUILD_DIR)*.o
 all: $(NAME_CHECKER) $(NAME_PUSH_SWP)
 
 $(NAME_PUSH_SWP): $(BUILD_DIR) $(OBJS) $(LIB_PATH)
-	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIB_PATH)
+	@$(CC) $(CFLAGS) -o $@ $(MAIN_PS) $(OBJS) $(LIB_PATH) $(INCLUDES)
 	@echo "\n$(CYAN)MAKE COMPLETE$(END)"
 
 $(NAME_CHECKER): $(BUILD_DIR) $(OBJS) $(LIB_PATH)
-	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIB_PATH)
+	@$(CC) $(CFLAGS) -o $@ $(MAIN_CH) $(OBJS) $(LIB_PATH) $(INCLUDES)
 	@echo "\n$(CYAN)MAKE COMPLETE$(END)"
 
 $(BUILD_DIR):
@@ -125,13 +126,13 @@ t: all $(VAL)
 
 clean:
 	rm -f $(OBJS)
-	rm -rf ./build
+	rm -rf ./$(BUILD_DIR)
 	echo "$(YELLOW)OBJS$(END) \t\t were \t\t $(GREEN)clean$(END)\n"
 	$(MAKE) clean -C $(LIB_DIR)
 
 fclean: clean
 	rm -rf $(NAME_PUSH_SWP) $(NAME_CHECKER)
-	echo "$(YELLOW)$(NAME)$(END) \t were \t $(GREEN)clean$(END)\n"
+	echo "$(YELLOW)$(NAME_PUSH_SWP)$(END) and $(YELLOW)$(NAME_CHECKER)$(END) \t were \t $(GREEN)clean$(END)\n"
 	$(MAKE) fclean -C $(LIB_DIR)
 
 re: fclean all

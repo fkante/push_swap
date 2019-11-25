@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2019/11/19 11:06:51 by amartinod        ###   ########.fr        #
+#    Updated: 2019/11/25 11:15:10 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -114,7 +114,7 @@ all: $(NAME)
 
 $(NAME): $(BUILD_DIR) $(OBJS) $(LIB_PATH)
 	$(AR) $@ $(ALLOBJS)
-	echo "\n$(CYAN)MAKE COMPLETE$(END)"
+	# echo "\n$(CYAN)MAKE COMPLETE$(END)"
 
 $(BUILD_DIR):
 	mkdir $@
@@ -132,12 +132,12 @@ t: all $(VAL)
 clean:
 	rm -f $(OBJS)
 	rm -rf ./build
-	echo "$(YELLOW)OBJS$(END) \t\t were \t\t $(GREEN)clean$(END)\n"
+	# echo "$(YELLOW)OBJS$(END) \t\t were \t\t $(GREEN)clean$(END)\n"
 	$(MAKE) clean -C $(LIB_DIR)
 
 fclean: clean
 	rm -rf $(NAME)
-	echo "$(YELLOW)$(NAME)$(END) \t were \t $(GREEN)clean$(END)\n"
+	# echo "$(YELLOW)$(NAME)$(END) \t were \t $(GREEN)clean$(END)\n"
 	$(MAKE) fclean -C $(LIB_DIR)
 
 re: fclean all
