@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2019/11/23 20:12:54 by amartinod        ###   ########.fr        #
+#    Updated: 2019/11/26 14:41:42 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -67,6 +67,7 @@ SRCS += parse
 SRCS += push_stack
 SRCS += rotate_stack
 SRCS += swap_stack
+SRCS += shift_stack
 
 # clean
 SRCS += clean

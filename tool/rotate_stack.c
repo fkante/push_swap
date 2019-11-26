@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 16:21:06 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/22 13:43:19 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/26 14:50:11 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,80 +14,64 @@
 
 int8_t		rotate_stack_a(t_stack *s)
 {
-	int32_t ret;
-	int32_t i;
-	int32_t first_elem;
+	int32_t	first_elem;
+	int32_t	ret;
+	size_t	i;
 
 	ret = FAILURE;
-	i = s->size_init;
-	first_elem = s->a[s->size_init - 1];
-	s->a[s->size_init - 1] = 0;
-	while (i > 0)
-	{
-		swap_stack_a(&s->a[i], &s->a[i - 1]);
-		i--;
-	}
+	i = s->size_a;
+	first_elem = s->a[s->size_a - 1];
+	if (i > 0)
+		if (shiftup_stack_a(s) == SUCCESS)
+			ret = SUCCESS;
 	s->a[0] = first_elem;
-	ft_printf("|\tra\t|\n");
 	return (ret);
 }
 
 int8_t		rotate_stack_b(t_stack *s)
 {
-	int32_t ret;
-	int32_t i;
-	int32_t first_elem;
+	int32_t	first_elem;
+	int32_t	ret;
+	size_t	i;
 
 	ret = FAILURE;
-	i = s->size_init;
-	first_elem = s->b[s->size_init - 1];
-	s->b[s->size_init - 1] = 0;
-	while (i > 0)
-	{
-		swap_stack_b(&s->b[i], &s->b[i - 1]);
-		i--;
-	}
+	i = s->size_b;
+	first_elem = s->b[s->size_b - 1];
+	if (i > 0)
+		if (shiftup_stack_b(s) == SUCCESS)
+			ret = SUCCESS;
 	s->b[0] = first_elem;
-	ft_printf("|\trb\t|\n");
 	return (ret);
 }
 
 int8_t		reverse_rotate_stack_a(t_stack *s)
 {
-	int32_t ret;
-	int32_t i;
-	int32_t first_elem;
+	int32_t	first_elem;
+	int32_t	ret;
+	size_t	i;
 
 	ret = FAILURE;
 	i = 0;
 	first_elem = s->a[0];
-	s->a[0] = 0;
-	while (i < s->size_init - 1)
-	{
-		swap_stack_a(&s->a[i], &s->a[i + 1]);
-		i++;
-	}
-	s->a[s->size_init - 1] = first_elem;
-	ft_printf("|\trra\t|\n");
+	if (i < s->size_a)
+		if (shiftdown_stack_a(s) == SUCCESS)
+			ret = SUCCESS;
+	s->a[s->size_a - 1] = first_elem;
 	return (ret);
 }
 
 int8_t		reverse_rotate_stack_b(t_stack *s)
 {
-	int32_t ret;
-	int32_t i;
-	int32_t first_elem;
+	int32_t	first_elem;
+	int32_t	ret;
+	size_t	i;
 
 	ret = FAILURE;
 	i = 0;
 	first_elem = s->b[0];
-	s->b[0] = 0;
-	while (i < s->size_init - 1)
-	{
-		swap_stack_b(&s->b[i], &s->b[i + 1]);
-		i++;
-	}
-	s->b[s->size_init - 1] = first_elem;
-	ft_printf("|\trrb\t|\n");
+	if (i < s->size_b)
+		if (shiftdown_stack_b(s) == SUCCESS)
+			ret = SUCCESS;
+	s->b[s->size_b - 1] = first_elem;
 	return (ret);
 }

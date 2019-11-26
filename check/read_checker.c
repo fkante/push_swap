@@ -1,49 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_stack.c                                       :+:      :+:    :+:   */
+/*   read_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 15:25:33 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/26 14:48:45 by fkante           ###   ########.fr       */
+/*   Created: 2019/11/25 10:53:16 by fkante            #+#    #+#             */
+/*   Updated: 2019/11/25 15:09:54 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int8_t	push_stack_a(t_stack *s)
+int8_t	store_stdin(char **line)
 {
-	int32_t	ret;
-	size_t	i;
+	static size_t	i;
+	size_t			j;
+	char			**operation;
 
+	if ((operation = NULL) != NULL)
+		i = 0;
+	ft_printf("i = %d\n", i);
+	if (line[0] != NULL)
+		operation[i] = ft_strdup(line[0]);
+	i++;
+	return (0);
+}
+
+int8_t	read_checker()
+{
+	char	*line;
+	int32_t	ret;
+
+	line = NULL;
 	ret = FAILURE;
-	if (s->size_b != 0)
+	while ((ret = get_next_line(1, &line)) > 0)
 	{
-		i = s->size_a;
-		s->size_b = s->size_b - 1;
-		s->size_a = s->size_a + 1;
-		s->a[i] = s->b[s->size_b];
-		s->b[s->size_b] = 0;
-		ret = SUCCESS;
+		store_stdin(&line);
+		ft_strdel(&line);
 	}
 	return (ret);
 }
 
-int8_t	push_stack_b(t_stack *s)
+int		main(int ac, char **av)
 {
-	int32_t	ret;
-	size_t	j;
-
-	ret = FAILURE;
-	if (s->size_a != 0)
-	{
-		j = s->size_b;
-		s->size_a = s->size_a - 1;
-		s->size_b = s->size_b + 1;
-		s->b[j] = s->a[s->size_a];
-		s->a[s->size_a] = 0;
-		ret = SUCCESS;
-	}
-	return (ret);
+	if (ac > 1)
+		read_checker();
+	return (0);
 }

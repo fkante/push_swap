@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/22 17:09:22 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/26 14:42:20 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,19 @@ void		print_stack(t_stack *s);
 **      TOOL	    **
 **********************
 */
-int8_t		swap_stack_a(int *top_stack1, int *top_stack2);
-int8_t		swap_stack_b(int *top_stack1, int *top_stack2);
+int8_t		swap_stack_a(t_stack *s);
+int8_t		swap_stack_b(t_stack *s);
 int8_t		push_stack_a(t_stack *s);
 int8_t		push_stack_b(t_stack *s);
+int8_t		shiftup_stack_a(t_stack *s);
+int8_t		shiftup_stack_b(t_stack *s);
+int8_t		shiftdown_stack_a(t_stack *s);
+int8_t		shiftdown_stack_b(t_stack *s);
 int8_t		rotate_stack_a(t_stack *s);
 int8_t		rotate_stack_b(t_stack *s);
 int8_t		reverse_rotate_stack_a(t_stack *s);
 int8_t		reverse_rotate_stack_b(t_stack *s);
+int8_t		loop_swap_stack(int32_t *stack1, int32_t *stack2);
 
 /*
 **********************
