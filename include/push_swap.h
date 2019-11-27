@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/26 14:42:20 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/27 12:28:45 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,22 @@ uint8_t		check_for_bonus(char **tab, char *chr);
 **      CHECKER	    **
 **********************
 */
+enum	e_operations
+{
+	E_SA,
+	E_SB
+	E_SS,
+	E_PA,
+	E_PB,
+	E_RA,
+	E_RB,
+	E_RR,
+	E_RRA,
+	E_RRB,
+	E_RRR
+};
+
+typedef	int8_t	*(operfunc)(t_stack *s);
 
 /*
 **********************
@@ -78,6 +94,9 @@ int8_t		rotate_stack_b(t_stack *s);
 int8_t		reverse_rotate_stack_a(t_stack *s);
 int8_t		reverse_rotate_stack_b(t_stack *s);
 int8_t		loop_swap_stack(int32_t *stack1, int32_t *stack2);
+int8_t		swap_both(t_stack *s);
+int8_t		rotate_both(t_stack *s);
+int8_t		reverse_both(t_stack *s);
 
 /*
 **********************
