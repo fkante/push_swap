@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 10:53:16 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/27 12:28:48 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/27 12:34:15 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,4 @@ i			if (ft_strequ(line, oper[i]) == TRUE)
 		ft_strdel(&line);
 	}
 	return (ret);
-}
-
-int		main(int ac, char **av)
-{
-	(void)ac;
-	(void)av;
-	read_checker();
-	return (0);
 }
