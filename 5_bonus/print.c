@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:23:57 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/28 17:53:50 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/28 18:38:14 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,61 +38,123 @@ void	print_no_color(t_stack *s)
 	}
 }
 
-// s->color_nb == s->b[b] ? ft_printf("\t{c_red}%d{c_end}\t\t|\n", s->b[b]) : ft_printf("\t%d\t\t|\n", s->b[b]);
+int32_t		ft_high(int32_t *tab, size_t size)
+{
+	int32_t		high;
+	size_t		i;
 
-// t_stat 	*get_stat(t_stack *s)
-// {
-// 	t_stat		stat;
-//
-// 	stat = ft_memalloc(sizeof(t_stat));
-	// if (stat != NULL)
-	// {
-		// min_a = ;
-		// max_a = ;
-		// median_a = ;
-		// min_b = ;
-		// max_b = ;
-		// median_b = ;
-	// }
-// 	return (stat);
-// }
-//
-// void	handle_stack_a(int32_t nb, int8_t ope, t_stat *stat)
-// {
-// 	ft_printf("\t\t\t|\t\t{c_red}%d{c_end}\t\t| |\t", s->a[a]);
-// 	ft_printf("\t\t\t|\t\t%d\t\t| |\t", s->a[a]);
-// }
-//
-// void	handle_stack_b(int32_t nb, int8_t ope, t_stat *stat)
-// {
-//
-// }
-//
-// void	print_with_color(t_stack *s, int8_t ope)
-// {
-// 	t_stat		stat;
-// 	size_t		size_a;
-// 	size_t		size_b;
-//
-// 	size_a = s->size_a;
-// 	size_b = s->size_b;
-// 	stat = get_stat(t_stack *s);
-// 	if (stat != NULL)
-// 	{
-// 		while (size_a > 0 || size_b > 0)
-// 		{
-// 			if (size_a-- > 0)
-// 				handle_stack_a(s->a[size_a], s->color_nb, ope, stat);
-// 			else
-// 				ft_printf("\t\t\t|\t\t\t\t| |\t");
-// 			if (size_b-- > 0)
-// 				handle_stack_b(s->b[size_b], ope, stat);
-// 			else
-// 				ft_printf("\t\t\t|\n");
-// 		}
-// 	}
-// 	ft_memdel((void**)&stat);
-// }
+	i = 0;
+	high = tab[i];
+	while (i < size)
+	{
+		if (high < tab[i])
+			high = tab[i];
+		i++;
+	}
+	return (high);
+}
+
+int32_t		ft_low(int32_t *tab, size_t size)
+{
+	int32_t		low;
+	size_t		i;
+
+	i = 0;
+	low = tab[i];
+	while (i < size)
+	{
+		if (low > tab[i])
+			low = tab[i];
+		i++;
+	}
+	return (low);
+}
+
+t_stat 	*get_stat(t_stack *s)
+{
+	t_stat		*stat;
+
+	stat = ft_memalloc(sizeof(t_stat));
+	if (stat != NULL)
+	{
+		stat->min_a = ft_low(s->a, s->size_a);;
+		stat->max_a = ft_high(s->a, s->size_a);
+		stat->median_a = 2;
+		stat->min_b = 0;
+		stat->max_b = 0;
+		stat->median_b = 0;
+	}
+	return (stat);
+}
+
+void	check_ope(int32_t nb, int8_t ope, int8_t stack)
+{
+	(void)ope;
+	if (stack == STACK_A)
+		ft_printf("\t\t\t|\t\t{c_green}%d{c_end}\t\t| |\t", nb);
+	else
+		ft_printf("\t{c_green}%d{c_end}\t\t|\n", nb);
+}
+
+void	handle_stack_a(int32_t nb, int32_t color_nb, int8_t ope, t_stat *stat)
+{
+	if (nb == color_nb)
+		check_ope(nb, ope, STACK_A);
+	else if (nb == stat->min_a)
+		ft_printf("\t\t\t|\t\t{c_yellow}%d{c_end}\t\t| |\t", nb);
+	else if (nb == stat->max_a)
+		ft_printf("\t\t\t|\t\t{c_red}%d{c_end}\t\t| |\t", nb);
+	else if (nb == stat->median_a)
+		ft_printf("\t\t\t|\t\t{c_blue}%d{c_end}\t\t| |\t", nb);
+	else
+		ft_printf("\t\t\t|\t\t%d\t\t| |\t", nb);
+}
+
+void	handle_stack_b(int32_t nb, int32_t color_nb, int8_t ope, t_stat *stat)
+{
+	if (nb == color_nb)
+		check_ope(nb, ope, STACK_B);
+	else if (nb == stat->min_b)
+		ft_printf("\t{c_yellow}%d{c_end}\t\t|\n", nb);
+	else if (nb == stat->max_b)
+		ft_printf("\t{c_red}%d{c_end}\t\t|\n", nb);
+	else if (nb == stat->median_b)
+		ft_printf("\t{c_blue}%d{c_end}\t\t|\n", nb);
+	else
+		ft_printf("\t%d\t\t|\n", nb);
+}
+
+void	print_with_color(t_stack *s, int8_t ope)
+{
+	t_stat		*stat;
+	size_t		size_a;
+	size_t		size_b;
+
+	size_a = s->size_a;
+	size_b = s->size_b;
+	stat = get_stat(s);
+	if (stat != NULL)
+	{
+		while (size_a > 0 || size_b > 0)
+		{
+			if (size_a > 0)
+			{
+				size_a--;
+				handle_stack_a(s->a[size_a], s->color_nb, ope, stat);
+			}
+			else
+				ft_printf("\t\t\t|\t\t\t\t| |\t");
+			if (size_b > 0)
+			{
+				size_b--;
+				handle_stack_b(s->b[size_b], s->color_nb, ope, stat);
+			}
+			else
+				ft_printf("\t\t\t|\n");
+		}
+	}
+	ft_memdel((void**)&stat);
+}
 
 void	print_stack(t_stack *s, int8_t ope)
 {
@@ -108,7 +170,6 @@ _____________________________\n\t\t\t|\t\tSTACK A\t\t| |\t\tSTACK B\t\t|\n\
 ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n");
 	system("clear");
 	vct_print(head);
-	// s->color == TRUE ? print_with_color(s, ope) : print_no_color(s);
-	print_no_color(s);
+	s->color == TRUE ? print_with_color(s, ope) : print_no_color(s);
 	vct_print(foot);
 }
