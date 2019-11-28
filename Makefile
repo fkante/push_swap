@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2019/11/27 12:35:41 by fkante           ###   ########.fr        #
+#    Updated: 2019/11/28 14:09:24 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -51,7 +51,8 @@ vpath %.c $(PATH_SRC)
                      #                   				#
                      ####################################
 # main
-SRCS += main
+MAIN_PUSH = main.c
+MAIN_CHECK = main_check.c
 
 # push_swap
 SRCS += push_swp
@@ -105,11 +106,11 @@ ALLOBJS += $(LIB_DIR)$(BUILD_DIR)*.o
 all: $(NAME_CHECKER) $(NAME_PUSH_SWP)
 
 $(NAME_PUSH_SWP): $(BUILD_DIR) $(OBJS) $(LIB_PATH)
-	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIB_PATH)
+	@$(CC) $(CFLAGS) -o $@ $(MAIN_PUSH) $(OBJS) $(LIB_PATH) $(INCLUDES)
 	@echo "\n$(CYAN)MAKE COMPLETE$(END)"
 
 $(NAME_CHECKER): $(BUILD_DIR) $(OBJS) $(LIB_PATH)
-	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIB_PATH)
+	@$(CC) $(CFLAGS) -o $@ $(MAIN_CHECK) $(OBJS) $(LIB_PATH) $(INCLUDES)
 	@echo "\n$(CYAN)MAKE COMPLETE$(END)"
 
 $(BUILD_DIR):

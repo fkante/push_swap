@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:23:57 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/26 14:21:21 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/28 14:09:53 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		print_stack(t_stack *s)
 	i = s->size_a;
 	j = s->size_b;
 	size_max = s->size_a + s->size_b;
-	//	system("clear");
+	system("clear");
 	ft_printf("\t\t\t _______________________________   _____________________________\n");
 	ft_printf("\t\t\t|\t\tSTACK A\t\t| |\t\tSTACK B\t\t|\n");
 	ft_printf("\t\t\t ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔   ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n");
@@ -38,6 +38,5 @@ void		print_stack(t_stack *s)
 		else
 			ft_printf("\t\t\t|\n");
 	}
-
 	ft_printf("\t\t\t ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔   ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n");
 }

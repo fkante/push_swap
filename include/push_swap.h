@@ -6,16 +6,29 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/27 12:28:45 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/28 14:05:48 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libft.h"
-#include "ft_printf.h"
-#include "define.h"
+# include "libft.h"
+# include "ft_printf.h"
+# include "define.h"
+
+# define NB_OF_OPER			11
+# define SA					"sa"	
+# define SB					"sb"
+# define SS					"ss"
+# define PA					"pa"	
+# define PB					"pb"
+# define RA					"ra"
+# define RB					"rb"
+# define RR					"rr"
+# define RRA				"rra"
+# define RRB				"rrb"
+# define RRR				"rrr"
 
 typedef struct	s_stack
 {
@@ -55,7 +68,7 @@ uint8_t		check_for_bonus(char **tab, char *chr);
 enum	e_operations
 {
 	E_SA,
-	E_SB
+	E_SB,
 	E_SS,
 	E_PA,
 	E_PB,
@@ -67,7 +80,8 @@ enum	e_operations
 	E_RRR
 };
 
-typedef	int8_t	*(operfunc)(t_stack *s);
+typedef	int8_t	(*operfunc)(t_stack *s);
+int8_t			read_checker(t_stack *s);
 
 /*
 **********************
