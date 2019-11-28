@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/28 14:05:48 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/28 17:19:11 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,7 @@
 
 # include "libft.h"
 # include "ft_printf.h"
-# include "define.h"
-
-# define NB_OF_OPER			11
-# define SA					"sa"	
-# define SB					"sb"
-# define SS					"ss"
-# define PA					"pa"	
-# define PB					"pb"
-# define RA					"ra"
-# define RB					"rb"
-# define RR					"rr"
-# define RRA				"rra"
-# define RRB				"rrb"
-# define RRR				"rrr"
+# include "define_ps.h"
 
 typedef struct	s_stack
 {
@@ -37,9 +24,20 @@ typedef struct	s_stack
 	size_t	size_init;
 	size_t	size_a;
 	size_t	size_b;
+	int32_t	color_nb;
 	uint8_t	verbose;
 	uint8_t	color;
 }				t_stack;
+
+typedef struct 	s_stat
+{
+	int32_t		min_a;
+	int32_t		max_a;
+	int32_t		median_a;
+	int32_t		min_b;
+	int32_t		max_b;
+	int32_t		median_b;
+}				t_stat;
 
 /*
 **********************
@@ -88,7 +86,7 @@ int8_t			read_checker(t_stack *s);
 **      BONUS	    **
 **********************
 */
-void		print_stack(t_stack *s);
+void		print_stack(t_stack *s, int8_t ope);
 
 /*
 **********************

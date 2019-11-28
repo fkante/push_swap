@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2019/11/28 14:15:54 by amartino         ###   ########.fr        #
+#    Updated: 2019/11/28 14:27:31 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -24,7 +24,7 @@ DFLAGS =  -Wall -Wextra -Werror -fsanitize=address,undefined -g3
 INCLUDES += -I./include
 INCLUDES += -I./libft/includes
 INCLUDES += -I./libft/ft_printf/includes
-HEAD += ./include/define.h
+HEAD += ./include/define_ps.h
 HEAD += ./include/push_swap.h
 
                      ####################################
@@ -36,12 +36,12 @@ HEAD += ./include/push_swap.h
 LIB_PATH = $(LIB_DIR)/$(LIB)
 
 # SRCS
-PATH_SRC += push_swp/
-PATH_SRC += check/
-PATH_SRC += tool/
-PATH_SRC += init/
-PATH_SRC += clean/
-PATH_SRC += bonus/
+PATH_SRC += 0_push_swp/
+PATH_SRC += 1_checker/
+PATH_SRC += 2_init/
+PATH_SRC += 3_tool/
+PATH_SRC += 4_clean/
+PATH_SRC += 5_bonus/
 
 vpath %.c $(PATH_SRC)
 

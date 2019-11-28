@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 15:25:33 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/26 14:48:45 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/28 15:57:05 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int8_t	push_stack_a(t_stack *s)
 		s->size_a = s->size_a + 1;
 		s->a[i] = s->b[s->size_b];
 		s->b[s->size_b] = 0;
+		s->color_nb = s->a[i];
 		ret = SUCCESS;
 	}
 	return (ret);
@@ -43,6 +44,7 @@ int8_t	push_stack_b(t_stack *s)
 		s->size_b = s->size_b + 1;
 		s->b[j] = s->a[s->size_a];
 		s->a[s->size_a] = 0;
+		s->color_nb = s->b[j];
 		ret = SUCCESS;
 	}
 	return (ret);

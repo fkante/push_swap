@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define.h                                           :+:      :+:    :+:   */
+/*   define_ps.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/28 14:05:49 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/28 16:53:57 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef DEFINE_PS_H
+# define DEFINE_PS_H
 
 # define FALSE				0
 # define TRUE				1
 # define SUCCESS			0
 # define FAILURE			-1
 # define VERBOSE 			0
-# define NB_OF_OPER			11
+# define NB_OPE				11
+# define NO_OPE				-1
 
-# define SA					"sa"	
+# define SA					"sa"
 # define SB					"sb"
 # define SS					"ss"
-# define PA					"pa"	
+# define PA					"pa"
 # define PB					"pb"
 # define RA					"ra"
 # define RB					"rb"

@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 16:29:13 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/20 10:35:51 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/28 16:09:31 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ t_vector	*init_colors(void)
 							c_cyan\033[0;36m		c_b_cyan\033[1;36m\
 							c_bb_cyan\033[1;46m		c_white\033[0;37m\
 							c_b_white\033[1;37m		c_bb_white\033[1;47m\
-							c_eoc\033[0m");
+							c_end\033[0m");
 	return (vector);
 }

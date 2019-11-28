@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:25:09 by amartino          #+#    #+#             */
-/*   Updated: 2019/10/02 12:03:01 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/28 15:03:16 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void			vct_bzero(t_vector *vector);
 void			vct_del(t_vector **vector);
 char			*vct_getstr(t_vector *vector);
 char			vct_getchar_at(t_vector *vector, size_t index);
+void			vct_print(t_vector *vector);
 
 /*
 **********************
