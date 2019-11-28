@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2019/11/25 11:16:02 by amartino         ###   ########.fr        #
+#    Updated: 2019/11/28 14:15:54 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -51,8 +51,8 @@ vpath %.c $(PATH_SRC)
                      #                   				#
                      ####################################
 # main
-MAIN_CH = main_checker.c
-MAIN_PS = main_pushswap.c
+MAIN_PUSH = main.c
+MAIN_CHECK = main_check.c
 
 # push_swap
 SRCS += push_swp
@@ -68,6 +68,8 @@ SRCS += parse
 SRCS += push_stack
 SRCS += rotate_stack
 SRCS += swap_stack
+SRCS += shift_stack
+SRCS += rotate_both
 
 # clean
 SRCS += clean
@@ -104,11 +106,11 @@ ALLOBJS += $(LIB_DIR)$(BUILD_DIR)*.o
 all: $(NAME_CHECKER) $(NAME_PUSH_SWP)
 
 $(NAME_PUSH_SWP): $(BUILD_DIR) $(OBJS) $(LIB_PATH)
-	@$(CC) $(CFLAGS) -o $@ $(MAIN_PS) $(OBJS) $(LIB_PATH) $(INCLUDES)
+	@$(CC) $(CFLAGS) -o $@ $(MAIN_PUSH) $(OBJS) $(LIB_PATH) $(INCLUDES)
 	@echo "\n$(CYAN)MAKE COMPLETE$(END)"
 
 $(NAME_CHECKER): $(BUILD_DIR) $(OBJS) $(LIB_PATH)
-	@$(CC) $(CFLAGS) -o $@ $(MAIN_CH) $(OBJS) $(LIB_PATH) $(INCLUDES)
+	@$(CC) $(CFLAGS) -o $@ $(MAIN_CHECK) $(OBJS) $(LIB_PATH) $(INCLUDES)
 	@echo "\n$(CYAN)MAKE COMPLETE$(END)"
 
 $(BUILD_DIR):

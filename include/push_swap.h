@@ -6,16 +6,29 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/22 17:09:22 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/28 14:05:48 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libft.h"
-#include "ft_printf.h"
-#include "define.h"
+# include "libft.h"
+# include "ft_printf.h"
+# include "define.h"
+
+# define NB_OF_OPER			11
+# define SA					"sa"	
+# define SB					"sb"
+# define SS					"ss"
+# define PA					"pa"	
+# define PB					"pb"
+# define RA					"ra"
+# define RB					"rb"
+# define RR					"rr"
+# define RRA				"rra"
+# define RRB				"rrb"
+# define RRR				"rrr"
 
 typedef struct	s_stack
 {
@@ -52,6 +65,23 @@ uint8_t		check_for_bonus(char **tab, char *chr);
 **      CHECKER	    **
 **********************
 */
+enum	e_operations
+{
+	E_SA,
+	E_SB,
+	E_SS,
+	E_PA,
+	E_PB,
+	E_RA,
+	E_RB,
+	E_RR,
+	E_RRA,
+	E_RRB,
+	E_RRR
+};
+
+typedef	int8_t	(*operfunc)(t_stack *s);
+int8_t			read_checker(t_stack *s);
 
 /*
 **********************
@@ -65,14 +95,22 @@ void		print_stack(t_stack *s);
 **      TOOL	    **
 **********************
 */
-int8_t		swap_stack_a(int *top_stack1, int *top_stack2);
-int8_t		swap_stack_b(int *top_stack1, int *top_stack2);
+int8_t		swap_stack_a(t_stack *s);
+int8_t		swap_stack_b(t_stack *s);
 int8_t		push_stack_a(t_stack *s);
 int8_t		push_stack_b(t_stack *s);
+int8_t		shiftup_stack_a(t_stack *s);
+int8_t		shiftup_stack_b(t_stack *s);
+int8_t		shiftdown_stack_a(t_stack *s);
+int8_t		shiftdown_stack_b(t_stack *s);
 int8_t		rotate_stack_a(t_stack *s);
 int8_t		rotate_stack_b(t_stack *s);
 int8_t		reverse_rotate_stack_a(t_stack *s);
 int8_t		reverse_rotate_stack_b(t_stack *s);
+int8_t		loop_swap_stack(int32_t *stack1, int32_t *stack2);
+int8_t		swap_both(t_stack *s);
+int8_t		rotate_both(t_stack *s);
+int8_t		reverse_both(t_stack *s);
 
 /*
 **********************

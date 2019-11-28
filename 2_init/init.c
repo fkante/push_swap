@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:43 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/23 19:39:48 by amartinod        ###   ########.fr       */
+/*   Updated: 2019/11/25 17:19:47 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ t_stack		*fill_stack(t_stack *s, size_t start, char **tab, size_t len)
 	size_t		i;
 
 	i = 0;
-	while (start < len)
+	while (len > start)
 	{
-		tmp = ft_atol(tab[start]);
+		len--;
+		tmp = ft_atol(tab[len]);
 		if (tmp > INT_MAX || tmp < INT_MIN)
 			return (NULL);
 		s->a[i] = (int)tmp;
-		start++;
 		i++;
 	}
 	if (check_no_double(s) == FALSE)
