@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/28 16:53:31 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/29 12:28:20 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int8_t	read_checker(t_stack *s)
 	char		*line;
 	int32_t		ret;
 	uint8_t		i;
+	size_t 	count;
 
+	count = 0;
 	line = NULL;
 	ret = FAILURE;
 	while ((ret = get_next_line(0, &line)) > 0)
@@ -40,6 +42,10 @@ int8_t	read_checker(t_stack *s)
 		if (s->verbose == TRUE)
 			print_stack(s, i);
 		ft_strdel(&line);
+		count++;
+		ft_printf("Count = %u\n\nSwap\t\tA: sa\tB: sb\tBoth: rr\n", count);
+		ft_printf("Push\t\tA: pa\tB: pb\nRotate up\tA: ra\tB: rb\tBoth: rr\n");
+		ft_printf("Rotate down\tA: rra\tB: rrb\tBoth: rrr\n");
 	}
 	return (ret);
 }
