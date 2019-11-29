@@ -6,7 +6,7 @@
 #    By: fkante <fkante@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2019/11/22 16:38:00 by amartino         ###   ########.fr        #
+#    Updated: 2019/11/29 11:23:40 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,8 +137,15 @@ SRCS += vct_chr.c
 SRCS += vct_chr_str.c
 SRCS += vct_getchar_at.c
 
+# btree
+SRCS += heap_build.c
+SRCS += heap_order.c
+SRCS += heap_print.c
+SRCS += heap_tool.c
+
 PATH_SRCS += ./vector
 PATH_SRCS += ./ft_printf
+PATH_SRCS += ./btree
 PATH_SRCS += .
 
 vpath %.c $(PATH_SRCS)
