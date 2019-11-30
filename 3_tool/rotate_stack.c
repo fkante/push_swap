@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 16:21:06 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/27 12:25:53 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/30 18:58:01 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int8_t		rotate_stack_a(t_stack *s)
 		if (shiftup_stack_a(s) == SUCCESS)
 			ret = SUCCESS;
 	s->a[0] = first_elem;
+	s->color_nb = s->a[0];
 	return (ret);
 }
 
@@ -41,6 +42,7 @@ int8_t		rotate_stack_b(t_stack *s)
 		if (shiftup_stack_b(s) == SUCCESS)
 			ret = SUCCESS;
 	s->b[0] = first_elem;
+	s->color_nb = s->b[0];
 	return (ret);
 }
 
@@ -57,6 +59,7 @@ int8_t		reverse_rotate_stack_a(t_stack *s)
 		if (shiftdown_stack_a(s) == SUCCESS)
 			ret = SUCCESS;
 	s->a[s->size_a - 1] = first_elem;
+	s->color_nb = s->a[s->size_a - 1];
 	return (ret);
 }
 
@@ -73,5 +76,6 @@ int8_t		reverse_rotate_stack_b(t_stack *s)
 		if (shiftdown_stack_b(s) == SUCCESS)
 			ret = SUCCESS;
 	s->b[s->size_b - 1] = first_elem;
+	s->color_nb = s->b[s->size_b - 1];
 	return (ret);
 }

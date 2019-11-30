@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 12:01:11 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/25 12:07:47 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/30 16:27:09 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int32_t		ft_high(int32_t *tab, size_t size)
 	size_t		i;
 
 	i = 0;
-	high = tab[i]
+	high = tab[i];
 	while (i < size)
 	{
 		if (high < tab[i])

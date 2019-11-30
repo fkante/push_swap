@@ -6,7 +6,7 @@
 #    By: fkante <fkante@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2019/11/30 15:54:50 by amartino         ###   ########.fr        #
+#    Updated: 2019/11/30 16:25:20 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,6 +109,15 @@ SRCS += get_next_line.c
 SRCS += ft_printf.c
 SRCS += ft_atol.c
 
+# stats
+SRCS += ft_get_high.c
+SRCS += ft_get_low.c
+SRCS += ft_high.c
+SRCS += ft_low.c
+SRCS += ft_mean.c
+SRCS += ft_median.c
+SRCS += ft_range.c
+
 # vectors
 SRCS += vct_del.c
 SRCS += vct_new.c
@@ -147,6 +156,7 @@ SRCS += heap_tool.c
 PATH_SRCS += ./vector
 PATH_SRCS += ./ft_printf
 PATH_SRCS += ./btree
+PATH_SRCS += ./stats
 PATH_SRCS += .
 
 vpath %.c $(PATH_SRCS)

@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/22 16:38:28 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/30 16:26:42 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,14 @@ unsigned long		ft_pow_positive(unsigned long x, unsigned long y);
 size_t				ft_uint64_t_len(uint64_t num, uint8_t base);
 size_t				ft_int64_t_len(int64_t num, uint8_t base);
 size_t				ft_len_printf(uint64_t value, uint64_t flag, size_t len);
+size_t				ft_get_high(int32_t *tab, size_t size);
+size_t				ft_get_low(int32_t *tab, size_t size);
+int32_t				ft_high(int32_t *tab, size_t size);
+int32_t				ft_low(int32_t *tab, size_t size);
+int32_t				ft_mean(int32_t *tab, size_t size);
+int8_t				ft_median(int32_t *tab, size_t size, int32_t *median);
+int32_t				ft_range(int32_t *tab, size_t size);
+
 
 /*
 ** ############################################################################

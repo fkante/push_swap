@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 12:01:11 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/30 15:48:06 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/30 16:29:02 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int8_t		ft_median(int32_t *tab, size_t size, int32_t *median)
 {
 	t_heap		*heap;
-	int32_t		over_half;
+	size_t		over_half;
 
 	over_half = (size / 2) + 1;
 	heap = heap_tree(tab, over_half, MIN_HEAP);
@@ -34,7 +34,8 @@ int8_t		ft_median(int32_t *tab, size_t size, int32_t *median)
 		}
 		over_half++;
 	}
-	return (heap->A[ROOT]);
+	*median = heap->A[ROOT];
+	return (SUCCESS);
 }
 
 // int main()
@@ -43,6 +44,7 @@ int8_t		ft_median(int32_t *tab, size_t size, int32_t *median)
 // 	int32_t		over_half;
 // 	int32_t		median;
 //
-// 	printf("median is %d\n", ft_median(base, 11, &median));
+//	ft_median(base, 11, &median);
+// 	printf("median is %d\n", median);
 // 	return (0);
 // }
