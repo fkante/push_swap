@@ -6,11 +6,18 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:23:57 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/29 12:20:10 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/30 15:50:06 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	print_command(size_t count)
+{
+	ft_printf("Count = %u\n\nSwap\t\tA: sa\tB: sb\tBoth: ss\n", count);
+	ft_printf("Push\t\tA: pa\tB: pb\nRotate up\tA: ra\tB: rb\tBoth: rr\n");
+	ft_printf("Rotate down\tA: rra\tB: rrb\tBoth: rrr\n");
+}
 
 void	print_no_color(t_stack *s)
 {
@@ -94,7 +101,7 @@ void	print_no_color(t_stack *s)
 // 	ft_memdel((void**)&stat);
 // }
 
-void	print_stack(t_stack *s, int8_t ope)
+void	print_stack(t_stack *s, int8_t ope, size_t count)
 {
 	t_vector	*head;
 	t_vector	*foot;
@@ -111,4 +118,5 @@ _____________________________\n\t\t\t|\t\tSTACK A\t\t| |\t\tSTACK B\t\t|\n\
 	// s->color == TRUE ? print_with_color(s, ope) : print_no_color(s);
 	print_no_color(s);
 	vct_print(foot);
+	print_command(count);
 }

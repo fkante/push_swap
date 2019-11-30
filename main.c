@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 13:52:48 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/28 17:54:27 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/30 15:50:56 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int			main(int ac, char **av)
 			return (0);
 		}
 		if (s->verbose == TRUE)
-			print_stack(s, NO_OPE);
+			print_stack(s, NO_OPE, 0);
 		clean_struct(&s);
 	}
 	else
