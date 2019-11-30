@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/30 15:55:48 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/30 22:36:25 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void			read_checker(t_stack *s);
 ** ############################################################################
 */
 void			print_stack(t_stack *s, int8_t ope, size_t count);
-void			print_command(size_t count);
+void			print_command(size_t count, int8_t ope, uint8_t	color);
 
 /*
 ** ############################################################################

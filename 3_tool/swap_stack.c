@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 14:26:28 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/30 18:59:08 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/30 21:48:09 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int8_t	swap_stack_a(t_stack *s)
 	tmp = s->a[top];
 	s->a[top] = s->a[top - 1];
 	s->a[top - 1] = tmp;
-	s->color_nb = s->a[top - 1];
+	s->color_nb = s->a[top];
 	return (ret);
 }
 
@@ -38,7 +38,7 @@ int8_t	swap_stack_b(t_stack *s)
 	tmp = s->b[top];
 	s->b[top] = s->b[top - 1];
 	s->b[top - 1] = tmp;
-	s->color_nb = s->b[top - 1];
+	s->color_nb = s->b[top];
 	return (ret);
 }
 
