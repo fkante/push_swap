@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/30 15:50:45 by fkante           ###   ########.fr       */
+/*   Updated: 2019/11/30 15:52:18 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ void	read_checker(t_stack *s)
 			if (ft_strequ(line, oper[i]) == TRUE)
 			{
 				func_ptr[i](s);
+				count++;
 				break ;
 			}
 			i++;
 		}
 		if (s->verbose == TRUE)
-			print_stack(s, i, count++);
+			print_stack(s, i, count);
 		ft_strdel(&line);
 	}
 }
