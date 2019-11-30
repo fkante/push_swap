@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 11:03:55 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/29 12:18:28 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/30 15:45:54 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	heapify(t_heap *heap, size_t parent)
 	size_t		extremum;
 
 	l = get_left_child(parent);
+	l = (int32_t)l > heap->A[HEAP_SIZE] ? heap->A[HEAP_SIZE] : l;
 	r = get_right_child(parent);
+	r = (int32_t)r > heap->A[HEAP_SIZE] ? heap->A[HEAP_SIZE] : r;
 	extremum = parent;
-	if ((int32_t)l > heap->A[HEAP_SIZE] || (int32_t)r > heap->A[HEAP_SIZE])
-		return ;
 	if (heap->type == MIN_HEAP)
 	{
 		extremum = heap->A[extremum] > heap->A[l] ? l : extremum;
