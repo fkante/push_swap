@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/28 16:53:57 by amartino         ###   ########.fr       */
+/*   Updated: 2019/11/28 18:12:29 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define VERBOSE 			0
 # define NB_OPE				11
 # define NO_OPE				-1
+# define STACK_A			0
+# define STACK_B			1
 
 # define SA					"sa"
 # define SB					"sb"
