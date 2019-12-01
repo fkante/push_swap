@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2019/12/01 13:23:38 by fkante           ###   ########.fr       */
+/*   Updated: 2019/12/01 15:48:35 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ uint8_t			check_for_bonus(char **tab, char *chr);
 ** ################################ PUSH_SWAP #################################
 ** ############################################################################
 */
-int8_t		scan_stack_a(t_stack *s);
+int8_t		scan_stack(t_stack *s);
 
 /*
 ** ############################################################################
@@ -90,6 +90,12 @@ int8_t			operation_checker(operfunc *f, char **op, char *ln, t_stack *s);
 */
 void			print_stack(t_stack *s, int8_t ope, size_t count);
 void			print_command(size_t count, int8_t ope, uint8_t	color);
+void			print_no_color(t_stack *s);
+int8_t			check_ope(t_stack *s, size_t size, int8_t ope, int8_t stack);
+void			handle_stack_a(t_stack *s, size_t size, int8_t ope, t_stat *st);
+void			handle_stack_b(t_stack *s, size_t size, int8_t ope, t_stat *st);
+void			print_with_color(t_stack *s, int8_t ope);
+t_stat 			*get_stat(t_stack *s);
 
 /*
 ** ############################################################################

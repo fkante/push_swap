@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2019/12/01 12:03:09 by fkante           ###   ########.fr        #
+#    Updated: 2019/12/01 14:34:21 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -51,11 +51,11 @@ vpath %.c $(PATH_SRC)
                      #                   				#
                      ####################################
 # main
-MAIN_PUSH = main.c
+MAIN_PUSH = main_pushswap.c
 MAIN_CHECK = main_check.c
 
 # push_swap
-SRCS += push_swp
+SRCS += scan_stack
 
 # checker
 SRCS += checker
@@ -63,6 +63,7 @@ SRCS += checker
 # initialize
 SRCS += init
 SRCS += parse
+SRCS += stat 
 
 # tool
 SRCS += push_stack
@@ -76,6 +77,7 @@ SRCS += clean
 
 #bonus
 SRCS += print
+SRCS += handle_stack
 SRCS += color
 
 #error
