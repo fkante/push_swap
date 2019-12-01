@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2019/12/01 13:23:38 by fkante           ###   ########.fr       */
+/*   Updated: 2019/12/01 17:29:49 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ enum	e_operations
 
 typedef	int8_t	(*operfunc)(t_stack *s);
 void			read_checker(t_stack *s);
-int8_t			operation_checker(operfunc *f, char **op, char *ln, t_stack *s);
+int8_t			operation_checker(operfunc *f, char *ln, t_stack *s, size_t *count);
 
 /*
 ** ############################################################################
