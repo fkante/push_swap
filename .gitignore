@@ -1,3 +1,7 @@
+#binary
+push_swap
+checker
+
 # Object files
 libftprintf/build/*.o
 *.o

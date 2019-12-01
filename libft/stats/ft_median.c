@@ -6,12 +6,11 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 12:01:11 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/30 16:29:02 by amartino         ###   ########.fr       */
+/*   Updated: 2019/12/01 14:13:21 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "btree.h"
-// #include <stdio.h>
 
 int8_t		ft_median(int32_t *tab, size_t size, int32_t *median)
 {
@@ -26,9 +25,6 @@ int8_t		ft_median(int32_t *tab, size_t size, int32_t *median)
 	{
 		if (tab[over_half] > heap->A[ROOT])
 		{
-			// printf("nb is %d\n", tab[over_half]);
-			// print_heap_tree(heap, 1, 0);
-			// printf("\n_____________________________\n");
 			heap->A[ROOT] = tab[over_half];
 			heapify(heap, ROOT);
 		}
@@ -37,14 +33,3 @@ int8_t		ft_median(int32_t *tab, size_t size, int32_t *median)
 	*median = heap->A[ROOT];
 	return (SUCCESS);
 }
-
-// int main()
-// {
-// 	int32_t		base[11] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-// 	int32_t		over_half;
-// 	int32_t		median;
-//
-//	ft_median(base, 11, &median);
-// 	printf("median is %d\n", median);
-// 	return (0);
-// }

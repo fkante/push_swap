@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 11:03:55 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/30 15:45:54 by amartino         ###   ########.fr       */
+/*   Updated: 2019/12/01 14:10:31 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,17 @@ void	heapify(t_heap *heap, size_t parent)
 	size_t		extremum;
 
 	l = get_left_child(parent);
-	l = (int32_t)l > heap->A[HEAP_SIZE] ? heap->A[HEAP_SIZE] : l;
+	l = (int32_t)l > heap->A[HEAP_SIZE] ? parent : l;
 	r = get_right_child(parent);
-	r = (int32_t)r > heap->A[HEAP_SIZE] ? heap->A[HEAP_SIZE] : r;
-	extremum = parent;
+	r = (int32_t)r > heap->A[HEAP_SIZE] ? parent : r;
 	if (heap->type == MIN_HEAP)
 	{
-		extremum = heap->A[extremum] > heap->A[l] ? l : extremum;
+		extremum = heap->A[parent] > heap->A[l] ? l : parent;
 		extremum = heap->A[extremum] > heap->A[r] ? r : extremum;
 	}
-	else if (heap->type == MAX_HEAP)
+	else
 	{
-		extremum = heap->A[extremum] < heap->A[l] ? l : extremum;
+		extremum = heap->A[parent] < heap->A[l] ? l : parent;
 		extremum = heap->A[extremum] < heap->A[r] ? r : extremum;
 	}
 	if (extremum != parent)
