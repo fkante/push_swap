@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:23:57 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/30 22:43:27 by amartino         ###   ########.fr       */
+/*   Updated: 2019/12/01 12:29:34 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	print_command(size_t count, int8_t ope, uint8_t	color)
 	{
 		ft_printf("\n\tCOLOR:\n\t{c_b_green}Last action{c_end}\n");
 		ft_printf("\t{c_yellow}Minimum{c_end}\n\t{c_blue}Median{c_end}\n\t{c_red}Maximum{c_end}\n");
+		ft_printf("{c_end}\n");
 	}
 }
 

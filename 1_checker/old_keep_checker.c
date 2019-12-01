@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2019/12/01 12:00:03 by fkante           ###   ########.fr       */
+/*   Updated: 2019/12/01 11:34:53 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,37 @@ void	read_checker(t_stack *s)
 							reverse_rotate_stack_b, reverse_both};
 	char		*oper[NB_OPE] = {SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR};
 	char		*line;
-	
+//	uint8_t		i;
+//	size_t 	count;
+
+//	count = 0;
 	line = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
-		if (operation_checker(func_ptr, oper, line, s) == FAILURE)
-			break ;
+//		i = 0;
+//		while (i < NB_OPE)
+//		{
+//			if (ft_strequ(line, oper[i]) == TRUE)
+//			{
+//				func_ptr[i](s);
+//				count++;
+//				break ;
+//			}
+//			i++;
+//		}
+//		if (s->verbose == TRUE)
+//			print_stack(s, i, count);
+		operation_checker(func_ptr, oper, line, s);
 		ft_strdel(&line);
 	}
 }
 
-int8_t	operation_checker(operfunc *f_ptr, char **oper, char *line, t_stack *s)
+void	operation_checker(operfunc *f_ptr, char **oper, char *line, t_stack *s)
 {
 	size_t	count;
-	int8_t	ret;
 	uint8_t i;
 
 	i = 0;
-	ret = SUCCESS;
 	count = 0;
 	while (i < NB_OPE)
 	{
@@ -51,10 +64,4 @@ int8_t	operation_checker(operfunc *f_ptr, char **oper, char *line, t_stack *s)
 	}
 	if (s->verbose == TRUE)
 		print_stack(s, i, count);
-	if (i == NB_OPE)
-	{
-		ret = FAILURE;
-		print_error(i);
-	}
-	return (ret);
 }
