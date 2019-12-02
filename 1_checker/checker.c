@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2019/12/01 12:00:03 by fkante           ###   ########.fr       */
+/*   Updated: 2019/12/02 14:57:04 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	read_checker(t_stack *s)
 	line = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
-		if (operation_checker(func_ptr, oper, line, s) == FAILURE)
-			break ;
+		operation_checker(func_ptr, oper, line, s);
 		ft_strdel(&line);
 	}
 }
