@@ -15,7 +15,7 @@
 int8_t	scan_stack(t_stack *s)
 {
 	t_stat	*stat;
-	int8_t	middle_a;
+	size_t	middle_a;
 	size_t	min_index;
 	size_t	count;
 	char	*line;
@@ -37,7 +37,7 @@ int8_t	scan_stack(t_stack *s)
 			push_stack_b(s);
 			ft_putstr_fd("pb\n", 1);
 		}
-		if (min_index < s->size_a)
+		if (min_index > middle_a)
 		{
 			ft_putstr_fd("ra\n", 1);
 			rotate_stack_a(s);
