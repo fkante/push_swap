@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:43 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/15 16:47:07 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/15 17:07:17 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ t_stack		*create_stack(char **tab, size_t len)
 			}
 		}
 	}
-	for(int i = 0; i < s->size_a; i++)
-		ft_printf("tab[%zu] = %d\n", i, s->sorted_s[i]);
 	return (s);
 }
 
