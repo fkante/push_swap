@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:43 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/28 15:46:21 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/15 12:52:16 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_stack		*fill_stack(t_stack *s, size_t start, char **tab, size_t len)
 		i++;
 	}
 	if (check_no_double(s) == FALSE)
-		ft_memdel((void**)&s);
+		clean_struct(&s);
 	return (s);
 }
 
@@ -53,6 +53,8 @@ t_stack		*create_stack(char **tab, size_t len)
 				clean_struct(&s);
 			else
 				s = fill_stack(s, start, tab, len);
+			if (s != NULL)
+				s->sorted_s = ft_sort(s->a, s->size_a);
 		}
 	}
 	return (s);

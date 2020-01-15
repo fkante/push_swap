@@ -6,7 +6,7 @@
 #    By: fkante <fkante@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2019/11/30 16:25:20 by amartino         ###   ########.fr        #
+#    Updated: 2020/01/15 16:29:39 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ AR = ar -rcs
 CFLAGS += -Wall
 CFLAGS += -Wextra
 CFLAGS += -Werror
-# CFLAGS += -fsanitize=address,undefined -g3
+DFLAGS =  -Wall -Wextra -Werror -fsanitize=address,undefined -g3
 BUILD_DIR = build/
 
 INCLUDES = -I./includes
@@ -188,6 +188,13 @@ re: fclean all
 
 .PHONY: clean fclean re
 .SILENT: $(NAME) $(OBJS) $(BUILD_DIR) clean fclean re
+
+# FLAGS
+ifeq ($(f), no)
+CFLAGS = -g
+else ifeq ($(f), f)
+CFLAGS = $(DFLAGS)
+endif
 
 RED = \x1b[31m
 GREEN = \x1b[32m

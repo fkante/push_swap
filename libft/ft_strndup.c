@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 12:12:45 by fkante            #+#    #+#             */
-/*   Updated: 2019/08/29 14:33:34 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/15 12:16:25 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strndup(const char *src, size_t size)
 
 	if (size == 0)
 		return (NULL);
-	if (!(dst = (char *)malloc(sizeof(char) * (size + 1))))
+	if (!(dst = (char *)ft_memalloc(sizeof(char) * (size + 1))))
 		return (NULL);
 	ft_strncpy(dst, src, size);
 	return (dst);
