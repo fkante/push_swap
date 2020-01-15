@@ -18,7 +18,7 @@ NAME_PUSH_SWP = push_swap
 NAME_CHECKER = checker
 LIB_DIR = ./libft/ft_printf
 LIB = libftprintf.a
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 DFLAGS =  -Wall -Wextra -Werror -fsanitize=address,undefined -g3
 INCLUDES += -I./include

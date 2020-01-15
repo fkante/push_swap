@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/15 16:41:29 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/15 16:54:17 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ uint8_t			check_for_bonus(char **tab, char *chr);
 ** ################################ PUSH_SWAP #################################
 ** ############################################################################
 */
-int8_t		lower_first_to_b(t_stack *s);
-int8_t		all_under_med(t_stack *s);
-int32_t		first_lower_med(t_stack *s, int32_t med);
+int8_t		scan_stack(t_stack *s);
 
 /*
 ** ############################################################################
@@ -83,7 +81,7 @@ enum	e_operations
 
 typedef	int8_t	(*operfunc)(t_stack *s);
 void			read_checker(t_stack *s);
-int8_t			operation_checker(operfunc *f, char **op, char *ln, t_stack *s);
+int8_t			operation_checker(operfunc *f, char *ln, t_stack *s, size_t *count);
 
 /*
 ** ############################################################################
