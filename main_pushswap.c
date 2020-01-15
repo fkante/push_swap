@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
-/*   Updated: 2019/12/01 14:34:37 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/15 15:50:58 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ int		main(int ac, char **av)
 			ft_printf("Error\n");
 			return (0);
 		}
-		scan_stack(s);
+		//scan_stack(s);
+		all_under_med(s);
 		clean_struct(&s);
+		
 	}
 	else
 		ft_printf("Error\n");
