@@ -6,31 +6,32 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 12:35:35 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/28 15:50:32 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/15 20:09:16 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int8_t	rotate_both(t_stack *s)
+void	rotate_both(t_stack *s)
 {
-	int32_t	ret;
-
-	if ((rotate_stack_a(s) == SUCCESS) && (rotate_stack_b(s) == SUCCESS))
-		ret = SUCCESS;
-	else
-		ret = FAILURE;
-	return (ret);
+	rotate_stack_a(s);
+	rotate_stack_b(s);
 }
 
-int8_t	reverse_both(t_stack *s)
+void	reverse_both(t_stack *s)
 {
-	int32_t	ret;
+	reverse_rotate_stack_a(s); 
+	reverse_rotate_stack_b(s);
+}
 
-	if ((reverse_rotate_stack_a(s) == SUCCESS)
-			&& (reverse_rotate_stack_b(s) == SUCCESS))
-		ret = SUCCESS;
-	else
-		ret = FAILURE;
-	return (ret);
+void	rr(t_stack *s)
+{
+	rotate_both(s);
+	ft_putendl_fd("rr", s->fd);
+}
+
+void	rrr(t_stack *s)
+{
+	reverse_both(s);
+	ft_putendl_fd("rrr", s->fd);
 }
