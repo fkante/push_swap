@@ -6,9 +6,10 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 10:49:04 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/29 17:53:35 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/15 12:44:55 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef BTREE_H
 # define BTREE_H
@@ -37,7 +38,7 @@ typedef struct			s_heap
 *****************************************************************************
 **	Heap tree start at index 1. Index 0 store the HEAP SIZE
 **
-**	2 type of tree : MAX heap and MIN heap.
+**	2 type of tree : MAX heap (0) and MIN heap (1). Check define above.
 **
 **	Doc : https://s.42l.fr/heap_tree
 *****************************************************************************
@@ -46,6 +47,8 @@ t_heap		*heap_tree(int32_t *tab, size_t size, uint8_t type);
 void		fill_tree(t_heap *heap, int32_t *tab, size_t size);
 void		insert(t_heap *heap, int32_t nb, size_t index);
 void		delete_root(t_heap *heap);
+void		clean_heap_tree(t_heap **heap);
+
 
 void 		is_parent_valid(t_heap *heap, size_t child);
 void		heapify(t_heap *heap, size_t parent);

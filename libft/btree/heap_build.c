@@ -6,11 +6,17 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 11:15:55 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/29 17:53:04 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/15 12:05:47 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "btree.h"
+
+void	clean_heap_tree(t_heap **heap)
+{
+	ft_memdel((void**)&((*heap)->A));
+	ft_memdel((void**)heap);
+}
 
 void	insert(t_heap *heap, int32_t nb, size_t index)
 {
@@ -54,7 +60,7 @@ t_heap	*heap_tree(int32_t *tab, size_t size, uint8_t type)
 {
 	t_heap		*heap;
 
-	heap = ft_memalloc(sizeof(heap));
+	heap = ft_memalloc(sizeof(t_heap));
 	if (heap != NULL)
 		heap->A = ft_memalloc(sizeof(int32_t) * (size + 1));
 	if (heap == NULL || heap->A == NULL)
