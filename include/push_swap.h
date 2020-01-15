@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/15 10:41:40 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/15 19:47:08 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_stack
 	size_t	size_a;
 	size_t	size_b;
 	int32_t	color_nb;
+	int8_t fd;
 	uint8_t	verbose;
 	uint8_t	color;
 }				t_stack;
@@ -115,7 +116,6 @@ int8_t			rotate_stack_a(t_stack *s);
 int8_t			rotate_stack_b(t_stack *s);
 int8_t			reverse_rotate_stack_a(t_stack *s);
 int8_t			reverse_rotate_stack_b(t_stack *s);
-int8_t			loop_swap_stack(int32_t *stack1, int32_t *stack2);
 int8_t			swap_both(t_stack *s);
 int8_t			rotate_both(t_stack *s);
 int8_t			reverse_both(t_stack *s);

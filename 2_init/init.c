@@ -6,11 +6,18 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:43 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/15 17:07:17 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/15 19:46:23 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void		fill_in_static_variable(t_stack *s, char **tab, size_t size)
+{
+	s->size_a = size;
+	s->verbose = check_for_bonus(tab, "-v");;
+	s->color = check_for_bonus(tab, "-c");
+}
 
 t_stack		*fill_stack(t_stack *s, size_t start, char **tab, size_t len)
 {
@@ -45,21 +52,17 @@ t_stack		*create_stack(char **tab, size_t len)
 	if (start != FAILURE)
 	{
 		s = ft_memalloc(sizeof(t_stack));
-		if (s != NULL)
-		{
-			s->a = ft_memalloc(sizeof(int) * (len - start));
-			s->b = ft_memalloc(sizeof(int) * (len - start));
-			s->size_a = len - start;
-			s->verbose = check_for_bonus(tab, "-v");;
-			s->color = check_for_bonus(tab, "-c");
-			s = fill_stack(s, start, tab, len);
-			if (s != NULL)
-			{
-				s->sorted_s = ft_sort(s->a, s->size_a);
-				if (s->sorted_s == NULL)
-					clean_struct(&s);
-			}
-		}
+		if (s == NULL)
+			return (NULL);
+		s->a = ft_memalloc(sizeof(int) * (len - start));
+		s->b = ft_memalloc(sizeof(int) * (len - start));
+		s = fill_stack(s, start, tab, len);
+		if (s == NULL)
+			return (NULL);
+		fill_in_static_variable(s, tab, (len - (size_t)start));
+		s->sorted_s = ft_sort(s->a, s->size_a);
+		if (s->sorted_s == NULL)
+			clean_struct(&s);
 	}
 	return (s);
 }
