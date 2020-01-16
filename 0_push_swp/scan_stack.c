@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 14:07:55 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/15 19:06:11 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/16 17:01:46 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,14 @@ int8_t	pb_lowest(t_stack *s, t_stat *stat, int32_t nb)
 		min_index = ft_get_low(s->a, s->size_a);
 		print_stack(s, 0, 0);
 		if (min_index + 1 == s->size_a)
-			pb(s);
+			//pb(s);
+			push_stack_a(s);
 		if (min_index > middle_a)
-			ra(s);
+			rotate_stack_a(s);
+			//ra(s);
 		else
-			rra(s);
+			reverse_rotate_stack_a(a);
+			//rra(s);
 		nb--;
 	}
 	return (FAILURE);

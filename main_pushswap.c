@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/15 19:06:14 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/16 17:01:49 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		main(int ac, char **av)
 			return (0);
 		}
 		stat = get_stat(s);
-		scan_stack_a(s);
+		pb_lowest(s, stat, 5);
 		clean_struct(&s);
 	}
 	else
