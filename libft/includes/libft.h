@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/15 12:40:28 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:36:35 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,5 +178,14 @@ void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr(const char *str);
 void				ft_putstr_fd(const char *s, int fd);
+
+/*
+** ############################################################################
+** ################################# ERROR ####################################
+** ############################################################################
+*/
+void				*ft_print_err_NULL(char *str, int8_t fd);
+int8_t				ft_print_err_FAILURE(char *str, int8_t fd);
+uint8_t				ft_print_err_FALSE(char *str, int8_t fd);
 
 #endif

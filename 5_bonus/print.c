@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:23:57 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/15 12:23:44 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/16 14:04:11 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,7 @@ _____________________________\n\t|\t\tSTACK A\t\t| |\t\tSTACK B\t\t|\n\
 \t _______________________________   _____________________________\n");
 	foot = vct_newstr("\t ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔   \
 ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔\n");
-	system("clear");
+	ft_printf("\e[1;1H\e[2J");
 	vct_print(head);
 	vct_del(&head);
 	s->color == TRUE ? print_with_color(s, ope) : print_no_color(s);

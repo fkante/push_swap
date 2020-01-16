@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2019/12/01 12:03:09 by fkante           ###   ########.fr        #
+#    Updated: 2020/01/16 15:38:56 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -51,7 +51,7 @@ vpath %.c $(PATH_SRC)
                      #                   				#
                      ####################################
 # main
-MAIN_PUSH = main.c
+MAIN_PUSH = main_pushswap.c
 MAIN_CHECK = main_check.c
 
 # push_swap
@@ -78,8 +78,6 @@ SRCS += clean
 SRCS += print
 SRCS += color
 
-#error
-SRCS += error
                      ####################################
                      #                   				#
                      #       	  VARIABLES    			#
