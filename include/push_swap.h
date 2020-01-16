@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/16 15:36:15 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/16 18:13:24 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ uint8_t			check_for_bonus(char **tab, char *chr);
 ** ################################ PUSH_SWAP #################################
 ** ############################################################################
 */
-int8_t		scan_stack_a(t_stack *s);
+int8_t		pb_lowest(t_stack *s, t_stat *stat, int32_t nb);
+int8_t		pa_highest(t_stack *s, t_stat *stat, int32_t nb);
+int8_t		all_under_nb(t_stack *s, int32_t nb, int32_t range);
 
 /*
 ** ############################################################################
@@ -80,7 +82,7 @@ enum	e_operations
 	E_RRR
 };
 
-typedef	int8_t	(*operfunc)(t_stack *s);
+typedef	void	(*operfunc)(t_stack *s);
 void			read_checker(t_stack *s);
 void			operation_checker(operfunc *f, char *ln, t_stack *s, size_t *count);
 
@@ -97,21 +99,33 @@ void			print_command(size_t count, int8_t ope, uint8_t	color);
 ** ################################# TOOL #####################################
 ** ############################################################################
 */
-int8_t			swap_stack_a(t_stack *s);
-int8_t			swap_stack_b(t_stack *s);
-int8_t			push_stack_a(t_stack *s);
-int8_t			push_stack_b(t_stack *s);
-int8_t			shiftup_stack_a(t_stack *s);
-int8_t			shiftup_stack_b(t_stack *s);
-int8_t			shiftdown_stack_a(t_stack *s);
-int8_t			shiftdown_stack_b(t_stack *s);
-int8_t			rotate_stack_a(t_stack *s);
-int8_t			rotate_stack_b(t_stack *s);
-int8_t			reverse_rotate_stack_a(t_stack *s);
-int8_t			reverse_rotate_stack_b(t_stack *s);
-int8_t			swap_both(t_stack *s);
-int8_t			rotate_both(t_stack *s);
-int8_t			reverse_both(t_stack *s);
+void			swap_stack_a(t_stack *s);
+void			swap_stack_b(t_stack *s);
+void			push_stack_a(t_stack *s);
+void			push_stack_b(t_stack *s);
+void			shiftup_stack_a(t_stack *s);
+void			shiftup_stack_b(t_stack *s);
+void			shiftdown_stack_a(t_stack *s);
+void			shiftdown_stack_b(t_stack *s);
+void			rotate_stack_a(t_stack *s);
+void			rotate_stack_b(t_stack *s);
+void			reverse_rotate_stack_a(t_stack *s);
+void			reverse_rotate_stack_b(t_stack *s);
+void			swap(int32_t *stack1, int32_t *stack2);
+void			swap_both(t_stack *s);
+void			rotate_both(t_stack *s);
+void			reverse_both(t_stack *s);
+void			pa(t_stack *s);
+void			pb(t_stack *s);
+void			sa(t_stack *s);
+void			sb(t_stack *s);
+void			ss(t_stack *s);
+void			ra(t_stack *s);
+void			rb(t_stack *s);
+void			rra(t_stack *s);
+void			rrb(t_stack *s);
+void			rr(t_stack *s);
+void			rrr(t_stack *s);
 
 /*
 ** ############################################################################

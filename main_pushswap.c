@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_pushswap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/17 13:52:48 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/16 15:37:51 by amartino         ###   ########.fr       */
+/*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
+/*   Updated: 2020/01/16 18:13:44 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int			main(int ac, char **av)
 {
 	t_stack		*s;
+	t_stat		*stat;
 
 	s = NULL;
+	stat = NULL;
 	if (ac >= 2)
 	{
 		++av;
