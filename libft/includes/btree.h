@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 10:49:04 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/15 12:44:55 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:40:38 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define MAX_HEAP		0
 # define MIN_HEAP		1
 # define ROOT			1
+# define STD_IN			0
+# define STD_OUT		1
+# define STD_ERR		2
 
 /*
 ** ############################################################################

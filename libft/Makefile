@@ -6,7 +6,7 @@
 #    By: fkante <fkante@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2020/01/15 16:33:22 by amartino         ###   ########.fr        #
+#    Updated: 2020/01/16 17:03:58 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,7 @@ SRCS += get_next_line.c
 SRCS += ft_printf.c
 SRCS += ft_atol.c
 
-# stats
+#------------------------------------ STAT ------------------------------------#
 SRCS += ft_get_high.c
 SRCS += ft_get_low.c
 SRCS += ft_high.c
@@ -121,7 +121,7 @@ SRCS += ft_get_median.c
 SRCS += ft_get_n_highest.c
 SRCS += ft_sort.c
 
-# vectors
+#----------------------------------- VECTOR -----------------------------------#
 SRCS += vct_del.c
 SRCS += vct_new.c
 SRCS += vct_newstr.c
@@ -150,16 +150,30 @@ SRCS += vct_chr_str.c
 SRCS += vct_getchar_at.c
 SRCS += vct_print.c
 
-# btree
+#----------------------------------- BTREE ------------------------------------#
 SRCS += heap_build.c
 SRCS += heap_order.c
 SRCS += heap_print.c
 SRCS += heap_tool.c
 
+#----------------------------------- ERROR ------------------------------------#
+SRCS += ft_print_err_NULL.c
+SRCS += ft_print_err_FAILURE.c
+SRCS += ft_print_err_FALSE.c
+
+#--------------------------------- FT_PRINTF ----------------------------------#
+
+
 PATH_SRCS += ./vector
 PATH_SRCS += ./ft_printf
 PATH_SRCS += ./btree
 PATH_SRCS += ./stats
+PATH_SRCS += ./error
+PATH_SRCS += ./linked_list
+PATH_SRCS += ./number
+PATH_SRCS += ./string
+PATH_SRCS += ./memory
+PATH_SRCS += ./print
 PATH_SRCS += .
 
 vpath %.c $(PATH_SRCS)

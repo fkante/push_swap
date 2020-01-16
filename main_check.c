@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:10 by fkante            #+#    #+#             */
-/*   Updated: 2019/12/01 13:21:37 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/16 15:38:30 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,13 @@ int			main(int ac, char **av)
 		--ac;
 		s = init_struct(av, ac);
 		if (s == NULL)
-		{
-			ft_printf("KO\n");
-			return (0);
-		}
+			return (SUCCESS);
 		if (s->verbose == TRUE)
 			print_stack(s, NO_OPE, 0);
 		read_checker(s);
 		clean_struct(&s);
 	}
 	else
-		ft_printf("KO\n");
-	return (0);
+		ft_print_err_FALSE("Not enough arguments", STD_ERR);
+	return (SUCCESS);
 }

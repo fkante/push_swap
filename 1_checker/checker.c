@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/15 19:33:28 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:39:17 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,17 @@ void	read_checker(t_stack *s)
 	line = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
-		if (operation_checker(func_ptr, line, s, &count) == FAILURE)
-			break ;
+		operation_checker(func_ptr, line, s, &count);
 		ft_strdel(&line);
 	}
 }
 
-int8_t	operation_checker(operfunc *f_ptr, char *line, t_stack *s, size_t *count)
+void	operation_checker(operfunc *f_ptr, char *line, t_stack *s, size_t *count)
 {
 	char		*oper[NB_OPE] = {SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR};
-	int8_t		ret;
 	uint8_t 	i;
 
 	i = 0;
-	ret = SUCCESS;
 	while (i < NB_OPE)
 	{
 		if (ft_strequ(line, oper[i]) == TRUE)
@@ -52,9 +49,5 @@ int8_t	operation_checker(operfunc *f_ptr, char *line, t_stack *s, size_t *count)
 	if (s->verbose == TRUE)
 		print_stack(s, i, *count);
 	if (i == NB_OPE)
-	{
-		ret = FAILURE;
-		print_error(i);
-	}
-	return (ret);
+		ft_print_err_FALSE("Wrong input", STD_ERR);
 }

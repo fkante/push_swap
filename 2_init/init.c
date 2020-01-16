@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:43 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/15 19:46:23 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:38:19 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_stack		*fill_stack(t_stack *s, size_t start, char **tab, size_t len)
 	}
 	if (s != NULL && check_no_double(s) == FALSE)
 		clean_struct(&s);
-	return (s);
+	return (s == NULL ? ft_print_err_NULL("Double nb / INT MAX/MIN", STD_ERR) : s);
 }
 
 t_stack		*create_stack(char **tab, size_t len)
@@ -49,21 +49,20 @@ t_stack		*create_stack(char **tab, size_t len)
 
 	s = NULL;
 	start = parse_args(tab, len);
-	if (start != FAILURE)
-	{
-		s = ft_memalloc(sizeof(t_stack));
-		if (s == NULL)
-			return (NULL);
-		s->a = ft_memalloc(sizeof(int) * (len - start));
-		s->b = ft_memalloc(sizeof(int) * (len - start));
-		s = fill_stack(s, start, tab, len);
-		if (s == NULL)
-			return (NULL);
-		fill_in_static_variable(s, tab, (len - (size_t)start));
-		s->sorted_s = ft_sort(s->a, s->size_a);
-		if (s->sorted_s == NULL)
-			clean_struct(&s);
-	}
+	if (start == FAILURE)
+		return (ft_print_err_NULL("Wrong input format", STD_ERR));
+	s = ft_memalloc(sizeof(t_stack));
+	if (s == NULL)
+		return (ft_print_err_NULL("memory allocation failed", STD_ERR));
+	s->a = ft_memalloc(sizeof(int) * (len - start));
+	s->b = ft_memalloc(sizeof(int) * (len - start));
+	s = fill_stack(s, start, tab, len);
+	if (s == NULL)
+		return (ft_print_err_NULL("memory allocation failed", STD_ERR));
+	fill_in_static_variable(s, tab, (len - (size_t)start));
+	s->sorted_s = ft_sort(s->a, s->size_a);
+	if (s->sorted_s == NULL)
+		clean_struct(&s);
 	return (s);
 }
 
@@ -80,7 +79,7 @@ t_stack		*init_struct(char **av, int ac)
 	{
 		tmp = ft_strsplit(av[0], ' ');
 		if (tmp == NULL)
-			return (NULL);
+			return (ft_print_err_NULL("memory allocation failed", STD_ERR));
 		while (tmp[i] != '\0')
 			i++;
 		s = create_stack(tmp, i);

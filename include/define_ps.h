@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/28 18:12:29 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/16 14:23:28 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 # define TRUE				1
 # define SUCCESS			0
 # define FAILURE			-1
+# define MALLOC_ERR			-1
+# define TEST_ERR			-1
+# define INPUT_ERR			-1
+# define FD_ERR				-1
+# define STD_IN				0
+# define STD_OUT			1
+# define STD_ERR			2
+
+
 # define VERBOSE 			0
 # define NB_OPE				11
 # define NO_OPE				-1
