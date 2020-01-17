@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:59 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/22 16:34:43 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/17 13:20:59 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,24 +67,26 @@ int8_t		check_err(char *str, size_t j)
 	return (count);
 }
 
-int8_t		parse_args(char **av, int32_t ac)
+ssize_t		parse_args(char **tab, int32_t len)
 {
 	size_t	i;
 	size_t	j;
-	int8_t	ret;
+	ssize_t	ret;
+	ssize_t	tmp;
 
 	i = 0;
 	ret = 0;
-	while ((int32_t)i < ac)
+	while ((int32_t)i < len)
 	{
 		j = 0;
-		while (av[i][j] != '\0')
+		while (tab[i][j] != '\0')
 		{
-			if (ft_isdigit((int)av[i][j]) == FALSE)
+			if (ft_isdigit((int)tab[i][j]) == FALSE)
 			{
-				ret += check_err(av[i], j);
-				if (ret == FAILURE)
-					return (ret);
+				if ((tmp = check_err(tab[i], j)) == FAILURE)
+					return (FAILURE);
+				else
+					ret += tmp;
 				break ;
 			}
 			j++;
