@@ -6,7 +6,7 @@
 #    By: fkante <fkante@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2020/01/17 15:21:13 by fkante           ###   ########.fr        #
+#    Updated: 2020/01/17 16:03:13 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,6 +113,7 @@ SRCS += ft_atol.c
 SRCS += ft_get_high.c
 SRCS += ft_get_low.c
 SRCS += ft_get_low_in_range.c
+SRCS += ft_get_high_in_range.c
 SRCS += ft_high.c
 SRCS += ft_low.c
 SRCS += ft_mean.c

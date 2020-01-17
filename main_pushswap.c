@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/17 15:43:41 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/17 16:07:00 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int			main(int ac, char **av)
 			return (ft_print_err_FALSE("when creating result file", STD_ERR));
 		}
 		pb_lowest(s, 7);
+		pb_lowest(s, 7);
+		pb_lowest(s, 7);
+		sleep(10);
+		pa_highest(s, 7);
 		if (s->verbose == TRUE)
 			print_stack(s, NO_OPE, 0);
 		clean_struct(&s);
