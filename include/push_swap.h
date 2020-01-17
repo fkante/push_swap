@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/17 15:07:02 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/17 15:25:47 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_stack			*init_struct(char **av, int ac);
 t_stack			*create_stack(char **tab, size_t len);
 t_stack			*fill_stack(t_stack *s, size_t start, char **tab, size_t len);
 uint8_t			check_no_double(t_stack *s);
-int8_t			parse_args(char **av, int32_t ac);
+ssize_t			parse_args(char **av, int32_t ac);
 int8_t			check_err(char *str, size_t j);
 uint8_t			check_for_bonus(char **tab, char *chr);
 
