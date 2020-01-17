@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/17 15:59:53 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/17 16:15:09 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ uint8_t			check_for_bonus(char **tab, char *chr);
 */
 void		pb_lowest(t_stack *s, int32_t limit);
 void		pa_highest(t_stack *s, int32_t limit);
-int8_t		all_under_nb(t_stack *s, int32_t nb, int32_t range);
+void		pb_all_under_nb(t_stack *s, int32_t pivot);
+void		pa_all_above_nb(t_stack *s, int32_t pivot);
 
 /*
 ** ############################################################################
