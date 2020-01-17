@@ -6,17 +6,27 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/17 16:40:36 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/17 17:20:59 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+ssize_t		create_file_result()
+{
+	ssize_t	fd;
+
+	fd = open("result.txt", O_WRONLY | O_CREAT | O_EXCL);
+	//ft_printf("fd is : %zu\n", fd);
+	return (fd);
+}
 
 int			main(int ac, char **av)
 {
 	t_stack		*s;
 	t_stat		*stat;
 
+	(void)s;
 	s = NULL;
 	stat = NULL;
 	if (ac >= 2)
@@ -27,7 +37,7 @@ int			main(int ac, char **av)
 		if (s == NULL)
 			return (SUCCESS);
 		stat = get_stat(s);
-		s->fd = creat("result.txt", S_IRUSR | S_IWUSR);
+		s->fd = create_file_result();
 		if (s->fd == FAILURE)
 		{
 			clean_struct(&s);

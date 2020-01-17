@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2020/01/17 12:21:08 by fkante           ###   ########.fr        #
+#    Updated: 2020/01/17 17:54:17 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -19,7 +19,7 @@ NAME_CHECKER = checker
 LIB_DIR = ./libft/ft_printf
 LIB = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 DFLAGS =  -Wall -Wextra -Werror -fsanitize=address,undefined -g3
 INCLUDES += -I./include
 INCLUDES += -I./libft/includes
@@ -51,12 +51,12 @@ vpath %.c $(PATH_SRC)
                      #                   				#
                      ####################################
 # main
-MAIN_PUSH = main_pushswap.c
-MAIN_CHECK = main_check.c
+MAIN_PUSH = main_pushswap
+MAIN_CHECK = main_check
 
 # push_swap
 SRCS += push_swp
-SRCS += operation_on_stack 
+SRCS += operation_on_stack
 
 # checker
 SRCS += checker
@@ -98,6 +98,8 @@ COMMIT_MESSAGE ?= $(shell bash -c $(REQUEST))
                      ####################################
 BUILD_DIR = build/
 
+MAIN_OBJ_PS = $(patsubst %, %.o, $(MAIN_PUSH))
+MAIN_OBJ_C = $(patsubst %, %.o, $(MAIN_CHECK))
 OBJS = $(patsubst %, $(BUILD_DIR)%.o, $(SRCS))
 ALLOBJS += $(OBJS)
 ALLOBJS += $(LIB_DIR)$(BUILD_DIR)*.o
@@ -108,19 +110,26 @@ ALLOBJS += $(LIB_DIR)$(BUILD_DIR)*.o
                      #                   				#
                      ####################################
 all: $(NAME_CHECKER) $(NAME_PUSH_SWP)
-
-$(NAME_PUSH_SWP): $(BUILD_DIR) $(OBJS) $(LIB_PATH)
-	@$(CC) $(CFLAGS) -o $@ $(MAIN_PUSH) $(OBJS) $(LIB_PATH) $(INCLUDES)
 	@echo "\n$(CYAN)MAKE COMPLETE$(END)"
 
-$(NAME_CHECKER): $(BUILD_DIR) $(OBJS) $(LIB_PATH)
-	@$(CC) $(CFLAGS) -o $@ $(MAIN_CHECK) $(OBJS) $(LIB_PATH) $(INCLUDES)
-	@echo "\n$(CYAN)MAKE COMPLETE$(END)"
+$(NAME_PUSH_SWP): $(BUILD_DIR) $(OBJS) $(MAIN_OBJ_PS) $(LIB_PATH)
+	@$(CC) $(CFLAGS) -o $@ $(MAIN_OBJ_PS) $(OBJS) $(LIB_PATH) $(INCLUDES)
+
+$(NAME_CHECKER): $(BUILD_DIR) $(OBJS) $(MAIN_OBJ_C) $(LIB_PATH)
+	@$(CC) $(CFLAGS) -o $@ $(MAIN_OBJ_C) $(OBJS) $(LIB_PATH) $(INCLUDES)
 
 $(BUILD_DIR):
 	mkdir $@
 
 $(OBJS): $(BUILD_DIR)%.o: %.c $(HEAD) Makefile
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	echo "$(CFLAGS) \t\t $(GREEN)$<$(END)"
+
+$(MAIN_OBJ_PS): %.o: %.c $(HEAD) Makefile
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	echo "$(CFLAGS) \t\t $(GREEN)$<$(END)"
+
+$(MAIN_OBJ_C): %.o: %.c $(HEAD) Makefile
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	echo "$(CFLAGS) \t\t $(GREEN)$<$(END)"
 
@@ -144,7 +153,7 @@ fclean: clean
 re: fclean all
 
 .PHONY: clean fclean all re t FORCE git
-.SILENT: $(NAME) $(OBJS) $(BUILD_DIR) $(LIB_PATH) clean fclean re t FORCE
+.SILENT: $(NAME) $(OBJS) $(BUILD_DIR) $(MAIN_OBJ_PS) $(MAIN_OBJ_C) $(LIB_PATH) clean fclean re t FORCE
 FORCE:
 
 
