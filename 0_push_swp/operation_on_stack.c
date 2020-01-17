@@ -6,49 +6,26 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/17 15:22:41 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/17 15:51:53 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int8_t	pb_lowest(t_stack *s, int32_t limit)
+void	pb_lowest(t_stack *s, int32_t limit)
 {
-	size_t	center_a;
 	size_t	min_index;
-	size_t	count = 0;
-	char	*line;
 
-	line = NULL;
-	print_stack(s, 0, 0);
-	while (get_next_line(0, &line) > 0)
-	//while (limit > 0 && s->size_a > 0)
+	min_index = ft_get_low_in_range(s->a, s->size_a - limit, s->size_a);
+	while (min_index  < s->size_a - 1)
 	{
-		print_stack(s, 0, count);
-		center_a  = s->size_a / 2;
-		min_index = ft_get_low_in_range(s->a, s->size_a - limit, s->size_a);
-		ft_printf("min index = %d\n", min_index);
-		if (min_index + 1 == s->size_a)
-		{
-			pb(s);
-			count++;
-		}
-		else if (min_index > center_a)
-		{
-			ra(s);
-			count++;
-		}
-		else
-		{
-			rra(s);
-			count++;
-		}
-		limit--;
+		ra(s);
+		min_index++;
 	}
-	return (FAILURE);
+	pb(s);
 }
 
-int8_t	pa_highest(t_stack *s, int32_t limit)
+void	pa_highest(t_stack *s, int32_t limit)
 {
 	size_t	center_b;
 	size_t	max_index;
@@ -67,7 +44,6 @@ int8_t	pa_highest(t_stack *s, int32_t limit)
 			rrb(s);
 		limit--;
 	}
-	return (FAILURE);
 }
 
 int8_t	pb_all_under_nb(t_stack *s, int32_t nb, int32_t range)

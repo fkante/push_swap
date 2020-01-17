@@ -6,11 +6,12 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:15:01 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/17 15:17:11 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/17 15:47:01 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdio.h"
 
 size_t		ft_get_low_in_range(int32_t *tab, size_t start, size_t end)
 {
@@ -20,7 +21,10 @@ size_t		ft_get_low_in_range(int32_t *tab, size_t start, size_t end)
 	while (start < end)
 	{
 		if (tab[low] > tab[start])
+		{
 			low = start;
+			printf("min = %d\n", tab[low]);
+		}
 		start++;
 	}
 	return (low);
