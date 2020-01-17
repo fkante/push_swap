@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/16 18:13:44 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/17 12:40:00 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ int			main(int ac, char **av)
 		s = init_struct(av, ac);
 		if (s == NULL)
 			return (SUCCESS);
+		stat = get_stat(s);
 		s->fd = creat("result.txt", S_IRUSR | S_IWUSR);
 		if (s->fd == FAILURE)
 		{
 			clean_struct(&s);
 			return (ft_print_err_FALSE("when creating result file", STD_ERR));
 		}
-		if (s->verbose == TRUE)
-			print_stack(s, NO_OPE, 0);
+		pb_lowest(s, stat, 5);
+	//	if (s->verbose == TRUE)
+		//	print_stack(s, NO_OPE, 0);
 		clean_struct(&s);
 	}
 	else

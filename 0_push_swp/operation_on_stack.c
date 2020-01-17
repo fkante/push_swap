@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scan_stack.c                                       :+:      :+:    :+:   */
+/*   operation_on_stack.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/01 14:07:55 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/16 17:01:46 by fkante           ###   ########.fr       */
+/*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
+/*   Updated: 2020/01/17 12:39:36 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,23 @@
 
 int8_t	pb_lowest(t_stack *s, t_stat *stat, int32_t nb)
 {
-	size_t	middle_a;
+	size_t	center_a;
 	size_t	min_index;
 
-	middle_a  = s->size_a / 2;
+	(void)stat;
 	print_stack(s, 0, 0);
 	while (nb > 0 && s->size_a > 0)
 	{
-		min_index = ft_get_low(s->a, s->size_a);
 		print_stack(s, 0, 0);
+		center_a  = s->size_a / 2;
+		min_index = ft_get_low(s->a, s->size_a);
 		if (min_index + 1 == s->size_a)
-			//pb(s);
-			push_stack_a(s);
-		if (min_index > middle_a)
-			rotate_stack_a(s);
-			//ra(s);
+			pb(s);
+		if (min_index > center_a)
+			ra(s);
 		else
-			reverse_rotate_stack_a(a);
-			//rra(s);
+			rra(s);
+		min_index = ft_get_low(s->a, s->size_a);
 		nb--;
 	}
 	return (FAILURE);
@@ -39,18 +38,19 @@ int8_t	pb_lowest(t_stack *s, t_stat *stat, int32_t nb)
 
 int8_t	pa_highest(t_stack *s, t_stat *stat, int32_t nb)
 {
-	size_t	middle_b;
+	size_t	center_b;
 	size_t	max_index;
 
-	middle_b  = s->size_b / 2;
+	(void)stat;
 	print_stack(s, 0, 0);
 	while (nb > 0 && s->size_b > 0)
 	{
-		min_index = ft_get_high(s->b, s->size_b);
+		max_index = ft_get_high(s->b, s->size_b);
+		center_b  = s->size_b / 2;
 		print_stack(s, 0, 0);
-		if (min_index + 1 == s->size_b)
+		if (max_index + 1 == s->size_b)
 			pa(s);
-		if (max_index > middle_b)
+		if (max_index > center_b)
 			rb(s);
 		else
 			rrb(s);
@@ -63,6 +63,7 @@ int8_t	pb_all_under_nb(t_stack *s, int32_t nb, int32_t range)
 {
 	char	*line;
 
+	(void)range;
 	line = NULL;
 	print_stack(s, 0, 0);
 //	while (range > 0)
@@ -81,6 +82,7 @@ int8_t	pa_all_above_nb(t_stack *s, int32_t nb, int32_t range)
 {
 	char	*line;
 
+	(void)range;
 	line = NULL;
 	print_stack(s, 0, 0);
 //	while (range > 0)

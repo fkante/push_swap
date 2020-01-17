@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2020/01/16 18:13:07 by amartino         ###   ########.fr        #
+#    Updated: 2020/01/17 12:21:08 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -19,7 +19,7 @@ NAME_CHECKER = checker
 LIB_DIR = ./libft/ft_printf
 LIB = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 DFLAGS =  -Wall -Wextra -Werror -fsanitize=address,undefined -g3
 INCLUDES += -I./include
 INCLUDES += -I./libft/includes
@@ -56,6 +56,7 @@ MAIN_CHECK = main_check.c
 
 # push_swap
 SRCS += push_swp
+SRCS += operation_on_stack 
 
 # checker
 SRCS += checker
@@ -66,11 +67,12 @@ SRCS += parse
 
 # tool
 SRCS += push_stack
-SRCS += rotate_stack
 SRCS += swap_stack
 SRCS += swap_both
 SRCS += shift_stack
 SRCS += rotate_both
+SRCS += rotate_stack
+SRCS += reverse_rotate_stack
 
 # clean
 SRCS += clean

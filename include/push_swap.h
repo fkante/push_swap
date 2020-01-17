@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/16 18:13:24 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/16 18:43:03 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void			operation_checker(operfunc *f, char *ln, t_stack *s, size_t *count);
 */
 void			print_stack(t_stack *s, int8_t ope, size_t count);
 void			print_command(size_t count, int8_t ope, uint8_t	color);
+t_stat 			*get_stat(t_stack *s);
 
 /*
 ** ############################################################################
@@ -111,7 +112,7 @@ void			rotate_stack_a(t_stack *s);
 void			rotate_stack_b(t_stack *s);
 void			reverse_rotate_stack_a(t_stack *s);
 void			reverse_rotate_stack_b(t_stack *s);
-void			swap(int32_t *stack1, int32_t *stack2);
+void			swap_nb(int32_t *stack1, int32_t *stack2);
 void			swap_both(t_stack *s);
 void			rotate_both(t_stack *s);
 void			reverse_both(t_stack *s);

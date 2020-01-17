@@ -6,13 +6,13 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 14:36:48 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/16 18:13:15 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/16 18:36:40 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int8_t	swap_nb(int32_t *stack1, int32_t *stack2)
+void	swap_nb(int32_t *stack1, int32_t *stack2)
 {
 	int32_t tmp;
 
@@ -57,7 +57,7 @@ void	shiftdown_stack_a(t_stack *s)
 	}
 }
 
-voidt	shiftdown_stack_b(t_stack *s)
+void	shiftdown_stack_b(t_stack *s)
 {
 	size_t	i;
 
