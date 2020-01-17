@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_low.c                                       :+:      :+:    :+:   */
+/*   ft_get_low_in_range.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 12:01:11 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/17 15:14:10 by fkante           ###   ########.fr       */
+/*   Created: 2020/01/17 15:15:01 by fkante            #+#    #+#             */
+/*   Updated: 2020/01/17 15:17:11 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_get_low(int32_t *tab, size_t size)
+size_t		ft_get_low_in_range(int32_t *tab, size_t start, size_t end)
 {
 	int32_t		low;
-	size_t		i;
 
-	i = 0;
-	low = 0;
-	while (i < size)
+	low = start;
+	while (start < end)
 	{
-		if (tab[low] > tab[i])
-			low = i;
-		i++;
+		if (tab[low] > tab[start])
+			low = start;
+		start++;
 	}
 	return (low);
 }

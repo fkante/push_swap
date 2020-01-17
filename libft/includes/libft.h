@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/16 15:36:35 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/17 15:22:03 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ size_t				ft_int64_t_len(int64_t num, uint8_t base);
 size_t				ft_len_printf(uint64_t value, uint64_t flag, size_t len);
 size_t				ft_get_high(int32_t *tab, size_t size);
 size_t				ft_get_low(int32_t *tab, size_t size);
+size_t				ft_get_low_in_range(int32_t *tab, size_t start, size_t end);
 int32_t				ft_high(int32_t *tab, size_t size);
 int32_t				ft_low(int32_t *tab, size_t size);
 int32_t				ft_mean(int32_t *tab, size_t size);
