@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 09:47:42 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/20 11:50:28 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 11:42:48 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_vector		*conv_to_u(va_list *arg_pf, t_flag *flag)
 	if ((str_itoa = ft_u_itoa_base(nbr, 10)) == NULL)
 		vct_del(&nb_itoa);
 	if (nb_itoa != NULL)
-		if ((vct_strjoin(nb_itoa, str_itoa)) == FAILURE)
+		if ((vct_addstr(nb_itoa, str_itoa)) == FAILURE)
 			vct_del(&nb_itoa);
 	ft_strdel(&str_itoa);
 	if ((conv_u(vector, flag, nb_itoa)) == FAILURE)

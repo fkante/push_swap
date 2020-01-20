@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2020/01/17 17:54:17 by amartino         ###   ########.fr        #
+#    Updated: 2020/01/20 16:18:18 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -80,6 +80,7 @@ SRCS += clean
 #bonus
 SRCS += print
 SRCS += color
+SRCS += output_file
 
                      ####################################
                      #                   				#
@@ -101,8 +102,6 @@ BUILD_DIR = build/
 MAIN_OBJ_PS = $(patsubst %, %.o, $(MAIN_PUSH))
 MAIN_OBJ_C = $(patsubst %, %.o, $(MAIN_CHECK))
 OBJS = $(patsubst %, $(BUILD_DIR)%.o, $(SRCS))
-ALLOBJS += $(OBJS)
-ALLOBJS += $(LIB_DIR)$(BUILD_DIR)*.o
 
                      ####################################
                      #                   				#
@@ -112,24 +111,24 @@ ALLOBJS += $(LIB_DIR)$(BUILD_DIR)*.o
 all: $(NAME_CHECKER) $(NAME_PUSH_SWP)
 	@echo "\n$(CYAN)MAKE COMPLETE$(END)"
 
-$(NAME_PUSH_SWP): $(BUILD_DIR) $(OBJS) $(MAIN_OBJ_PS) $(LIB_PATH)
+$(NAME_PUSH_SWP): $(BUILD_DIR) $(MAIN_OBJ_PS) $(OBJS) $(LIB_PATH)
 	@$(CC) $(CFLAGS) -o $@ $(MAIN_OBJ_PS) $(OBJS) $(LIB_PATH) $(INCLUDES)
 
-$(NAME_CHECKER): $(BUILD_DIR) $(OBJS) $(MAIN_OBJ_C) $(LIB_PATH)
+$(NAME_CHECKER): $(BUILD_DIR) $(MAIN_OBJ_C) $(OBJS) $(LIB_PATH)
 	@$(CC) $(CFLAGS) -o $@ $(MAIN_OBJ_C) $(OBJS) $(LIB_PATH) $(INCLUDES)
 
 $(BUILD_DIR):
 	mkdir $@
 
+$(MAIN_OBJ_PS): %.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	echo "$(CFLAGS) \t\t $(GREEN)$<$(END)"
+
+$(MAIN_OBJ_C): %.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	echo "$(CFLAGS) \t\t $(GREEN)$<$(END)"
+
 $(OBJS): $(BUILD_DIR)%.o: %.c $(HEAD) Makefile
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	echo "$(CFLAGS) \t\t $(GREEN)$<$(END)"
-
-$(MAIN_OBJ_PS): %.o: %.c $(HEAD) Makefile
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	echo "$(CFLAGS) \t\t $(GREEN)$<$(END)"
-
-$(MAIN_OBJ_C): %.o: %.c $(HEAD) Makefile
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	echo "$(CFLAGS) \t\t $(GREEN)$<$(END)"
 

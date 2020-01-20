@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:25:09 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/28 15:03:16 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 11:45:59 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,10 @@ void			vct_print(t_vector *vector);
 int8_t			vct_addchar(t_vector *vector, char c);
 int8_t			vct_addchar_at(t_vector *vector, char c, size_t index);
 void			vct_replace_char_at(t_vector *vector, char c, size_t index);
+int8_t			vct_addstr(t_vector *vector, char *str);
 int8_t			vct_pushstr(t_vector *vector, char *str);
 int8_t			vct_addstr_at(t_vector *vector, char *str, size_t index);
+int8_t			vct_addnb(t_vector *vector, int64_t nb);
 
 /*
 **********************
@@ -104,7 +106,6 @@ void			vct_pop_from(t_vector *vector, size_t len, size_t index);
 **********************
 */
 t_vector		*vct_dup(t_vector *vector);
-int8_t			vct_strjoin(t_vector *vector, char *str);
 int8_t			vct_cat(t_vector *dest, t_vector *src);
 t_vector		*vct_join(t_vector *dest, t_vector *src);
 t_vector		*vct_joinfree(t_vector **dest, t_vector **src,

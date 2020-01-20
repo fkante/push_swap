@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/17 16:15:09 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:16:38 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ void			operation_checker(operfunc *f, char *ln, t_stack *s, size_t *count);
 void			print_stack(t_stack *s, int8_t ope, size_t count);
 void			print_command(size_t count, int8_t ope, uint8_t	color);
 t_stat 			*get_stat(t_stack *s);
+ssize_t			get_nb_of_move();
+ssize_t			collision_in_filename(t_vector *name, int8_t suffixe);
+void			write_final_result(ssize_t fd);
+void			save_final_result_in_file(t_stack *s);
+
 
 /*
 ** ############################################################################
@@ -136,5 +141,6 @@ void			rrr(t_stack *s);
 */
 void			clean_struct(t_stack **s);
 void			clean_tmp(char ***tmp, size_t i);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 09:12:10 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/20 09:52:07 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/20 11:42:15 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_vector		*conv_to_hexa_maj(va_list *arg_pf, t_flag *flag)
 	if ((str_itoa = ft_itoa_base_maj(nbr, base, flag->option)) == NULL)
 		vct_del(&nb_itoa);
 	if (nb_itoa != NULL)
-		if ((vct_strjoin(nb_itoa, str_itoa)) == FAILURE)
+		if ((vct_addstr(nb_itoa, str_itoa)) == FAILURE)
 			vct_del(&nb_itoa);
 	ft_strdel(&str_itoa);
 	if ((conv_maj(vector, flag, nb_itoa)) == FAILURE)

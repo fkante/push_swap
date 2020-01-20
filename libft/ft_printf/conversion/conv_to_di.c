@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 18:51:01 by fkante            #+#    #+#             */
-/*   Updated: 2019/09/20 08:52:51 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/20 11:42:19 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_vector		*conv_to_di(va_list *arg_pf, t_flag *flag)
 	if ((str_itoa = ft_itoa_base(nbr, 10)) == NULL)
 		vct_del(&nb_itoa);
 	if (nb_itoa != NULL)
-		if ((vct_strjoin(nb_itoa, str_itoa)) == FAILURE)
+		if ((vct_addstr(nb_itoa, str_itoa)) == FAILURE)
 			vct_del(&nb_itoa);
 	ft_strdel(&str_itoa);
 	if ((conv_di(vector, flag, nb_itoa)) == FAILURE)

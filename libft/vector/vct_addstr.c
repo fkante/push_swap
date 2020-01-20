@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vct_strjoin.c                                      :+:      :+:    :+:   */
+/*   vct_addstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 17:17:56 by amartino          #+#    #+#             */
-/*   Updated: 2019/09/20 10:21:13 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/20 11:40:38 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
 /*
-**	Add a char to the end of the vector string.
+**	Add a str to the end of the vector string.
 **
 **	As for all vectors functions, if the LENGHT of the new string is bigger
 **	than the string SIZE, an equivalent reallocation occurs.
 */
 
-int8_t	vct_strjoin(t_vector *vector, char *str)
+int8_t	vct_addstr(t_vector *vector, char *str)
 {
 	size_t	len;
 	int8_t	ret;

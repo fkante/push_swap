@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:50:31 by fkante            #+#    #+#             */
-/*   Updated: 2019/10/03 13:17:28 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 11:43:50 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_vector	*ft_fldtoa(long double value, uint64_t precision, uint32_t option)
 	if (vector != NULL)
 	{
 		if ((str = ft_d_itoa(value)) != NULL)
-			if ((vct_strjoin(vector, str)) == FAILURE)
+			if ((vct_addstr(vector, str)) == FAILURE)
 				vct_del(&vector);
 		ft_strdel(&str);
 		cast = (int64_t)value;

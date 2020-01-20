@@ -6,27 +6,17 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/17 17:20:59 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:13:45 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-ssize_t		create_file_result()
-{
-	ssize_t	fd;
-
-	fd = open("result.txt", O_WRONLY | O_CREAT | O_EXCL);
-	//ft_printf("fd is : %zu\n", fd);
-	return (fd);
-}
 
 int			main(int ac, char **av)
 {
 	t_stack		*s;
 	t_stat		*stat;
 
-	(void)s;
 	s = NULL;
 	stat = NULL;
 	if (ac >= 2)
@@ -37,7 +27,8 @@ int			main(int ac, char **av)
 		if (s == NULL)
 			return (SUCCESS);
 		stat = get_stat(s);
-		s->fd = create_file_result();
+		mkdir("result", 0700);
+		s->fd = open("result/tmp.txt", O_RDWR | O_CREAT, 0744);
 		if (s->fd == FAILURE)
 		{
 			clean_struct(&s);
@@ -47,7 +38,9 @@ int			main(int ac, char **av)
 		// pa_all_above_nb(s, -6);
 		if (s->verbose == TRUE)
 			print_stack(s, NO_OPE, 0);
+		save_final_result_in_file(s);
 		clean_struct(&s);
+		ft_memdel((void**)&stat);
 	}
 	else
 		ft_print_err_FALSE("Not enough arguments", STD_ERR);
