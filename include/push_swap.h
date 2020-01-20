@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 16:53:34 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:33:41 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,21 @@ typedef struct 	s_stat
 	int32_t		median_b;
 }				t_stat;
 
+enum	e_operations
+{
+	E_SA,
+	E_SB,
+	E_SS,
+	E_PA,
+	E_PB,
+	E_RA,
+	E_RB,
+	E_RR,
+	E_RRA,
+	E_RRB,
+	E_RRR
+};
+
 /*
 ** ############################################################################
 ** ################################# INIT #####################################
@@ -58,35 +73,20 @@ uint8_t			check_for_bonus(char **tab, char *chr);
 ** ################################ PUSH_SWAP #################################
 ** ############################################################################
 */
-void		push_swp(t_stack *s, int ac, char **av);
-void		solve(t_stack *s, t_stat *stat);
-void		pb_lowest(t_stack *s, int32_t limit);
-void		pa_highest(t_stack *s, int32_t limit);
-void		pb_all_under_nb(t_stack *s, int32_t pivot);
-void		pa_all_above_nb(t_stack *s, int32_t pivot);
-void		pivot_on_top_a(t_stack *s, int32_t pivot);
-void		pivot_on_top_b(t_stack *s, int32_t pivot);
+void			push_swp(t_stack *s, int ac, char **av);
+void			solve(t_stack *s);
+void			pb_lowest(t_stack *s, int32_t limit);
+void			pa_highest(t_stack *s, int32_t limit);
+void			pb_all_under_nb(t_stack *s, int32_t pivot);
+void			pa_all_above_nb(t_stack *s, int32_t pivot);
+void			pivot_on_top_a(t_stack *s, int32_t pivot);
+void			pivot_on_top_b(t_stack *s, int32_t pivot);
 
 /*
 ** ############################################################################
 ** ################################ CHECKER ###################################
 ** ############################################################################
 */
-enum	e_operations
-{
-	E_SA,
-	E_SB,
-	E_SS,
-	E_PA,
-	E_PB,
-	E_RA,
-	E_RB,
-	E_RR,
-	E_RRA,
-	E_RRB,
-	E_RRR
-};
-
 typedef	void	(*operfunc)(t_stack *s);
 void			read_checker(t_stack *s);
 void			operation_checker(operfunc *f, char *ln, t_stack *s, size_t *count);

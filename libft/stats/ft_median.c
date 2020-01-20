@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 12:01:11 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/15 11:28:01 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:54:12 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,4 @@ int8_t		ft_median(int32_t *tab, size_t size, int32_t *median)
 	*median = heap->A[ROOT];
 	clean_heap_tree(&heap);
 	return (SUCCESS);
-}
+} 
