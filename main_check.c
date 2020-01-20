@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:10 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/16 15:38:30 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:59:32 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int			main(int ac, char **av)
 		clean_struct(&s);
 	}
 	else
-		ft_print_err_FALSE("Not enough arguments", STD_ERR);
+		ft_print_err_false("Not enough arguments", STD_ERR);
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 #    By: fkante <fkante@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2020/01/20 11:45:40 by amartino         ###   ########.fr        #
+#    Updated: 2020/01/20 16:56:41 by amartino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -160,9 +160,10 @@ SRCS += heap_print.c
 SRCS += heap_tool.c
 
 #----------------------------------- ERROR ------------------------------------#
-SRCS += ft_print_err_NULL.c
-SRCS += ft_print_err_FAILURE.c
-SRCS += ft_print_err_FALSE.c
+SRCS += ft_print_err_null.c
+SRCS += ft_print_err_failure.c
+SRCS += ft_print_err_false.c
+SRCS += ft_print_err_void.c
 
 #--------------------------------- FT_PRINTF ----------------------------------#
 

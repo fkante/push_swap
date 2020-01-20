@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/16 18:13:03 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:59:19 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ void	operation_checker(operfunc *f_ptr, char *line, t_stack *s, size_t *count)
 	if (s->verbose == TRUE)
 		print_stack(s, i, *count);
 	if (i == NB_OPE)
-		ft_print_err_FALSE("Wrong input", STD_ERR);
+		ft_print_err_void("Wrong input", STD_ERR);
 }

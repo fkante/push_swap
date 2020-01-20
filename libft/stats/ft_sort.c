@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 12:38:52 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/16 15:37:38 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:57:45 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int32_t				*ft_sort(int32_t *tab, size_t size)
 	heap = heap_tree(tab, size, MIN_HEAP);
 	sorted_array = ft_memalloc(sizeof(int32_t) * size);
 	if (sorted_array == NULL && heap == NULL)
-		return (ft_print_err_NULL("memory allocation failed", STD_ERR));
+		return (ft_print_err_null("memory allocation failed", STD_ERR));
 	while (i < size)
 	{
 		sorted_array[i] = heap->A[ROOT];
