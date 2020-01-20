@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/17 16:38:06 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 11:49:38 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,23 @@ void	pa_all_above_nb(t_stack *s, int32_t pivot)
 		last = s->size_b - 1;
 		s->b[last] > pivot ? pa(s) : rb(s);
 		i--;
+	}
+}
+
+void	pivot_on_top_a(t_stack *s, int32_t pivot)
+{
+	size_t	i;
+	size_t	center;
+
+	center = s->size_a / 2;
+	i = 0;
+	while (s->a[i] != pivot)
+		i++;
+	while (s->a[s->size_a - 1] != pivot)
+	{
+		if (i > center)
+			ra(s);
+		else
+			rra(s);
 	}
 }
