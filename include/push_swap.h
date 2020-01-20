@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 11:38:01 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/20 16:00:27 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void		pa_highest(t_stack *s, int32_t limit);
 void		pb_all_under_nb(t_stack *s, int32_t pivot);
 void		pa_all_above_nb(t_stack *s, int32_t pivot);
 void		pivot_on_top_a(t_stack *s, int32_t pivot);
+void		pivot_on_top_b(t_stack *s, int32_t pivot);
 
 /*
 ** ############################################################################

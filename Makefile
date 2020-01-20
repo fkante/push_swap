@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2020/01/17 12:21:08 by fkante           ###   ########.fr        #
+#    Updated: 2020/01/20 16:02:13 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -57,6 +57,7 @@ MAIN_CHECK = main_check.c
 # push_swap
 SRCS += push_swp
 SRCS += operation_on_stack 
+SRCS += pivot_on_top 
 
 # checker
 SRCS += checker
