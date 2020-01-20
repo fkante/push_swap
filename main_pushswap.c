@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 16:02:44 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/20 16:17:02 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int			main(int ac, char **av)
 	t_stack		*s;
 	t_stat		*stat;
 
+	(void)s;
 	s = NULL;
 	stat = NULL;
 	if (ac >= 2)
@@ -27,7 +28,7 @@ int			main(int ac, char **av)
 		if (s == NULL)
 			return (SUCCESS);
 		stat = get_stat(s);
-		s->fd = creat("result.txt", S_IRUSR | S_IWUSR);
+		s->fd = create_file_result();
 		if (s->fd == FAILURE)
 		{
 			clean_struct(&s);
