@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 16:16:38 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:21:03 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,13 @@ uint8_t			check_for_bonus(char **tab, char *chr);
 ** ################################ PUSH_SWAP #################################
 ** ############################################################################
 */
+void		push_swp(t_stack *s, t_stat *stat);
 void		pb_lowest(t_stack *s, int32_t limit);
 void		pa_highest(t_stack *s, int32_t limit);
 void		pb_all_under_nb(t_stack *s, int32_t pivot);
 void		pa_all_above_nb(t_stack *s, int32_t pivot);
+void		pivot_on_top_a(t_stack *s, int32_t pivot);
+void		pivot_on_top_b(t_stack *s, int32_t pivot);
 
 /*
 ** ############################################################################
