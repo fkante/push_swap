@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/20 16:56:02 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:15:50 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,8 @@ char				*ft_itoa_base(int64_t n, uint8_t base);
 char				*ft_u_itoa_base(uint64_t n, uint8_t base);
 char				*ft_itoa_base_maj(uint64_t n, uint8_t base, uint64_t flag);
 char				*ft_ox_itoa_base(uint64_t n, uint8_t base, uint64_t flag);
-double				ft_pow(double x, double y);
-unsigned long		ft_pow_positive(unsigned long x, unsigned long y);
+double				ft_pow(double x, double exponent);
+unsigned long		ft_pow_positive(unsigned long x, unsigned long exponent);
 size_t				ft_uint64_t_len(uint64_t num, uint8_t base);
 size_t				ft_int64_t_len(int64_t num, uint8_t base);
 size_t				ft_len_printf(uint64_t value, uint64_t flag, size_t len);
@@ -163,7 +163,7 @@ int32_t				ft_low(int32_t *tab, size_t size);
 int32_t				ft_mean(int32_t *tab, size_t size);
 int8_t				ft_median(int32_t *tab, size_t size, int32_t *median);
 int32_t				ft_range(int32_t *tab, size_t size);
-size_t				ft_get_median(int32_t *tab, size_t size);
+ssize_t				ft_get_median(int32_t *tab, size_t size);
 ssize_t				ft_get_n_highest(int32_t *tab, size_t nth, size_t size);
 int32_t				*ft_sort(int32_t *tab, size_t size);
 

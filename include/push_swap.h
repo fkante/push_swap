@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/21 13:58:29 by amartinod        ###   ########.fr       */
+/*   Updated: 2020/01/21 17:07:08 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_stack
 	size_t	size_a;
 	size_t	size_b;
 	int32_t	color_nb;
+	uint8_t	exponent;
 	int8_t	fd;
 	uint8_t	verbose;
 	uint8_t	color;

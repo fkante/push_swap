@@ -6,13 +6,13 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 11:37:04 by amartino          #+#    #+#             */
-/*   Updated: 2019/09/20 10:06:45 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/21 19:36:31 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-double	ft_pow(double x, double y)
+double	ft_pow(double x, double exponent)
 {
 	double	i;
 	double	tmp;
@@ -21,17 +21,18 @@ double	ft_pow(double x, double y)
 	i = 1;
 	neg = 0;
 	tmp = x;
-	if (y < 0)
+	if (exponent < 0)
 	{
-		y *= -1;
+		exponent *= -1;
 		neg = 1;
 	}
-	while (i < y)
+	while (i < exponent)
 	{
 		x *= tmp;
 		i++;
 	}
 	if (neg == 0)
-		return (x);
-	return (x == 1 ? 1 / x : 1);
+		return (exponent == 0 ? 1 : x);
+	else
+		return (exponent == 0 ? 1 : (1 / x));
 }

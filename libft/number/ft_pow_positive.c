@@ -6,23 +6,23 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 11:37:04 by amartino          #+#    #+#             */
-/*   Updated: 2019/09/20 10:06:06 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/21 17:16:08 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned long	ft_pow_positive(unsigned long x, unsigned long y)
+unsigned long	ft_pow_positive(unsigned long x, unsigned long exponent)
 {
 	unsigned long	i;
 	unsigned long	tmp;
 
 	i = 1;
 	tmp = x;
-	while (i < y)
+	while (i < exponent)
 	{
 		x *= tmp;
 		i++;
 	}
-	return (y == 0 ? 1 : x);
+	return (exponent == 0 ? 1 : x);
 }

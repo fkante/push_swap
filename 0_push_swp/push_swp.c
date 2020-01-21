@@ -6,13 +6,23 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/21 14:00:26 by amartinod        ###   ########.fr       */
+/*   Updated: 2020/01/21 19:41:08 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_sublist_on_b(t_stack *s)
+int32_t		find_pivot(t_stack *s, int8_t wrong_name)
+{
+	int32_t		pivot_pos;
+	int32_t		pivot;
+
+	pivot_pos = SUBLIST_SIZE * ft_pow_positive(2, (s->exponent + wrong_name));
+	pivot = s->sorted_s[pivot_pos - 1];
+	return (pivot);
+}
+
+void		sort_sublist_on_b(t_stack *s)
 {
 	size_t		size;
 
@@ -26,7 +36,7 @@ void	sort_sublist_on_b(t_stack *s)
 	}
 }
 
-void	push_next_sublist_on_b(t_stack *s)
+void		push_next_sublist_on_b(t_stack *s)
 {
 	size_t		size;
 
@@ -38,50 +48,51 @@ void	push_next_sublist_on_b(t_stack *s)
 	}
 }
 
-void 	sort_all_sublist(t_stack *s, int32_t pivot)
+void 		sort_sublist(t_stack *s)
 {
-	if (s->size_b > 0)
-		sort_sublist_on_b(s);
-	else
-		push_next_sublist_on_b(s);
-	if (s->a[s->size_a - 1] != pivot)
-		sort_all_sublist(s, pivot);
-	if (s->size_b > 0)
-		sort_sublist_on_b(s);
+	sort_sublist_on_b(s);
+	push_next_sublist_on_b(s);
+	pause_and_show(s);
+	sort_sublist_on_b(s);
 }
 
 
-void 	organize_in_unsorted_sublist(t_stack *s)
+void		organize_in_unsorted_sublist(t_stack *s, int8_t wrong_name)
 {
-	int32_t		median;
+	int32_t pivot_index;
+	int32_t pivot;
+	int32_t pos;
 
-	if (ft_median(s->b, s->size_b, &median) == FAILURE)
-		return ;
-	pa_all_above_nb(s, median);
+	if ((wrong_name * -1) > s->exponent)
+		wrong_name = -1 * s->exponent;
+	pos = SUBLIST_SIZE * (int32_t)ft_pow_positive(2, (s->exponent + wrong_name));
+	pivot_index = ft_get_n_highest(s->b, pos, s->size_b);
+	pivot = s->b[pivot_index];
+	ft_printf("pivot is %d\npos is: %d\ndegré de profondeur %d\nexponent max %d\n", pivot, pos, wrong_name, s->exponent);
+	pa_all_above_nb(s, pivot);
+	pause_and_show(s);
 	if (s->size_b > SUBLIST_SIZE)
-		organize_in_unsorted_sublist(s);
+	{
+		wrong_name--;
+		organize_in_unsorted_sublist(s, wrong_name);
+	}
 }
 
-void	solve(t_stack *s)
+void		solve(t_stack *s)
 {
-	int32_t		median;
+	int32_t		pivot;
 
-	if (ft_median(s->a, s->size_a, &median) == FAILURE)
-		return ;
+	pivot = find_pivot(s, -1);
 	pause_and_show(s);
-	pb_all_under_nb(s, median);
+	pb_all_under_nb(s, pivot);
 	pause_and_show(s);
-	pivot_on_top_a(s, median);
+	organize_in_unsorted_sublist(s, -2);
 	pause_and_show(s);
-	organize_in_unsorted_sublist(s);
-	pause_and_show(s);
-	sort_all_sublist(s, median);
-	pause_and_show(s);
-	ra(s);
+	sort_sublist(s);
 	pause_and_show(s);
 }
 
-void	push_swp(t_stack *s, int ac, char **av)
+void		push_swp(t_stack *s, int ac, char **av)
 {
 	t_stat		*stat;
 
@@ -104,5 +115,3 @@ void	push_swp(t_stack *s, int ac, char **av)
 	clean_struct(&s);
 	ft_memdel((void**)&stat);
 }
-
-// organize_in_unsorted_sublist

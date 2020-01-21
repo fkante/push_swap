@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/21 12:13:33 by amartinod        ###   ########.fr       */
+/*   Updated: 2020/01/21 19:06:13 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@
 # define STD_OUT			1
 # define STD_ERR			2
 
-
 # define VERBOSE 			0
 # define NB_OPE				11
 # define NO_OPE				-1
 # define STACK_A			0
 # define STACK_B			1
-# define SUBLIST_SIZE		10
+# define SUBLIST_SIZE		5
 
 # define SA					"sa"
 # define SB					"sb"
