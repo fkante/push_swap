@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/16 14:23:28 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/21 12:13:33 by amartinod        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define NO_OPE				-1
 # define STACK_A			0
 # define STACK_B			1
+# define SUBLIST_SIZE		10
 
 # define SA					"sa"
 # define SB					"sb"

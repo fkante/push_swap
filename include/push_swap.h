@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 17:33:41 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/21 13:58:29 by amartinod        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ ssize_t			get_nb_of_move();
 ssize_t			collision_in_filename(t_vector *name, int8_t suffixe);
 void			write_final_result(ssize_t fd);
 void			save_final_result_in_file(t_stack *s);
+void			pause_and_show(t_stack *s);
 
 
 /*

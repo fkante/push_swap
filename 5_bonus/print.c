@@ -6,11 +6,20 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:23:57 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 16:10:14 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/21 13:58:39 by amartinod        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	pause_and_show(t_stack *s)
+{
+	char	*line;
+
+	line = NULL;
+	while (get_next_line(0, &line) > 0)
+			print_stack(s, NO_OPE, 0);
+}
 
 void	print_command(size_t count, int8_t ope, uint8_t	color)
 {
