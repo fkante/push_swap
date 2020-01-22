@@ -6,13 +6,13 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/21 19:20:10 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/22 13:30:03 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pb_lowest(t_stack *s, int32_t limit)
+void	pb_lowest(t_stack *s, size_t limit)
 {
 	size_t	min_index;
 	size_t	center;
@@ -38,7 +38,7 @@ void	pb_lowest(t_stack *s, int32_t limit)
 	pb(s);
 }
 
-void	pa_highest(t_stack *s, int32_t limit)
+void	pa_highest(t_stack *s, size_t limit)
 {
 	size_t	max_index;
 	size_t	center;
@@ -64,12 +64,12 @@ void	pa_highest(t_stack *s, int32_t limit)
 	pa(s);
 }
 
-void	pb_all_under_nb(t_stack *s, int32_t pivot)
+void	pb_under_pivot(t_stack *s, int32_t pivot, size_t limit)
 {
 	size_t	i;
 	size_t	last;
 
-	i = s->size_a;
+	i = limit;
 	while (i > 0)
 	{
 		last = s->size_a - 1;
@@ -78,12 +78,12 @@ void	pb_all_under_nb(t_stack *s, int32_t pivot)
 	}
 }
 
-void	pa_all_above_nb(t_stack *s, int32_t pivot)
+void	pa_above_pivot(t_stack *s, int32_t pivot, size_t limit)
 {
 	size_t	i;
 	size_t	last;
 
-	i = s->size_b;
+	i = limit;
 	while (i > 0)
 	{
 		last = s->size_b - 1;

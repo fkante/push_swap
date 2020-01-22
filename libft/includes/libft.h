@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/21 17:15:50 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/22 17:26:22 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,8 @@ int32_t				ft_mean(int32_t *tab, size_t size);
 int8_t				ft_median(int32_t *tab, size_t size, int32_t *median);
 int32_t				ft_range(int32_t *tab, size_t size);
 ssize_t				ft_get_median(int32_t *tab, size_t size);
-ssize_t				ft_get_n_highest(int32_t *tab, size_t nth, size_t size);
+ssize_t				ft_get_n_highest(int32_t *tab, size_t nth, size_t start,
+										size_t limit);
 int32_t				*ft_sort(int32_t *tab, size_t size);
 
 /*

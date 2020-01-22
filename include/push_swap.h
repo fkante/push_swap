@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/21 17:07:08 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/22 18:21:27 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct	s_stack
 	size_t	size_a;
 	size_t	size_b;
 	int32_t	color_nb;
-	uint8_t	exponent;
+	uint8_t	exponent_max;
 	int8_t	fd;
 	uint8_t	verbose;
 	uint8_t	color;
@@ -75,13 +75,17 @@ uint8_t			check_for_bonus(char **tab, char *chr);
 ** ############################################################################
 */
 void			push_swp(t_stack *s, int ac, char **av);
-void			solve(t_stack *s);
-void			pb_lowest(t_stack *s, int32_t limit);
-void			pa_highest(t_stack *s, int32_t limit);
-void			pb_all_under_nb(t_stack *s, int32_t pivot);
-void			pa_all_above_nb(t_stack *s, int32_t pivot);
+int8_t			solve(t_stack *s);
+void			pb_lowest(t_stack *s, size_t limit);
+void			pa_highest(t_stack *s, size_t limit);
+void			pb_under_pivot(t_stack *s, int32_t pivot, size_t limit);
+void			pa_above_pivot(t_stack *s, int32_t pivot, size_t limit);
 void			pivot_on_top_a(t_stack *s, int32_t pivot);
 void			pivot_on_top_b(t_stack *s, int32_t pivot);
+void 			sort_min_size_sublist_available(t_stack *s);
+void			sort_sublist_on_b(t_stack *s);
+void			push_next_sublist_on_b(t_stack *s, size_t size);
+void			rra_the_remainder(t_stack *s);
 
 /*
 ** ############################################################################

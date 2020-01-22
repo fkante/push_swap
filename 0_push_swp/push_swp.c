@@ -6,112 +6,105 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/21 19:41:08 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/22 18:24:50 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int32_t		find_pivot(t_stack *s, int8_t wrong_name)
+int8_t		organize_stack_b_in_unsorted_sublist(t_stack *s)
 {
-	int32_t		pivot_pos;
-	int32_t		pivot;
+	int32_t 	pivot;
+	int32_t 	pivot_index;
+	int8_t		ret;
 
-	pivot_pos = SUBLIST_SIZE * ft_pow_positive(2, (s->exponent + wrong_name));
-	pivot = s->sorted_s[pivot_pos - 1];
-	return (pivot);
-}
-
-void		sort_sublist_on_b(t_stack *s)
-{
-	size_t		size;
-
-	size = s->size_b;
-	while (s->size_b > 0)
-		pa_highest(s, s->size_b);
-	while (size > 0)
-	{
-		ra(s);
-		size--;
-	}
-}
-
-void		push_next_sublist_on_b(t_stack *s)
-{
-	size_t		size;
-
-	size = SUBLIST_SIZE;
-	while (size > 0)
-	{
-		pb(s);
-		size--;
-	}
-}
-
-void 		sort_sublist(t_stack *s)
-{
-	sort_sublist_on_b(s);
-	push_next_sublist_on_b(s);
-	pause_and_show(s);
-	sort_sublist_on_b(s);
-}
-
-
-void		organize_in_unsorted_sublist(t_stack *s, int8_t wrong_name)
-{
-	int32_t pivot_index;
-	int32_t pivot;
-	int32_t pos;
-
-	if ((wrong_name * -1) > s->exponent)
-		wrong_name = -1 * s->exponent;
-	pos = SUBLIST_SIZE * (int32_t)ft_pow_positive(2, (s->exponent + wrong_name));
-	pivot_index = ft_get_n_highest(s->b, pos, s->size_b);
+	ret = SUCCESS;
+	pivot_index = ft_get_n_highest(s->b, (s->size_b / 2), 0, s->size_b);
+	if (pivot_index == FAILURE)
+		return (ft_print_err_failure("malloc, finding pivot index", STD_ERR));
 	pivot = s->b[pivot_index];
-	ft_printf("pivot is %d\npos is: %d\ndegré de profondeur %d\nexponent max %d\n", pivot, pos, wrong_name, s->exponent);
-	pa_all_above_nb(s, pivot);
-	pause_and_show(s);
-	if (s->size_b > SUBLIST_SIZE)
-	{
-		wrong_name--;
-		organize_in_unsorted_sublist(s, wrong_name);
-	}
+	pa_above_pivot(s, pivot, s->size_b);
+	// pause_and_show(s);
+	if (s->size_b > SUBLIST_MIN_SIZE)
+		ret = organize_stack_b_in_unsorted_sublist(s);
+	return (ret);
 }
 
-void		solve(t_stack *s)
+void 		split_stack_in_2_big_part(t_stack *s)
 {
+	size_t		sublist_size;
 	int32_t		pivot;
 
-	pivot = find_pivot(s, -1);
-	pause_and_show(s);
-	pb_all_under_nb(s, pivot);
-	pause_and_show(s);
-	organize_in_unsorted_sublist(s, -2);
-	pause_and_show(s);
-	sort_sublist(s);
-	pause_and_show(s);
+	sublist_size = SUBLIST_MIN_SIZE * ft_pow_positive(2, (s->exponent_max - 1));
+	pivot = s->sorted_s[sublist_size - 1];
+	// pause_and_show(s);
+	pb_under_pivot(s, pivot, s->size_a);
+	// pause_and_show(s);
 }
 
-void		push_swp(t_stack *s, int ac, char **av)
+int8_t		sort_stack_b(t_stack *s, size_t exponent)
 {
-	t_stat		*stat;
+	size_t		sublist_size;
+	int8_t		ret;
 
-	stat = NULL;
-	s = init_struct(av, ac);
-	if (s == NULL)
-		return ;
-	stat = get_stat(s);
-	mkdir("result", 0700);
-	s->fd = open("result/tmp.txt", O_RDWR | O_CREAT, 0744);
-	if (s->fd == FAILURE)
+	ret = SUCCESS;
+	sublist_size = SUBLIST_MIN_SIZE * ft_pow_positive(2, exponent);
+	push_next_sublist_on_b(s, sublist_size);
+	// pause_and_show(s);
+	ret = organize_stack_b_in_unsorted_sublist(s);
+	if (ret == FAILURE)
+		return (FAILURE);
+	sort_min_size_sublist_available(s);
+	if (exponent < (s->exponent_max - 2))
 	{
-		clean_struct(&s);
-		return (ft_print_err_void("when creating result file", STD_ERR));
+		exponent++;
+		ret = sort_stack_b(s, exponent);
 	}
-	solve(s);
-	if (s->verbose == TRUE)
-		print_stack(s, NO_OPE, 0);
-	save_final_result_in_file(s);
-	clean_struct(&s);
-	ft_memdel((void**)&stat);
+	return (ret);
+}
+
+int8_t		pb_second_half(t_stack *s)
+{
+	size_t		sublist_size;
+	size_t		size;
+	int32_t 	pivot_index;
+	int32_t		pivot;
+
+	sublist_size = SUBLIST_MIN_SIZE * ft_pow_positive(2, (s->exponent_max - 1));
+	size = s->size_a - sublist_size;
+	pivot_index = ft_get_n_highest(s->a, sublist_size, sublist_size, size);
+	if (pivot_index == FAILURE)
+		return (ft_print_err_failure("malloc, finding pivot index", STD_ERR));
+	pivot = s->a[pivot_index];
+	pb_under_pivot(s, pivot, size);
+	pause_and_show(s);
+	rra_the_remainder(s);
+	pause_and_show(s);
+	return (SUCCESS);
+}
+
+int8_t		let_the_magic_of_recursion_happen(t_stack *s)
+{
+	int8_t		res;
+
+	res = SUCCESS;
+	res = organize_stack_b_in_unsorted_sublist(s);
+	if (res == FAILURE)
+		return (FAILURE);
+	sort_min_size_sublist_available(s);
+	sort_stack_b(s, 1);
+	return (SUCCESS);
+}
+
+int8_t		solve(t_stack *s)
+{
+	int8_t		ret;
+
+	split_stack_in_2_big_part(s);
+	ret = let_the_magic_of_recursion_happen(s);
+	if (ret == SUCCESS)
+		ret = pb_second_half(s);
+	if (ret == SUCCESS)
+		ret = let_the_magic_of_recursion_happen(s);
+	return (ret);
 }
