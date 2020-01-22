@@ -1,49 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pivot_on_top.c                                     :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 15:59:17 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/22 15:19:15 by fkante           ###   ########.fr       */
+/*   Created: 2020/01/20 18:04:58 by fkante            #+#    #+#             */
+/*   Updated: 2020/01/22 16:46:34 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pivot_on_top_a(t_stack *s, int32_t pivot)
+size_t		how_many_sorted(t_stack *s)
 {
 	size_t	i;
-	size_t	center;
+	size_t	count;
 
-	center = s->size_a / 2;
-	i = 0;
-	while (s->a[i] != pivot)
-		i++;
-	while (s->a[s->size_a - 1] != pivot)
+	i = s->size_a - 1;
+	count = 0;
+	while (s->a[i] < s->a[i - 1])
 	{
-		if (i > center)
-			ra(s);
-		else
-			rra(s);
+		i++;
+		count++;
 	}
+	return (count);
 }
 
-void	pivot_on_top_b(t_stack *s, int32_t pivot)
+int8_t		is_sorted(int32_t nb_prior, int32_t nb_ahead)
 {
-	size_t	i;
-	size_t	center;
-
-	center = s->size_b / 2;
-	i = 0;
-	while (s->b[i] != pivot)
-		i++;
-	while (s->b[s->size_b - 1] != pivot)
-	{
-		if (i > center)
-			rb(s);
-		else
-			rrb(s);
-	}
+	ft_printf("nb_prior = %d\t\tnb_ahead = %d\n", nb_prior, nb_ahead);
+	return (nb_prior < nb_ahead ? SUCCESS : FAILURE);
 }

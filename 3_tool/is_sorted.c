@@ -1,49 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pivot_on_top.c                                     :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 15:59:17 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/22 15:19:15 by fkante           ###   ########.fr       */
+/*   Created: 2020/01/20 18:04:58 by fkante            #+#    #+#             */
+/*   Updated: 2020/01/20 18:59:56 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pivot_on_top_a(t_stack *s, int32_t pivot)
+int8_t		is_sorted(t_stack *s)
 {
+	int8_t	ret;
 	size_t	i;
-	size_t	center;
 
-	center = s->size_a / 2;
+	ret = FAILURE;
 	i = 0;
-	while (s->a[i] != pivot)
+		ft_printf("s[size_a] = %d\n", s->a[s->size_a]);
+	while (s->a[i] > s->a[s->size_a])
+	{ 
+		ft_printf("i = %d, s[i] = %d\n", i, s->a[i]);
+		if (i == s->size_a - 1)
+		{
+			ret = SUCCESS;
+			break ;
+		}
 		i++;
-	while (s->a[s->size_a - 1] != pivot)
-	{
-		if (i > center)
-			ra(s);
-		else
-			rra(s);
 	}
-}
-
-void	pivot_on_top_b(t_stack *s, int32_t pivot)
-{
-	size_t	i;
-	size_t	center;
-
-	center = s->size_b / 2;
-	i = 0;
-	while (s->b[i] != pivot)
-		i++;
-	while (s->b[s->size_b - 1] != pivot)
-	{
-		if (i > center)
-			rb(s);
-		else
-			rrb(s);
-	}
+	return (ret);
 }

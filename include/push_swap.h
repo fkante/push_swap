@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 16:53:34 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:48:14 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,15 @@ uint8_t			check_for_bonus(char **tab, char *chr);
 ** ############################################################################
 */
 void		push_swp(t_stack *s, int ac, char **av);
-void		solve(t_stack *s, t_stat *stat);
+void		solve(t_stack *s);
 void		pb_lowest(t_stack *s, int32_t limit);
 void		pa_highest(t_stack *s, int32_t limit);
 void		pb_all_under_nb(t_stack *s, int32_t pivot);
+void		pb_one_above_nb(t_stack *s, int32_t pivot);
 void		pa_all_above_nb(t_stack *s, int32_t pivot);
 void		pivot_on_top_a(t_stack *s, int32_t pivot);
 void		pivot_on_top_b(t_stack *s, int32_t pivot);
+
 
 /*
 ** ############################################################################
@@ -104,7 +106,6 @@ ssize_t			collision_in_filename(t_vector *name, int8_t suffixe);
 void			write_final_result(ssize_t fd);
 void			save_final_result_in_file(t_stack *s);
 
-
 /*
 ** ############################################################################
 ** ################################# TOOL #####################################
@@ -137,6 +138,8 @@ void			rra(t_stack *s);
 void			rrb(t_stack *s);
 void			rr(t_stack *s);
 void			rrr(t_stack *s);
+size_t			how_many_sorted(t_stack *s);
+int8_t			is_sorted(int32_t nb_prior, int32_t nb_ahead);
 
 /*
 ** ############################################################################

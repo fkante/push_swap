@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:04:17 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/17 13:34:58 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/22 13:04:10 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int8_t	test_gen(uint32_t test_nb, int32_t min, int32_t max)
 		while (i < test_nb)
 		{
 			nb_rand = ft_itoa(nb_tab[i]);
-			ft_putendl_fd(nb_rand, fd);
+			ft_putstr_fd(nb_rand, fd);
+			ft_putstr_fd(" ", fd);
 			i++;
 		}
 		ret = SUCCESS;
