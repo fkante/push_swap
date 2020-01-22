@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/22 18:20:32 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/22 19:19:07 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,13 @@ void		push_swp(t_stack *s, int ac, char **av)
 	if (solve(s) == FAILURE)
 		return ; //need protection, clean and quit
 	if (s->verbose == TRUE)
-		print_stack(s, NO_OPE, 0);
+	print_stack(s, NO_OPE, 0);
+	// size_t i = 0;
+	// while (i < s->size_a)
+	// {
+	// 	ft_printf("%d\n", s->a[i]);
+	// 	i++;
+	// }
 	save_final_result_in_file(s);
 	clean_struct(&s);
 	ft_memdel((void**)&stat);
