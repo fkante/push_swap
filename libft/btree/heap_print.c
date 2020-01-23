@@ -6,12 +6,19 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 11:17:18 by amartino          #+#    #+#             */
-/*   Updated: 2019/12/01 14:17:18 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:33:05 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "btree.h"
 #include <stdio.h>
+
+/*
+**	Recursively print the tree.
+
+**	Index will usually start at 1, since index 0 is reserved for the HEAP SIZE.
+**	deep variable start at 0. 
+*/
 
 void	print_heap_tree(t_heap *heap, size_t index, size_t deep)
 {

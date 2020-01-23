@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:43 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/22 19:27:38 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/23 20:46:55 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ t_stack		*create_stack(char **tab, size_t len)
 		return (ft_print_err_null("memory allocation failed", STD_ERR));
 	s->a = ft_memalloc(sizeof(int) * (len - start));
 	s->b = ft_memalloc(sizeof(int) * (len - start));
+	fill_in_static_variable(s, tab, (len - (size_t)start));
 	s = fill_stack(s, start, tab, len);
 	if (s == NULL)
 		return (ft_print_err_null("memory allocation failed", STD_ERR));
-	fill_in_static_variable(s, tab, (len - (size_t)start));
 	s->sorted_s = ft_sort(s->a, s->size_a);
 	if (s->sorted_s == NULL)
 		clean_struct(&s);

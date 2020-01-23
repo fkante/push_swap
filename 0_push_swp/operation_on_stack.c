@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/22 13:30:03 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/23 21:10:29 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	pa_above_pivot(t_stack *s, int32_t pivot, size_t limit)
 	while (i > 0)
 	{
 		last = s->size_b - 1;
-		s->b[last] > pivot ? pa(s) : rb(s);
+		s->b[last] >= pivot ? pa(s) : rb(s);
 		i--;
 	}
 }
