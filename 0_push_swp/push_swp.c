@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/24 18:28:01 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/24 18:48:35 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int8_t		organize_stack_b_in_unsorted_sublist(t_stack *s)
 	pivot = s->b[pivot_index];
 	pa_above_pivot(s, pivot, s->size_b);
 	if (s->size_b > SUBLIST_MIN_SIZE)
+	{
 		ret = organize_stack_b_in_unsorted_sublist(s);
+	}
 	return (ret);
 }
 
@@ -56,14 +58,19 @@ int8_t		let_the_magic_of_recursion_happen(t_stack *s, size_t exponent, size_t ex
 		ret = let_the_magic_of_recursion_happen(s, 0, (exponent - 1));
 	}
 	else
+	{
 		sort_sublist_on_b(s);
+	}
 	if (exponent < exponent_max && ret == SUCCESS)
+	{
 		ret = let_the_magic_of_recursion_happen(s, (exponent + 1), exponent_max);
+	}
 	return (SUCCESS);
 }
 
 int8_t		pb_second_half(t_stack *s);
 void		sort_remainder(t_stack *s);
+
 
 int8_t		solve(t_stack *s)
 {
