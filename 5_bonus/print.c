@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:23:57 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/23 21:27:34 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/24 12:52:23 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	pause_and_show(t_stack *s)
 	ft_strdel(&line);
 }
 
-void	print_command(size_t count, int8_t ope, uint8_t	color)
+void	print_command(size_t count, int8_t ope, uint8_t	color, size_t size_a, size_t size_b)
 {
-	ft_printf("\tCount = %u\n\n\t", count);
+	ft_printf("\tCount = %u\n\tSize = %zu\tSize_a = %zu \tSize_b = %zu\n\n\t", count, (size_a + size_b), size_a, size_b);
 	if (color == TRUE && (ope >= 0 && ope <= 2))
 		ft_printf("{c_b_green}Swap\t\tA: sa\tB: sb\tBoth: ss{c_end}\n", count);
 	else
@@ -62,7 +62,7 @@ void	print_no_color(t_stack *s)
 		if (a > 0)
 		{
 			a--;
-			ft_printf("\t|\t%d\t%d\t\t| |\t", a ,s->a[a]);
+			ft_printf("\t|\t\t%d\t\t| |\t", s->a[a]);
 		}
 		else
 			ft_printf("\t|\t\t\t\t| |\t");
@@ -194,5 +194,5 @@ _____________________________\n\t|\t\tSTACK A\t\t| |\t\tSTACK B\t\t|\n\
 	s->color == TRUE ? print_with_color(s, ope) : print_no_color(s);
 	vct_print(foot);
 	vct_del(&foot);
-	print_command(count, ope, s->color);
+	print_command(count, ope, s->color, s->size_a, s->size_b);
 }

@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/23 21:25:57 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/24 18:27:55 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void		push_swp(t_stack *s, int ac, char **av)
 
 	stat = NULL;
 	s = init_struct(av, ac);
+	s->verbose = TRUE;
+	s->color = TRUE;
 	if (s == NULL)
 		return ;
 	stat = get_stat(s);
@@ -32,15 +34,7 @@ void		push_swp(t_stack *s, int ac, char **av)
 		return ; //need protection, clean and quit
 	if (s->verbose == TRUE)
 		print_stack(s, NO_OPE, 0);
-	// size_t pivot_index;
-	// pivot_index = ft_get_n_highest(s->a, 1, 2, 8);
-	// ft_printf("pivot index %zu\tnb is %d\n", pivot_index, s->a[pivot_index]);
-	// size_t i = 0;
-	// while (i < s->size_a)
-	// {
-	// 	ft_printf("i = %zu \ts->a[i] = %d\n", i, s->a[i]);
-	// 	i++;
-	// }
+	ft_printf("gonna save result\n");
 	save_final_result_in_file(s);
 	clean_struct(&s);
 	ft_memdel((void**)&stat);
