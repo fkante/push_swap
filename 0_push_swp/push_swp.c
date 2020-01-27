@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/24 18:48:35 by amartino         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:48:15 by amartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int8_t		organize_stack_b_in_unsorted_sublist(t_stack *s)
 	int8_t		ret;
 
 	ret = SUCCESS;
-	pivot_index = ft_get_n_highest(s->b, (s->size_b / 2), 0, s->size_b);
-	if (pivot_index == FAILURE)
-		return (ft_print_err_failure("malloc, finding pivot index", STD_ERR));
-	pivot = s->b[pivot_index];
-	pa_above_pivot(s, pivot, s->size_b);
 	if (s->size_b > SUBLIST_MIN_SIZE)
 	{
+		pivot_index = ft_get_n_highest(s->b, (s->size_b / 2), 0, s->size_b);
+		if (pivot_index == FAILURE)
+			return (ft_print_err_failure("malloc, finding pivot index", STD_ERR));
+		pivot = s->b[pivot_index];
+		pa_above_pivot(s, pivot, s->size_b);
 		ret = organize_stack_b_in_unsorted_sublist(s);
 	}
 	return (ret);
@@ -58,19 +58,17 @@ int8_t		let_the_magic_of_recursion_happen(t_stack *s, size_t exponent, size_t ex
 		ret = let_the_magic_of_recursion_happen(s, 0, (exponent - 1));
 	}
 	else
-	{
 		sort_sublist_on_b(s);
-	}
 	if (exponent < exponent_max && ret == SUCCESS)
-	{
 		ret = let_the_magic_of_recursion_happen(s, (exponent + 1), exponent_max);
-	}
 	return (SUCCESS);
 }
 
 int8_t		pb_second_half(t_stack *s);
 void		sort_remainder(t_stack *s);
 
+// ft_printf("before magic function first\n");
+// ft_printf("after pb second half\n");
 
 int8_t		solve(t_stack *s)
 {
@@ -81,17 +79,15 @@ int8_t		solve(t_stack *s)
 	{
 		split_stack_in_2_big_part(s);
 		ret = organize_stack_b_in_unsorted_sublist(s);
-		if (ret == FAILURE)
-			return (FAILURE);
 		sort_sublist_on_b(s);
-		ret = let_the_magic_of_recursion_happen(s, 0, (s->exponent_max - 2));
+		if (s->exponent_max > 1 && ret == SUCCESS)
+			ret = let_the_magic_of_recursion_happen(s, 0, (s->exponent_max - 2));
 		if (ret == SUCCESS)
 			ret = pb_second_half(s);
-		ret = organize_stack_b_in_unsorted_sublist(s);
-		if (ret == FAILURE)
-			return (FAILURE);
-		sort_sublist_on_b(s);
 		if (ret == SUCCESS)
+			ret = organize_stack_b_in_unsorted_sublist(s);
+		sort_sublist_on_b(s);
+		if (s->exponent_max > 1 && ret == SUCCESS)
 			ret = let_the_magic_of_recursion_happen(s, 0, (s->exponent_max - 2));
 	}
 	if (ret == SUCCESS)
@@ -122,6 +118,7 @@ void		sort_remainder(t_stack *s)
 	size_t		remainder_size;
 	size_t		largest_sublist;
 
+	ft_printf("s->exponent_max %zu\n", s->exponent_max);
 	if (s->exponent_max > 0)
 	{
 		largest_sublist = SUBLIST_MIN_SIZE * ft_pow_positive(2, s->exponent_max);
