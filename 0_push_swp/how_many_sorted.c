@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:04:58 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/22 16:46:34 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/28 15:45:35 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t		how_many_sorted(t_stack *s)
 	size_t	count;
 
 	i = s->size_a - 1;
-	count = 0;
+	count = 1;
 	while (s->a[i] < s->a[i - 1])
 	{
 		i++;

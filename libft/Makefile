@@ -6,7 +6,7 @@
 #    By: fkante <fkante@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2020/01/20 16:56:41 by amartino         ###   ########.fr        #
+#    Updated: 2020/01/28 17:01:48 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,6 +121,7 @@ SRCS += ft_median.c
 SRCS += ft_range.c
 SRCS += ft_get_median.c
 SRCS += ft_get_n_highest.c
+SRCS += ft_get_n_smallest.c
 SRCS += ft_sort.c
 
 #----------------------------------- VECTOR -----------------------------------#

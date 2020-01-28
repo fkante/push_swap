@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_n_highest.c                                 :+:      :+:    :+:   */
+/*   ft_get_n_smallest.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/30 15:49:09 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/28 17:00:50 by fkante           ###   ########.fr       */
+/*   Created: 2020/01/28 17:01:16 by fkante            #+#    #+#             */
+/*   Updated: 2020/01/28 17:26:12 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "btree.h"
 
-ssize_t		ft_get_n_highest(int32_t *tab, size_t nth, size_t start,
+ssize_t		ft_get_n_smallest(int32_t *tab, size_t nth, size_t start,
 								size_t limit)
 {
 	t_heap	*heap;
 	size_t	i;
 
 	i = start;
-	heap = heap_tree((tab + start), limit, MAX_HEAP);
+	heap = heap_tree((tab + start), limit, MIN_HEAP);
 	if (heap == NULL || nth == 0)
 		return (FAILURE);
 	while (nth > 1)

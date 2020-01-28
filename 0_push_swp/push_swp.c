@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/22 17:09:03 by fkante           ###   ########.fr       */
+/*   Updated: 2020/01/28 17:39:43 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,16 @@ void	pb_subdiv_above_pivot(t_stack *s, int32_t pivot, size_t limit)
 
 void	pb_under_pivot_unsorted(t_stack *s, int32_t pivot)
 {
-	size_t	subdiv;
+	//size_t	subdiv;
 
-	ft_printf("unsorted nb = %d\n", pivot);
 	pb_all_under_nb(s, pivot);
 	pivot_on_top_a(s, pivot);
-	subdiv = s->size_b + 1;
-	while (s->size_b > 0)
-		pa_highest(s, s->size_b);
-	while (subdiv-- > 0)
-		ra(s);
-	pb_subdiv_above_pivot(s, pivot, 10);
+//	subdiv = s->size_b + 1;
+//	while (s->size_b > 0)
+//		pa_highest(s, s->size_b);
+//	while (subdiv-- > 0)
+//		ra(s);
+//	pb_subdiv_above_pivot(s, pivot, 10);
 }
 
 void	insertion_sort_style(t_stack *s)
@@ -41,30 +40,35 @@ void	insertion_sort_style(t_stack *s)
 	t_stat	*stat;
 	char	*line = NULL;
 	size_t	i;
-	size_t	unsorted_nb;
+	size_t	pivot;
 
-	i = s->size_a - 1;
-	unsorted_nb = 0;
-	stat = get_stat(s);
-	while (get_next_line(0, &line) > 0)
+	(void)line;
+	pivot = 0;
+//	while (get_next_line(0, &line) > 0)
+	while (s->size_a > 3)
 	{
-		print_stack(s, NO_OPE, 0);
-		if (is_sorted(s->a[i], s->a[i - 1]) == SUCCESS)
-			i--;
-		else
-		{
-			unsorted_nb = i - 1;
-			pb_under_pivot_unsorted(s, s->a[unsorted_nb]);
-			i = s->size_a - 1;
-		}
-		ft_strdel(&line);
+		i = s->size_a - 1;
+		stat = get_stat(s);
+//		print_stack(s, NO_OPE, 0);
+//		ft_printf("size a = %d\n", s->size_a);
+		pivot = ft_get_n_smallest(s->a, 25, 0, 50);
+		ft_printf("pivot = %d\n", pivot);
+		if (s->size_a < 3 && is_sorted(s->a[i], s->a[i - 1]) == SUCCESS)
+			break ;
+//		pb_under_pivot_unsorted(s, pivot);
+//		ft_strdel(&line);
+		ft_memdel((void**)&stat);
 	}
-	ft_memdel((void**)&stat);
+	while (s->size_b > 0)
+	{
+//		print_stack(s, NO_OPE, 0);
+		pa_highest(s, s->size_b);
+	}
 }
 
 void	solve(t_stack *s)
 {
-	print_stack(s, NO_OPE, 0);
+//	print_stack(s, NO_OPE, 0);
 	insertion_sort_style(s);
 }
 
