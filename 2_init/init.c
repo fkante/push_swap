@@ -80,7 +80,7 @@ t_stack		*init_struct(char **av, int ac)
 		tmp = ft_strsplit(av[0], ' ');
 		if (tmp == NULL)
 			return (ft_print_err_null("memory allocation failed", STD_ERR));
-		while (tmp[i] != '\0')
+		while (tmp[i] != NULL)
 			i++;
 		s = create_stack(tmp, i);
 		clean_tmp(&tmp, i);

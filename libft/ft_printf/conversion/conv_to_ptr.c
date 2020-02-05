@@ -19,7 +19,7 @@ int8_t		apply_prefix(t_vector *vector, t_flag *flag, t_vector *nb_itoa)
 	ret = FAILURE;
 	if (vector != NULL && nb_itoa != NULL)
 	{
-		if (flag->width >= vct_len(nb_itoa))
+		if ((ssize_t)flag->width >= vct_len(nb_itoa))
 		{
 			ret = vct_pushstr(nb_itoa, "0x");
 			if (ret == SUCCESS)

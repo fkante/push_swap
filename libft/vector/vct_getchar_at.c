@@ -19,7 +19,7 @@ char	vct_getchar_at(t_vector *vector, size_t index)
 	c = 0;
 	if (vector != NULL && vector->str != NULL)
 	{
-		if (index >= vct_len(vector))
+		if ((ssize_t)index >= vct_len(vector))
 			index = vct_len(vector) > 0 ? vct_len(vector) - 1 : 0;
 		c = vector->str[index];
 	}

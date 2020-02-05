@@ -65,12 +65,12 @@ int8_t		apply_precision(t_vector *vector, t_flag *flag)
 	ret = SUCCESS;
 	if ((flag->option & CONV_S) && (flag->option & FLAG_POINT))
 	{
-		if (flag->precision < vct_len(vector))
+		if ((ssize_t)flag->precision < vct_len(vector))
 			vct_pop(vector, (vct_len(vector) - (size_t)flag->precision));
 	}
 	else if ((flag->option & CONV_C) == FALSE)
 	{
-		if (flag->precision >= vct_len(vector))
+		if ((ssize_t)flag->precision >= vct_len(vector))
 		{
 			len = flag->precision - vct_len(vector);
 			if (flag->option & FLAG_POINT)
@@ -88,7 +88,7 @@ int8_t		apply_width(t_vector *vector, t_flag *flag)
 	int8_t		ret;
 
 	ret = SUCCESS;
-	len = flag->width < vct_len(vector) ? 0 : flag->width - vct_len(vector);
+	len = (ssize_t)flag->width < vct_len(vector) ? 0 : flag->width - vct_len(vector);
 	if (len > 0)
 	{
 		if (flag->option & FLAG_MINUS)

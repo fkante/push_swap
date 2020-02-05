@@ -71,7 +71,7 @@ enum	e_apply
 */
 t_vector		*vct_new(size_t size);
 t_vector		*vct_newstr(char *str);
-size_t			vct_len(t_vector *vector);
+ssize_t			vct_len(t_vector *vector);
 int8_t			vct_increase_scale(t_vector *vector, size_t scale);
 void			vct_bzero(t_vector *vector);
 void			vct_del(t_vector **vector);

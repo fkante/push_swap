@@ -16,7 +16,7 @@
 ** Return the len of the vector
 */
 
-size_t	vct_len(t_vector *vector)
+ssize_t	vct_len(t_vector *vector)
 {
 	if (vector == NULL)
 		return (0);

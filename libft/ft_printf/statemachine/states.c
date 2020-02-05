@@ -49,8 +49,8 @@ int8_t		flags(t_state_machine *ptf, char *input, va_list *arg_pf)
 			if (i < NB_OF_MODIFIER)
 				ptf->option &= ~ALL_MOD;
 			ptf->option |= (1 << i);
-			return (flags[i] == POINT ? is_precision(ptf, input + 1, arg_pf)
-																		: len);
+			return (ft_strcmp(flags[i], POINT) == 0 ? is_precision(ptf, input + 1, arg_pf)
+										: len);
 		}
 		i++;
 	}

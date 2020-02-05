@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int8_t		conv_to_r(t_vector *vector, size_t index)
+int8_t		conv_to_r(t_vector *vector, ssize_t index)
 {
 	char		*str;
 	int8_t		ret;
