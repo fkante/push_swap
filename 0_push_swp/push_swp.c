@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/06 17:07:51 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/06 17:32:31 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,13 @@ void	insertion_sort_style(t_stack *s)
 	(void)line;
 	pivot = 0;
 //	while (get_next_line(0, &line) > 0)
-	while (s->size_a > 3)
+	while (s->size_a > 1)
 	{
 		i = s->size_a - 1;
 		stat = get_stat(s);
 //		print_stack(s, NO_OPE, 0);
 //		ft_printf("size a = %d\n", s->size_a);
-		pivot = ft_get_n_smallest(s->a, s->size_a/3, 0, s->size_a);
-		ft_printf("pivot = %d\n", pivot);
-		if (s->size_a < 3)
-		{
-			if (is_sorted(s->a[i], s->a[i - 1]) == SUCCESS)
-				break ;
-			else
-				ra(s);
-		}
+		pivot = ft_get_n_smallest(s->a, s->size_a/2, 0, s->size_a);
 		pb_under_pivot_unsorted(s, pivot);
 //		ft_strdel(&line);
 		ft_memdel((void**)&stat);
@@ -79,7 +71,6 @@ void	push_swp(t_stack *s, int ac, char **av)
 	solve(s);
 	if (s->verbose == TRUE)
 		print_stack(s, NO_OPE, 0);
-	ft_printf("done\n");
 	save_final_result_in_file(s);
 	clean_struct(&s);
 }

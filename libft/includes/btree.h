@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 10:49:04 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/16 15:40:38 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/06 17:17:48 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # define BTREE_H
 
 #include "libft.h"
-#include <stdio.h>
 
 # define HEAP_SIZE		0
 # define NB_OF_SPACE	10
