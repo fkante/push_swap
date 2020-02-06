@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 14:36:48 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/06 10:04:14 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/06 10:13:10 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	shiftdown_stack_a(t_stack *s)
 	size_t	i;
 
 	i = 0;
-	while (i < s->size_a)
+	while (i < s->size_a - 1)
 	{
 		swap_nb(&s->a[i], &s->a[i + 1]);
 		i++;
@@ -62,7 +62,7 @@ void	shiftdown_stack_b(t_stack *s)
 	size_t	i;
 
 	i = 0;
-	while (i < s->size_b)
+	while (i < s->size_b - 1)
 	{
 		swap_nb(&s->b[i], &s->b[i + 1]);
 		i++;
