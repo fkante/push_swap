@@ -29,22 +29,14 @@ void	pb_under_pivot_unsorted(t_stack *s, int32_t pivot)
 void	insertion_sort_style(t_stack *s)
 {
 	t_stat	*stat;
-	char	*line = NULL;
-	size_t	i;
 	size_t	pivot;
 
-	(void)line;
 	pivot = 0;
-//	while (get_next_line(0, &line) > 0)
 	while (s->size_a > 1)
 	{
-		i = s->size_a - 1;
 		stat = get_stat(s);
-//		print_stack(s, NO_OPE, 0);
-//		ft_printf("size a = %d\n", s->size_a);
 		pivot = ft_get_n_smallest(s->a, s->size_a/2, 0, s->size_a);
 		pb_under_pivot_unsorted(s, pivot);
-//		ft_strdel(&line);
 		ft_memdel((void**)&stat);
 	}
 	while (s->size_b > 0)
