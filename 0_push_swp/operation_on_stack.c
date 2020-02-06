@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/22 16:44:36 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/06 15:10:27 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,44 +38,50 @@ void	pa_highest(t_stack *s, int32_t limit)
 	pa(s);
 }
 
-void	pb_all_under_nb(t_stack *s, int32_t pivot)
+void	pb_all_under_nb(t_stack *s, int32_t pivot_index)
 {
 	size_t	i;
 	size_t	last;
+	int32_t pivot_value;
 
-	i = s->size_a;
+	pivot_value = s->a[pivot_index];
+	i = s->size_a - 1;
 	while (i > 0)
 	{
 		last = s->size_a - 1;
-		s->a[last] < pivot ? pb(s) : ra(s);
+		s->a[last] < pivot_value ? pb(s) : ra(s);
 		i--;
 	}
 }
 
-void	pa_all_above_nb(t_stack *s, int32_t pivot)
+void	pa_all_above_nb(t_stack *s, int32_t pivot_index)
 {
 	size_t	i;
 	size_t	last;
+	int32_t pivot_value;
 
-	i = s->size_b;
+	pivot_value = s->b[pivot_index];
+	i = s->size_b - 1;
 	while (i > 0)
 	{
 		last = s->size_b - 1;
-		s->b[last] > pivot ? pa(s) : rb(s);
+		s->b[last] > pivot_value ? pa(s) : rb(s);
 		i--;
 	}
 }
 
-void	pb_one_above_nb(t_stack *s, int32_t pivot)
+void	pb_one_above_nb(t_stack *s, int32_t pivot_index)
 {
 	size_t	i;
 	size_t	last;
+	int32_t pivot_value;
 
-	i = s->size_a;
+	pivot_value = s->a[pivot_index];
+	i = s->size_a - 1;
 	while (i > 0)
 	{
 		last = s->size_a - 1;
-		if (s->a[last] > pivot)
+		if (s->a[last] > pivot_value)
 		{
 			pb(s);
 			break ;
