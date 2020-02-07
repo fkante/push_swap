@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/06 16:59:20 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/07 11:02:21 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	pb_all_under_nb(t_stack *s, int32_t pivot_index)
 	size_t	i;
 	size_t	last;
 	int32_t pivot_value;
-	if (pivot_index >= 0)
+
+	if (pivot_index >= 0 && pivot_index < (int32_t)s->size_a)
 	{
 		pivot_value = s->a[pivot_index];
 		i = s->size_a > 0 ? s->size_a - 1 : 0;
