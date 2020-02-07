@@ -6,51 +6,40 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/07 11:05:36 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/07 12:17:07 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pb_subdiv_above_pivot(t_stack *s, int32_t pivot, size_t limit)
-{
-	while (limit > 0)
-	{
-		pb_one_above_nb(s, pivot);
-		limit--;
-	}
-}
-
-void	pb_under_pivot_unsorted(t_stack *s, int32_t pivot)
-{
-	pb_all_under_nb(s, pivot);
-}
-
 void	insertion_sort_style(t_stack *s)
 {
 	t_stat	*stat;
 	size_t	pivot;
-//	size_t	half_size_b;
 //	char	*line = NULL;
 
-	pivot = 0;
 //	while (get_next_line(1, &line) > 0)
 	while (s->size_a > 1)
 	{
 		stat = get_stat(s);
-//		pivot = ft_get_n_smallest(s->a, s->size_a/2, 0, s->size_a);
+//		pivot = ft_get_n_smallest(s->a, 2, 0, s->size_a);
 		pivot = get_index(s->a, stat->median_a);
-		pb_under_pivot_unsorted(s, pivot);
+		pb_all_under_nb(s, pivot);
 		ft_memdel((void**)&stat);
 	}
-//	half_size_b = s->size_b / 2;
-//	while (s->size_b > half_size_b)
-//		pa_highest(s, s->size_b);
-}
-
-void	solve(t_stack *s)
-{
-	insertion_sort_style(s);
+	while (s->size_b > 1)
+	{
+		stat = get_stat(s);
+		pivot = get_index(s->b, stat->median_b);
+		pa_all_above_nb(s, pivot);
+		ft_memdel((void**)&stat);
+	}
+	while (s->size_a > 0)
+	{
+		stat = get_stat(s);
+		pb_lowest(s, stat->min_a);
+		ft_memdel((void**)&stat);
+	}
 }
 
 void	push_swp(t_stack *s, int ac, char **av)
@@ -65,7 +54,7 @@ void	push_swp(t_stack *s, int ac, char **av)
 		clean_struct(&s);
 		return (ft_print_err_void("when creating result file", STD_ERR));
 	}
-	solve(s);
+	insertion_sort_style(s);
 	if (s->verbose == TRUE)
 		print_stack(s, NO_OPE, 0);
 	ft_printf("done\n");
