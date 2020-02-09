@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:04:58 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/28 15:45:35 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/09 18:29:07 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,21 @@ size_t		how_many_sorted(t_stack *s)
 	return (count);
 }
 
-int8_t		is_sorted(int32_t nb_prior, int32_t nb_ahead)
+int8_t		is_sorted(t_stack *s)
 {
-	ft_printf("nb_prior = %d\t\tnb_ahead = %d\n", nb_prior, nb_ahead);
-	return (nb_prior < nb_ahead ? SUCCESS : FAILURE);
+	size_t i;
+	int8_t ret;
+
+	i = 1;
+	ret = FAILURE;
+	while (s->a[i - 1] < s->a[i])
+	{
+		if (i == s->size_a - 1)
+		{
+			ret = SUCCESS;
+			break ;
+		}
+		i++;
+	}
+	return (ret);
 }
