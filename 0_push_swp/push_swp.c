@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/09 15:01:44 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/09 16:09:04 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ void	insertion_sort_style(t_stack *s)
 {
 	t_stat	*stat;
 	size_t	pivot;
-//	char	*line = NULL;
 
-//	while (get_next_line(1, &line) > 0)
 	while (s->size_a > 1)
 	{
 		stat = get_stat(s);
@@ -47,10 +45,16 @@ void	push_swp(t_stack *s, int ac, char **av)
 		clean_struct(&s);
 		return (ft_print_err_void("when creating result file", STD_ERR));
 	}
-	insertion_sort_style(s);
+	if (s->size_a > 1)
+	{
+//		s->size_a <= 3 ? sort_less_three(s) : insertion_sort_style(s);
+		if (s->size_a <= 3)
+			sort_less_three(s);	
+		else
+		insertion_sort_style(s);
+	}
 	if (s->verbose == TRUE)
 		print_stack(s, NO_OPE, 0);
-	ft_printf("done\n");
 	save_final_result_in_file(s);
 	clean_struct(&s);
 }

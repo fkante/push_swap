@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2020/02/07 11:01:10 by fkante           ###   ########.fr        #
+#    Updated: 2020/02/09 15:57:29 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -56,6 +56,7 @@ MAIN_CHECK = main_check
 
 # push_swap
 SRCS += push_swp
+SRCS += sort_less_three 
 SRCS += how_many_sorted
 SRCS += operation_on_stack
 SRCS += pivot_on_top
