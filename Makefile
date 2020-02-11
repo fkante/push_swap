@@ -144,6 +144,7 @@ t: all $(VAL)
 
 clean:
 	rm -f $(OBJS)
+	rm -f $(MAIN_OBJ_PS) $(MAIN_OBJ_C)
 	rm -rf ./$(BUILD_DIR)
 	echo "$(YELLOW)OBJS$(END) \t\t were \t\t $(GREEN)clean$(END)\n"
 	$(MAKE) clean -C $(LIB_DIR)

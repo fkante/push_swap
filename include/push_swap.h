@@ -68,6 +68,7 @@ void		pa_all_above_nb(t_stack *s, int32_t pivot);
 void		pivot_on_top_a(t_stack *s, int32_t pivot);
 void		pivot_on_top_b(t_stack *s, int32_t pivot);
 void		sort_less_three(t_stack *s);
+void		recursive_sort_a_to_b(t_stack *s);
 
 
 /*

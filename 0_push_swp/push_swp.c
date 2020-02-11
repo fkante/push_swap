@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	second_recursive_bis(t_stack *s)
+void	second_step_recursive(t_stack *s, size_t counter)
 {
 	t_stat	*stat;
 	size_t	pivot;
@@ -21,49 +21,27 @@ void	second_recursive_bis(t_stack *s)
 	pivot = get_index(s->b, stat->median_b);
 	pa_all_above_nb(s, pivot);
 	ft_memdel((void**)&stat);
-
+	if (counter > 1)
+		second_step_recursive(s, s->size_b + s->size_b % 2);
+	if (counter > 0)
+		recursive_sort_a_to_b(s);
 }
 
-void	second_recursive(t_stack *s, size_t counter)
-{
-	t_stat	*stat;
-	char	*line = NULL;
-
-	while (get_next_line(0, &line) > 0)
-
-		//while (counter > 0)
-	{
-		print_stack(s, NO_OPE, 0);
-		stat = get_stat(s);
-		pa_highest(s, stat->max_b);
-		ft_memdel((void**)&stat);
-		counter--;
-	}
-}
-
-void	recursive_sort_style(t_stack *s)
+void	recursive_sort_a_to_b(t_stack *s)
 {
 	t_stat	*stat;
 	size_t	pivot;
-	size_t	counter;
-
-	counter = s->size_a / 2;
-	if (s->size_a > 1)
-	{
-		stat = get_stat(s);
-		pivot = get_index(s->a, stat->median_a);
-		pb_all_under_nb(s, pivot);
-		ft_memdel((void**)&stat);
-		recursive_sort_style(s);
-	}
-	if (s->size_b < 250)
-		second_recursive(s, counter);
-	else
-		second_recursive_bis(s);
-	print_stack(s, NO_OPE, 0);
+	
+	stat = get_stat(s);
+	pivot = get_index(s->a, stat->median_a);
+	pb_all_under_nb(s, pivot);
+	ft_memdel((void**)&stat);
+	if (s->size_a > 2)
+		recursive_sort_a_to_b(s);
+	second_step_recursive(s, s->size_a / 2 + s->size_a % 2);
 }
-
-void	insertion_sort_style(t_stack *s)
+/*
+void	select_sort_style(t_stack *s)
 {
 	t_stat	*stat;
 	size_t	pivot;
@@ -83,7 +61,7 @@ void	insertion_sort_style(t_stack *s)
 		ft_memdel((void**)&stat);
 	}
 }
-
+*/
 void	push_swp(t_stack *s, int ac, char **av)
 {
 	s = init_struct(av, ac);
@@ -97,10 +75,10 @@ void	push_swp(t_stack *s, int ac, char **av)
 		return (ft_print_err_void("when creating result file", STD_ERR));
 	}
 	if (s->size_a > 1 && is_sorted(s) == FAILURE)
-		s->size_a <= 3 ? sort_less_three(s) : recursive_sort_style(s);
-	//		s->size_a <= 3 ? sort_less_three(s) : insertion_sort_style(s);
-	//	if (s->verbose == TRUE)
-	//	print_stack(s, NO_OPE, 0);
+		s->size_a <= 3 ? sort_less_three(s) : recursive_sort_a_to_b(s);
+	//	s->size_a <= 3 ? sort_less_three(s) : select_sort_style(s);
+	if (s->verbose == TRUE)
+		print_stack(s, NO_OPE, 0);
 	save_final_result_in_file(s);
 	clean_struct(&s);
 }
