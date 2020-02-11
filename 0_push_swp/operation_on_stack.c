@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/11 15:28:13 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/11 18:51:49 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	pa_highest(t_stack *s, int32_t highest)
 	max_index = get_index(s->b, highest);
 	while (max_index < s->size_b - 1)
 	{
+		print_stack(s, NO_OPE, 0);
 		if (max_index == s->size_b - 1)
 			break ;
 		if (max_index > center)
