@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 20:01:39 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/15 20:04:58 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/11 17:51:05 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@ void		reverse_rotate_stack_a(t_stack *s)
 	int32_t	first_elem;
 	size_t	i;
 
-	i = 0;
-	first_elem = s->a[0];
-	if (i < s->size_a)
-		shiftdown_stack_a(s);
-	s->a[s->size_a - 1] = first_elem;
-	s->color_nb = s->a[s->size_a - 1];
+	if (s->size_a > 1)
+	{
+		i = 0;
+		first_elem = s->a[0];
+		if (i < s->size_a)
+			shiftdown_stack_a(s);
+		s->a[s->size_a - 1] = first_elem;
+		s->color_nb = s->a[s->size_a - 1];
+	}
 }
 
 void		reverse_rotate_stack_b(t_stack *s)
@@ -30,6 +33,8 @@ void		reverse_rotate_stack_b(t_stack *s)
 	int32_t	first_elem;
 	size_t	i;
 
+	if (s->size_b == 0 || s->size_b == 1)
+		return ;
 	i = 0;
 	first_elem = s->b[0];
 	if (i < s->size_b)
