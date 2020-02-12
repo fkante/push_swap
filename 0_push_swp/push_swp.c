@@ -6,39 +6,55 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/11 18:39:34 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/12 15:59:37 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+/*
+ ** //MASTER_BA(sent total)
+ ** 		sent = ba(size);
+ ** 		master_ab(sent);
+ ** 		master_ba(size - sent);
+ **
+ ** //MASTER_AB(sent total)
+ ** 		sent = ab(size);
+ ** 		master_ab(size - sent);
+ ** 		master_ba(sent);
+ */
 
-void	second_step_recursive(t_stack *s, size_t counter)
+void	second_step_recursive(t_stack *s, size_t total_size)
 {
 	t_stat	*stat;
 	size_t	pivot;
+	size_t	nb_sent_to_a;
 
 	stat = get_stat(s);
 	pivot = get_index(s->b, stat->median_b);
-	pa_all_above_nb(s, pivot);
+	nb_sent_to_a = pa_all_above_nb(s, pivot);
 	ft_memdel((void**)&stat);
-	if (counter > 1)
-		second_step_recursive(s, s->size_b + s->size_b % 2);
-	if (counter > 0)
-		recursive_sort_a_to_b(s);
+	if (total_size <= 1)
+		return ;
+	recursive_sort_a_to_b(s, nb_sent_to_a);
+	second_step_recursive(s, total_size - nb_sent_to_a);
 }
 
-void	recursive_sort_a_to_b(t_stack *s)
+void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 {
 	t_stat	*stat;
 	size_t	pivot;
-	
-	stat = get_stat(s);
-	pivot = get_index(s->a, stat->median_a);
-	pb_all_under_nb(s, pivot);
-	ft_memdel((void**)&stat);
-	if (s->size_a > 2)
-		recursive_sort_a_to_b(s);
-	second_step_recursive(s, s->size_a / 2 + s->size_a % 2);
+	size_t	nb_sent_to_b;
+
+	nb_sent_to_b = 0;
+	if (s->size_a > 1 && is_sorted(s) == FAILURE)
+	{
+		stat = get_stat(s);
+		pivot = get_index(s->a, stat->median_a);
+		nb_sent_to_b = pb_all_under_nb(s, pivot);
+		ft_memdel((void**)&stat);
+		recursive_sort_a_to_b(s, total_size - nb_sent_to_b);
+		second_step_recursive(s, nb_sent_to_b);
+	}
 }
 /*
 void	select_sort_style(t_stack *s)
@@ -64,6 +80,8 @@ void	select_sort_style(t_stack *s)
 */
 void	push_swp(t_stack *s, int ac, char **av)
 {
+	size_t	size;
+
 	s = init_struct(av, ac);
 	if (s == NULL)
 		return ;
@@ -74,11 +92,13 @@ void	push_swp(t_stack *s, int ac, char **av)
 		clean_struct(&s);
 		return (ft_print_err_void("when creating result file", STD_ERR));
 	}
+	size = s->size_a;
 	if (s->size_a > 1 && is_sorted(s) == FAILURE)
-		s->size_a <= 3 ? sort_less_three(s) : recursive_sort_a_to_b(s);
-	//	s->size_a <= 3 ? sort_less_three(s) : select_sort_style(s);
+		s->size_a <= 3 ? sort_less_three(s) : recursive_sort_a_to_b(s, size);
+		//s->size_a <= 3 ? sort_less_three(s) : select_sort_style(s);
 	if (s->verbose == TRUE)
 		print_stack(s, NO_OPE, 0);
+	ft_printf("done\n");
 	save_final_result_in_file(s);
 	clean_struct(&s);
 }

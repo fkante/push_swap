@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/11 17:42:46 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/12 15:27:23 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ void		push_swp(t_stack *s, int ac, char **av);
 void		solve(t_stack *s);
 void		pb_lowest(t_stack *s, int32_t limit);
 void		pa_highest(t_stack *s, int32_t limit);
-void		pb_all_under_nb(t_stack *s, int32_t pivot);
+size_t		pb_all_under_nb(t_stack *s, int32_t pivot);
 void		pb_one_above_nb(t_stack *s, int32_t pivot);
-void		pa_all_above_nb(t_stack *s, int32_t pivot);
+size_t		pa_all_above_nb(t_stack *s, int32_t pivot);
 void		pivot_on_top_a(t_stack *s, int32_t pivot);
 void		pivot_on_top_b(t_stack *s, int32_t pivot);
 void		sort_less_three(t_stack *s);
-void		recursive_sort_a_to_b(t_stack *s);
+void		recursive_sort_a_to_b(t_stack *s, size_t total_size);
 
 
 /*
