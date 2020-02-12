@@ -29,12 +29,14 @@ void	second_step_recursive(t_stack *s, size_t total_size)
 	size_t	pivot;
 	size_t	nb_sent_to_a;
 	char	*line = NULL;
-
+	
+	nb_sent_to_a = 0;
 	while (get_next_line(0, &line) > 0)
 		print_stack(s, NO_OPE, 0);
 	stat = get_stat(s);
 	pivot = get_index(s->b, stat->median_b);
-	nb_sent_to_a = pa_all_above_nb(s, pivot);
+	//nb_sent_to_a = pa_all_above_nb(s, pivot);
+	pa_all_above_nb(s, pivot);
 	ft_printf("pivot = %d\n", stat->median_b);
 	ft_memdel((void**)&stat);
 	if (s->size_b <= 1)
@@ -59,7 +61,8 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 	{
 		stat = get_stat(s);
 		pivot = get_index(s->a, stat->median_a);
-		nb_sent_to_b = pb_all_under_nb(s, pivot);
+		//nb_sent_to_b = pb_all_under_nb(s, pivot);
+		pb_all_under_nb(s, pivot);
 		ft_memdel((void**)&stat);
 		recursive_sort_a_to_b(s, total_size - nb_sent_to_b);
 		second_step_recursive(s, nb_sent_to_b);

@@ -68,68 +68,42 @@ void	pa_highest(t_stack *s, int32_t highest)
 	pa(s);
 }
 
-size_t	pb_all_under_nb(t_stack *s, int32_t pivot_index)
+void	pb_all_under_nb(t_stack *s, int32_t pivot_index)
 {
 	size_t	i;
 	size_t	last;
-	size_t	count;
 	int32_t pivot_value;
-
-	count = s->size_a / 2 + s->size_a % 2;
+	
 	if (pivot_index >= 0 && pivot_index < (int32_t)s->size_a)
 	{
 		pivot_value = s->a[pivot_index];
 		i = s->size_a > 0 ? s->size_a - 1 : 0;
-		while (i > 0 && count > 0)
+		while (i > 0)
 		{
 			last = s->size_a - 1;
-			if (s->a[last] <= pivot_value)
-			{
-				pb(s);
-				ft_printf("pb\n");
-				count--;
-			}
-			else
-			{
-				ra(s);
-				ft_printf("ra\n");
-			}
+			s->a[last] <= pivot_value ? pb(s) : ra(s);
 			i--;
 		}
 	}
-	return (count);
 }
 
-size_t	pa_all_above_nb(t_stack *s, int32_t pivot_index)
+void	pa_all_above_nb(t_stack *s, int32_t pivot_index)
 {
 	size_t	i;
 	size_t	last;
-	size_t	count;
 	int32_t pivot_value;
 
-	count = s->size_b / 2 + s->size_a % 2;
 	if (pivot_index >= 0 && pivot_index < (int32_t)s->size_b)
 	{
 		pivot_value = s->b[pivot_index];
 		i = s->size_b - 1;
-		while (i > 0 && count > 0)
+		while (i > 0)
 		{
 			last = s->size_b - 1;
-			if (s->b[last] >= pivot_value)
-			{
-				pa(s);
-				ft_printf("pa\n");
-				count--;
-			}
-			else
-			{
-				rb(s);
-				ft_printf("rb\n");
-			}
+			s->b[last] >= pivot_value ? pa(s) : rb(s);
 			i--;
 		}
 	}
-	return (count);
 }
 
 void	pb_one_above_nb(t_stack *s, int32_t pivot_index)
