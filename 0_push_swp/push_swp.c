@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/12 15:59:37 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/12 17:15:00 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ void	second_step_recursive(t_stack *s, size_t total_size)
 	t_stat	*stat;
 	size_t	pivot;
 	size_t	nb_sent_to_a;
+	char	*line = NULL;
 
+	while (get_next_line(0, &line) > 0)
+		print_stack(s, NO_OPE, 0);
 	stat = get_stat(s);
 	pivot = get_index(s->b, stat->median_b);
 	nb_sent_to_a = pa_all_above_nb(s, pivot);
+	ft_printf("pivot = %d\n", stat->median_b);
 	ft_memdel((void**)&stat);
-	if (total_size <= 1)
+	if (s->size_b <= 1)
 		return ;
 	recursive_sort_a_to_b(s, nb_sent_to_a);
 	second_step_recursive(s, total_size - nb_sent_to_a);
@@ -44,6 +48,11 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 	t_stat	*stat;
 	size_t	pivot;
 	size_t	nb_sent_to_b;
+	char	*line = NULL;
+
+	while (get_next_line(0, &line) > 0)
+		print_stack(s, NO_OPE, 0);
+	ft_printf("sorted = %d\n", is_sorted(s));
 
 	nb_sent_to_b = 0;
 	if (s->size_a > 1 && is_sorted(s) == FAILURE)
@@ -57,27 +66,27 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 	}
 }
 /*
-void	select_sort_style(t_stack *s)
-{
-	t_stat	*stat;
-	size_t	pivot;
+   void	select_sort_style(t_stack *s)
+   {
+   t_stat	*stat;
+   size_t	pivot;
 
-	while (s->size_a > 1)
-	{
-		stat = get_stat(s);
-		pivot = get_index(s->a, stat->median_a);
-		pb_all_under_nb(s, pivot);
-		ft_memdel((void**)&stat);
-	}
-	while (s->size_b > 0)
-	{
-		stat = get_stat(s);
-		pivot = get_index(s->b, stat->median_b);
-		pa_highest(s, stat->max_b);
-		ft_memdel((void**)&stat);
-	}
-}
-*/
+   while (s->size_a > 1)
+   {
+   stat = get_stat(s);
+   pivot = get_index(s->a, stat->median_a);
+   pb_all_under_nb(s, pivot);
+   ft_memdel((void**)&stat);
+   }
+   while (s->size_b > 0)
+   {
+   stat = get_stat(s);
+   pivot = get_index(s->b, stat->median_b);
+   pa_highest(s, stat->max_b);
+   ft_memdel((void**)&stat);
+   }
+   }
+  */ 
 void	push_swp(t_stack *s, int ac, char **av)
 {
 	size_t	size;
@@ -95,7 +104,7 @@ void	push_swp(t_stack *s, int ac, char **av)
 	size = s->size_a;
 	if (s->size_a > 1 && is_sorted(s) == FAILURE)
 		s->size_a <= 3 ? sort_less_three(s) : recursive_sort_a_to_b(s, size);
-		//s->size_a <= 3 ? sort_less_three(s) : select_sort_style(s);
+	//	s->size_a <= 3 ? sort_less_three(s) : select_sort_style(s);
 	if (s->verbose == TRUE)
 		print_stack(s, NO_OPE, 0);
 	ft_printf("done\n");

@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/12 15:58:48 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/12 17:21:17 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ size_t	pb_all_under_nb(t_stack *s, int32_t pivot_index)
 	size_t	count;
 	int32_t pivot_value;
 
-	count = s->size_a / 2;
+	count = s->size_a / 2 + s->size_a % 2;
 	if (pivot_index >= 0 && pivot_index < (int32_t)s->size_a)
 	{
 		pivot_value = s->a[pivot_index];
@@ -86,11 +86,13 @@ size_t	pb_all_under_nb(t_stack *s, int32_t pivot_index)
 			if (s->a[last] <= pivot_value)
 			{
 				pb(s);
+				ft_printf("pb\n");
 				count--;
 			}
 			else
 			{
 				ra(s);
+				ft_printf("ra\n");
 			}
 			i--;
 		}
@@ -105,21 +107,25 @@ size_t	pa_all_above_nb(t_stack *s, int32_t pivot_index)
 	size_t	count;
 	int32_t pivot_value;
 
-	count = 0;
+	count = s->size_b / 2 + s->size_a % 2;
 	if (pivot_index >= 0 && pivot_index < (int32_t)s->size_b)
 	{
 		pivot_value = s->b[pivot_index];
 		i = s->size_b - 1;
-		while (i > 0)
+		while (i > 0 && count > 0)
 		{
 			last = s->size_b - 1;
 			if (s->b[last] >= pivot_value)
 			{
 				pa(s);
-				count++;
+				ft_printf("pa\n");
+				count--;
 			}
 			else
+			{
 				rb(s);
+				ft_printf("rb\n");
+			}
 			i--;
 		}
 	}
