@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/12 17:15:00 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/13 18:04:57 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,16 @@ void	second_step_recursive(t_stack *s, size_t total_size)
 	size_t	pivot;
 	size_t	nb_sent_to_a;
 	char	*line = NULL;
-	
-	nb_sent_to_a = 0;
+
 	while (get_next_line(0, &line) > 0)
 		print_stack(s, NO_OPE, 0);
 	stat = get_stat(s);
 	pivot = get_index(s->b, stat->median_b);
-	//nb_sent_to_a = pa_all_above_nb(s, pivot);
-	pa_all_above_nb(s, pivot);
+	nb_sent_to_a = pa_all_above_nb(s, pivot, total_size);
 	ft_printf("pivot = %d\n", stat->median_b);
+	ft_printf("nb_sent_to_a = %d\n", nb_sent_to_a);
 	ft_memdel((void**)&stat);
-	if (s->size_b <= 1)
+	if (nb_sent_to_a <= 1)
 		return ;
 	recursive_sort_a_to_b(s, nb_sent_to_a);
 	second_step_recursive(s, total_size - nb_sent_to_a);
@@ -55,14 +54,19 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 	while (get_next_line(0, &line) > 0)
 		print_stack(s, NO_OPE, 0);
 	ft_printf("sorted = %d\n", is_sorted(s));
+	ft_printf("total_size = %d\n", total_size);
 
-	nb_sent_to_b = 0;
-	if (s->size_a > 1 && is_sorted(s) == FAILURE)
+	if (total_size < 4)
+	{
+		sort_top_three_top(s);
+		return ;
+	}
+	if (is_sorted(s) == FAILURE)
 	{
 		stat = get_stat(s);
 		pivot = get_index(s->a, stat->median_a);
-		//nb_sent_to_b = pb_all_under_nb(s, pivot);
-		pb_all_under_nb(s, pivot);
+		nb_sent_to_b = pb_all_under_nb(s, pivot, total_size);
+		ft_printf("nb_sent_to_b = %d\n", nb_sent_to_b);
 		ft_memdel((void**)&stat);
 		recursive_sort_a_to_b(s, total_size - nb_sent_to_b);
 		second_step_recursive(s, nb_sent_to_b);
@@ -89,7 +93,7 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
    ft_memdel((void**)&stat);
    }
    }
-  */ 
+   */ 
 void	push_swp(t_stack *s, int ac, char **av)
 {
 	size_t	size;

@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2020/02/09 18:27:38 by fkante           ###   ########.fr        #
+#    Updated: 2020/02/13 16:36:17 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -77,6 +77,8 @@ SRCS += shift_stack
 SRCS += rotate_both
 SRCS += rotate_stack
 SRCS += reverse_rotate_stack
+SRCS += sort_top_three 
+SRCS += find_value_in_stack 
 
 # clean
 SRCS += clean
