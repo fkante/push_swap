@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/14 14:22:00 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/14 14:59:19 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ size_t	pa_all_above_nb(t_stack *s, int32_t nth)
 		pivot_index = ft_get_n_highest(s->b, nth / 2, 0, s->size_b);
 		pivot_value = s->b[pivot_index];
 		ft_printf("--------------------\n|Pivot Value = %d|\n--------------------\n", pivot_value);
-		while (any_value_above_nb(s, pivot_value) == SUCCESS)
+		while (s->size_b > 0 && any_value_above_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_b - 1;
 			if (s->b[last] >= pivot_value)
