@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/14 13:58:21 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/14 15:41:41 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@
 void	second_step_recursive(t_stack *s, size_t total_size)
 {
 	size_t	nb_sent_to_a;
-	char	*line = NULL;
+//	char	*line = NULL;
 
-
-	while (get_next_line(0, &line) > 0)
-		print_stack(s, NO_OPE, 0);
-	ft_printf("-------B TO A--------\ns->size_b = %d\ttotal_size = %d\n", s->size_b, total_size);
+//	while (get_next_line(0, &line) > 0)
+//		print_stack(s, NO_OPE, 0);
+//	ft_printf("-------B TO A--------\ns->size_b = %d\ttotal_size = %d\n", s->size_b, total_size);
 	nb_sent_to_a = pa_all_above_nb(s, total_size);
-	ft_printf("nb_sent_to_a = %d\n", nb_sent_to_a);
+//	ft_printf("nb_sent_to_a = %d\n", nb_sent_to_a);
 	if (nb_sent_to_a < 1)
 		return ;
 	recursive_sort_a_to_b(s, nb_sent_to_a);
@@ -43,11 +42,11 @@ void	second_step_recursive(t_stack *s, size_t total_size)
 void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 {
 	size_t	nb_sent_to_b;
-	char	*line = NULL;
+//	char	*line = NULL;
 
-	while (get_next_line(0, &line) > 0)
-		print_stack(s, NO_OPE, 0);
-	ft_printf("sorted = %d\n", is_sorted(s));
+//	while (get_next_line(0, &line) > 0)
+//		print_stack(s, NO_OPE, 0);
+//	ft_printf("is_sorted = %d\n", is_sorted(s));
 	if (is_sorted(s) == FAILURE)
 	{
 		if (total_size == 3)
@@ -59,9 +58,9 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 			sa(s);
 		else
 		{
-			ft_printf("-------A TO B--------\ns->size_a = %d\ttotal_size = %d\n", s->size_a, total_size);
+			//ft_printf("-------A TO B--------\ns->size_a = %d\ttotal_size = %d\n", s->size_a, total_size);
 			nb_sent_to_b = pb_all_under_nb(s, total_size);
-			ft_printf("nb_sent_to_b = %d\n", nb_sent_to_b);
+			//ft_printf("nb_sent_to_b = %d\n", nb_sent_to_b);
 			recursive_sort_a_to_b(s, total_size - nb_sent_to_b);
 			second_step_recursive(s, nb_sent_to_b);
 		}

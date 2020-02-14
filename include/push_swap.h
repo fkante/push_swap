@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/14 14:22:09 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/14 15:35:03 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ size_t			get_index(int32_t *tab, int32_t nb);
 void			sort_top_three(t_stack *s);
 int8_t			any_value_under_nb(t_stack *s, int32_t nb);
 int8_t			any_value_above_nb(t_stack *s, int32_t nb);
+void			repositionning_highest(t_stack *s);
 
 /*
 ** ############################################################################

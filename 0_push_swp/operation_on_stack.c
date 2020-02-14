@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/14 14:59:19 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/14 15:41:53 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,21 +82,17 @@ size_t	pb_all_under_nb(t_stack *s, int32_t nth)
 	{
 		pivot_index = ft_get_n_smallest(s->a, nth / 2, 0, s->size_a);
 		pivot_value = s->a[pivot_index];
-		ft_printf("--------------------\n|Pivot Value = %d|\n--------------------\n", pivot_value);
+	//	ft_printf("--------------------\n|Pivot Value = %d|\n--------------------\n", pivot_value);
 		while (any_value_under_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_a - 1;
 			if (s->a[last] <= pivot_value)
 			{
 				pb(s);
-				ft_printf("pb\n");
 				counter++;
 			}
 			else
-			{
 				ra(s);
-				ft_printf("ra\n");
-			}
 		}
 	}
 	return (counter);
@@ -116,23 +112,20 @@ size_t	pa_all_above_nb(t_stack *s, int32_t nth)
 	{
 		pivot_index = ft_get_n_highest(s->b, nth / 2, 0, s->size_b);
 		pivot_value = s->b[pivot_index];
-		ft_printf("--------------------\n|Pivot Value = %d|\n--------------------\n", pivot_value);
+	//	ft_printf("--------------------\n|Pivot Value = %d|\n--------------------\n", pivot_value);
 		while (s->size_b > 0 && any_value_above_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_b - 1;
 			if (s->b[last] >= pivot_value)
 			{
 				pa(s);
-				ft_printf("pa\n");
 				counter++;
 			}
 			else
-			{
 				rb(s);
-				ft_printf("rb\n");
-			}
 		}
 	}
+	repositionning_highest(s);
 	return (counter);
 }
 
