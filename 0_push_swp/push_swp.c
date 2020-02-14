@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/13 18:44:20 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/14 13:58:21 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,16 @@
 
 void	second_step_recursive(t_stack *s, size_t total_size)
 {
-	size_t	pivot;
-	ssize_t	pivot_value;
 	size_t	nb_sent_to_a;
 	char	*line = NULL;
 
+
 	while (get_next_line(0, &line) > 0)
 		print_stack(s, NO_OPE, 0);
-	pivot_value = ft_get_n_highest(s->b, total_size / 2, s->size_b - total_size,
-			s->size_b);
-	pivot = get_index(s->b, pivot_value);
-	nb_sent_to_a = pa_all_above_nb(s, pivot, total_size);
-	ft_printf("pivot = %d\n", pivot_value);
+	ft_printf("-------B TO A--------\ns->size_b = %d\ttotal_size = %d\n", s->size_b, total_size);
+	nb_sent_to_a = pa_all_above_nb(s, total_size);
 	ft_printf("nb_sent_to_a = %d\n", nb_sent_to_a);
-	if (nb_sent_to_a <= 1)
+	if (nb_sent_to_a < 1)
 		return ;
 	recursive_sort_a_to_b(s, nb_sent_to_a);
 	second_step_recursive(s, total_size - nb_sent_to_a);
@@ -46,30 +42,29 @@ void	second_step_recursive(t_stack *s, size_t total_size)
 
 void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 {
-	t_stat	*stat;
-	size_t	pivot;
 	size_t	nb_sent_to_b;
 	char	*line = NULL;
 
 	while (get_next_line(0, &line) > 0)
 		print_stack(s, NO_OPE, 0);
 	ft_printf("sorted = %d\n", is_sorted(s));
-	ft_printf("total_size = %d\n", total_size);
-
-	if (total_size < 4)
-	{
-		sort_top_three_top(s);
-		return ;
-	}
 	if (is_sorted(s) == FAILURE)
 	{
-		stat = get_stat(s);
-		pivot = get_index(s->a, stat->median_a);
-		nb_sent_to_b = pb_all_under_nb(s, pivot);
-		ft_printf("nb_sent_to_b = %d\n", nb_sent_to_b);
-		ft_memdel((void**)&stat);
-		recursive_sort_a_to_b(s, total_size - nb_sent_to_b);
-		second_step_recursive(s, nb_sent_to_b);
+		if (total_size == 3)
+		{
+			sort_top_three(s);
+			return ;
+		}
+		else if (total_size == 2)
+			sa(s);
+		else
+		{
+			ft_printf("-------A TO B--------\ns->size_a = %d\ttotal_size = %d\n", s->size_a, total_size);
+			nb_sent_to_b = pb_all_under_nb(s, total_size);
+			ft_printf("nb_sent_to_b = %d\n", nb_sent_to_b);
+			recursive_sort_a_to_b(s, total_size - nb_sent_to_b);
+			second_step_recursive(s, nb_sent_to_b);
+		}
 	}
 }
 /*

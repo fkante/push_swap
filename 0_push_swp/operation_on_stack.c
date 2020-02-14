@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/13 18:04:47 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/14 14:22:00 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,21 @@ void	pa_highest(t_stack *s, int32_t highest)
 	pa(s);
 }
 
-size_t	pb_all_under_nb(t_stack *s, int32_t pivot_index)
+size_t	pb_all_under_nb(t_stack *s, int32_t nth)
 {
 	size_t	last;
 	size_t	counter;
 	int32_t pivot_value;
+	int32_t pivot_index;
 
+	if (nth == 1)
+		nth = 2;
 	counter = 0;
-	if (pivot_index >= 0 && pivot_index < (int32_t)s->size_a)
+	if (nth > 0)
 	{
+		pivot_index = ft_get_n_smallest(s->a, nth / 2, 0, s->size_a);
 		pivot_value = s->a[pivot_index];
+		ft_printf("--------------------\n|Pivot Value = %d|\n--------------------\n", pivot_value);
 		while (any_value_under_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_a - 1;
@@ -92,23 +97,27 @@ size_t	pb_all_under_nb(t_stack *s, int32_t pivot_index)
 				ra(s);
 				ft_printf("ra\n");
 			}
-		
 		}
 	}
 	return (counter);
 }
 
-size_t	pa_all_above_nb(t_stack *s, int32_t pivot_index, size_t limit)
+size_t	pa_all_above_nb(t_stack *s, int32_t nth)
 {
 	size_t	last;
 	size_t	counter;
 	int32_t pivot_value;
+	int32_t pivot_index;
 
+	if (nth == 1)
+		nth = 2;
 	counter = 0;
-	if (pivot_index >= 0 && pivot_index < (int32_t)s->size_b)
+	if (nth > 0)
 	{
+		pivot_index = ft_get_n_highest(s->b, nth / 2, 0, s->size_b);
 		pivot_value = s->b[pivot_index];
-		while (any_value_above_nb(s, pivot_value) == SUCCESS && limit > 0)
+		ft_printf("--------------------\n|Pivot Value = %d|\n--------------------\n", pivot_value);
+		while (any_value_above_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_b - 1;
 			if (s->b[last] >= pivot_value)
@@ -116,7 +125,6 @@ size_t	pa_all_above_nb(t_stack *s, int32_t pivot_index, size_t limit)
 				pa(s);
 				ft_printf("pa\n");
 				counter++;
-				limit--;
 			}
 			else
 			{

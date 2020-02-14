@@ -6,13 +6,13 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 10:49:02 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/13 15:13:58 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/14 11:57:11 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_top_three_top_continued(t_stack *s)
+void	sort_top_three_continued(t_stack *s)
 {
 	size_t	top;
 
@@ -34,12 +34,12 @@ void	sort_top_three_top_continued(t_stack *s)
 	}
 }
 
-void	sort_top_three_top(t_stack *s)
+void	sort_top_three(t_stack *s)
 {
 	size_t	top;
-
+	
 	top = s->size_a - 1;
-	if (s->a[top] < s->a[top - 1] && s->a[top - 1] < s->a[top - 2])
+	if ((s->a[top] < s->a[top - 1] && s->a[top - 1] < s->a[top - 2]) || top < 3)
 		return ;
 	if (s->a[top] < s->a[top - 1] && s->a[top] < s->a[top - 2])
 	{
@@ -60,5 +60,5 @@ void	sort_top_three_top(t_stack *s)
 		}
 	}
 	else
-		sort_top_three_top_continued(s);
+		sort_top_three_continued(s);
 }

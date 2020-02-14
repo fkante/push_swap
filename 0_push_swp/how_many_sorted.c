@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:04:58 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/13 15:12:50 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/14 14:22:07 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,19 @@ int8_t		is_sorted(t_stack *s)
 			break ;
 		}
 		i++;
+	}
+	return (ret);
+}
+
+int8_t		is_sorted_less_than_three(t_stack *s, size_t size)
+{
+	int8_t	ret;
+
+	ret = FAILURE;
+	if (size <= 3)
+	{
+		sort_top_three(s);
+		ret = SUCCESS;	
 	}
 	return (ret);
 }
