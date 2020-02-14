@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/14 15:41:41 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/14 16:17:44 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 			sa(s);
 		else
 		{
-			//ft_printf("-------A TO B--------\ns->size_a = %d\ttotal_size = %d\n", s->size_a, total_size);
+		//	ft_printf("-------A TO B--------\ns->size_a = %d\ttotal_size = %d\n", s->size_a, total_size);
 			nb_sent_to_b = pb_all_under_nb(s, total_size);
+			repositionning_highest(s);
 			//ft_printf("nb_sent_to_b = %d\n", nb_sent_to_b);
 			recursive_sort_a_to_b(s, total_size - nb_sent_to_b);
 			second_step_recursive(s, nb_sent_to_b);

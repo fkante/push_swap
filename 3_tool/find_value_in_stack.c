@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:28:42 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/14 15:36:19 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/14 16:10:23 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ void	repositionning_highest(t_stack *s)
 	stat = get_stat(s);
 	max_index = get_index(s->a, stat->max_a);
 	while (max_index > 0)
+	{
 		rra(s);
+		max_index--;
+	}
    ft_memdel((void**)&stat);
 }
