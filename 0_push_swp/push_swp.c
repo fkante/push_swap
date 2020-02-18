@@ -11,28 +11,13 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
- ** //MASTER_BA(sent total)
- ** 		sent = ba(size);
- ** 		master_ab(sent);
- ** 		master_ba(size - sent);
- **
- ** //MASTER_AB(sent total)
- ** 		sent = ab(size);
- ** 		master_ab(size - sent);
- ** 		master_ba(sent);
- */
 
 void	second_step_recursive(t_stack *s, size_t total_size)
 {
 	size_t	nb_sent_to_a;
-//	char	*line = NULL;
-
-//	while (get_next_line(0, &line) > 0)
-//		print_stack(s, NO_OPE, 0);
-//	ft_printf("-------B TO A--------\ns->size_b = %d\ttotal_size = %d\n", s->size_b, total_size);
+	
 	nb_sent_to_a = pa_all_above_nb(s, total_size);
-//	ft_printf("nb_sent_to_a = %d\n", nb_sent_to_a);
+	repositionning_stack_b(s);
 	if (nb_sent_to_a < 1)
 		return ;
 	recursive_sort_a_to_b(s, nb_sent_to_a);
@@ -42,11 +27,9 @@ void	second_step_recursive(t_stack *s, size_t total_size)
 void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 {
 	size_t	nb_sent_to_b;
-//	char	*line = NULL;
-
-//	while (get_next_line(0, &line) > 0)
-//		print_stack(s, NO_OPE, 0);
-//	ft_printf("is_sorted = %d\n", is_sorted(s));
+	
+//	show_result(s);
+	//ft_printf("rotation nb = %d\n", s->rotation);
 	if (is_sorted(s) == FAILURE)
 	{
 		if (total_size == 3)
@@ -58,10 +41,8 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 			sa(s);
 		else
 		{
-		//	ft_printf("-------A TO B--------\ns->size_a = %d\ttotal_size = %d\n", s->size_a, total_size);
 			nb_sent_to_b = pb_all_under_nb(s, total_size);
-			repositionning_highest(s);
-			//ft_printf("nb_sent_to_b = %d\n", nb_sent_to_b);
+			repositionning_stack_a(s);
 			recursive_sort_a_to_b(s, total_size - nb_sent_to_b);
 			second_step_recursive(s, nb_sent_to_b);
 		}
@@ -106,7 +87,6 @@ void	push_swp(t_stack *s, int ac, char **av)
 	size = s->size_a;
 	if (s->size_a > 1 && is_sorted(s) == FAILURE)
 		s->size_a <= 3 ? sort_less_three(s) : recursive_sort_a_to_b(s, size);
-	//	s->size_a <= 3 ? sort_less_three(s) : select_sort_style(s);
 	if (s->verbose == TRUE)
 		print_stack(s, NO_OPE, 0);
 	ft_printf("done\n");

@@ -12,6 +12,17 @@
 
 #include "push_swap.h"
 
+void	show_result(t_stack *s)
+{
+	char	*line = NULL;
+
+	while (get_next_line(0, &line) > 0)
+	{
+		print_stack(s, NO_OPE, 0);
+		ft_strdel(&line);
+	}
+}
+
 void	pb_lowest(t_stack *s, int32_t lowest)
 {
 	size_t	min_index;
@@ -82,7 +93,6 @@ size_t	pb_all_under_nb(t_stack *s, int32_t nth)
 	{
 		pivot_index = ft_get_n_smallest(s->a, nth / 2, 0, s->size_a);
 		pivot_value = s->a[pivot_index];
-	//	ft_printf("--------------------\n|Pivot Value = %d|\n--------------------\n", pivot_value);
 		while (any_value_under_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_a - 1;
@@ -92,7 +102,10 @@ size_t	pb_all_under_nb(t_stack *s, int32_t nth)
 				counter++;
 			}
 			else
+			{
 				ra(s);
+				s->rotation_a++;
+			}
 		}
 	}
 	return (counter);
@@ -103,7 +116,7 @@ size_t	pa_all_above_nb(t_stack *s, int32_t nth)
 	size_t	last;
 	size_t	counter;
 	int32_t pivot_value;
-	int32_t pivot_index;
+	size_t pivot_index;
 
 	if (nth == 1)
 		nth = 2;
@@ -112,7 +125,6 @@ size_t	pa_all_above_nb(t_stack *s, int32_t nth)
 	{
 		pivot_index = ft_get_n_highest(s->b, nth / 2, 0, s->size_b);
 		pivot_value = s->b[pivot_index];
-		//ft_printf("--------------------\n|Pivot Value = %d|\n--------------------\n", pivot_value);
 		while (s->size_b > 0 && any_value_above_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_b - 1;
@@ -122,30 +134,33 @@ size_t	pa_all_above_nb(t_stack *s, int32_t nth)
 				counter++;
 			}
 			else
+			{
 				rb(s);
+				s->rotation_b++;
+			}
 		}
 	}
 	return (counter);
 }
 
-void	pb_one_above_nb(t_stack *s, int32_t pivot_index)
+void	repositionning_stack_a(t_stack *s)
 {
-	size_t	i;
-	size_t	last;
-	int32_t pivot_value;
-
-	pivot_value = s->a[pivot_index];
-	i = s->size_a - 1;
-	while (i > 0)
+	if (s->rotation_a == 0)
+		return ;
+	while (s->rotation_a > 0)
 	{
-		last = s->size_a - 1;
-		if (s->a[last] > pivot_value)
-		{
-			pb(s);
-			break ;
-		}
-		else
-			ra(s);
-		i--;
+		rra(s);
+		s->rotation_a--;
+	}
+}
+
+void	repositionning_stack_b(t_stack *s)
+{
+	if (s->rotation_b == 0)
+		return ;
+	while (s->rotation_b > 0)
+	{
+		rrb(s);
+		s->rotation_b--;
 	}
 }

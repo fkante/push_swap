@@ -24,6 +24,8 @@ typedef struct	s_stack
 	int32_t *sorted_s;
 	size_t	size_a;
 	size_t	size_b;
+	size_t	rotation_a;
+	size_t	rotation_b;
 	int32_t	color_nb;
 	int8_t	fd;
 	uint8_t	verbose;
@@ -64,12 +66,13 @@ void		pb_lowest(t_stack *s, int32_t limit);
 void		pa_highest(t_stack *s, int32_t limit);
 size_t		pb_all_under_nb(t_stack *s, int32_t nth);
 size_t		pa_all_above_nb(t_stack *s, int32_t nth);
-void		pb_one_above_nb(t_stack *s, int32_t pivot);
 void		pivot_on_top_a(t_stack *s, int32_t pivot);
 void		pivot_on_top_b(t_stack *s, int32_t pivot);
 void		sort_less_three(t_stack *s);
 int8_t		is_sorted_less_than_three(t_stack *s, size_t size);
 void		recursive_sort_a_to_b(t_stack *s, size_t total_size);
+void		repositionning_stack_a(t_stack *s);
+void		repositionning_stack_b(t_stack *s);
 
 
 /*
@@ -108,6 +111,7 @@ ssize_t			get_nb_of_move();
 ssize_t			collision_in_filename(t_vector *name, int8_t suffixe);
 void			write_final_result(ssize_t fd);
 void			save_final_result_in_file(t_stack *s);
+void			show_result(t_stack *s);
 
 /*
 ** ############################################################################

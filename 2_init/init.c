@@ -15,6 +15,8 @@
 void		fill_in_static_variable(t_stack *s, char **tab, size_t size)
 {
 	s->size_a = size;
+	s->rotation_a = 0;
+	s->rotation_b = 0;
 	s->verbose = check_for_bonus(tab, "-v");;
 	s->color = check_for_bonus(tab, "-c");
 }
