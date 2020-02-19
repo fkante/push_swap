@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2020/02/13 16:36:17 by fkante           ###   ########.fr        #
+#    Updated: 2020/02/19 14:29:37 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -201,19 +201,19 @@ git:
                      #       		COLOR     			#
                      #                  				#
                      ####################################
-#RED = \x1b[31m
-#GREEN = \x1b[32m
-#YELLOW = \x1b[33m
-#BLUE = \x1b[34m
-#MAGENTA = \x1b[35m
-#CYAN = \x1b[36m
-#END = \x1b[0m
+RED = \x1b[31m
+GREEN = \x1b[32m
+YELLOW = \x1b[33m
+BLUE = \x1b[34m
+MAGENTA = \x1b[35m
+CYAN = \x1b[36m
+END = \x1b[0m
 
 #Linux
-RED = \e[31m
-GREEN = \e[32m
-YELLOW = \e[33m
-BLUE = \e[34m
-MAGENTA = \e[35m
-CYAN = \e[36m
-END = \e[0m
+#RED = \e[31m
+#GREEN = \e[32m
+#YELLOW = \e[33m
+#BLUE = \e[34m
+#MAGENTA = \e[35m
+#CYAN = \e[36m
+#END = \e[0m

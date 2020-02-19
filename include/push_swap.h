@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/14 15:35:03 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/19 14:38:57 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int8_t		is_sorted_less_than_three(t_stack *s, size_t size);
 void		recursive_sort_a_to_b(t_stack *s, size_t total_size);
 void		repositionning_stack_a(t_stack *s);
 void		repositionning_stack_b(t_stack *s);
-
 
 /*
 ** ############################################################################
@@ -160,6 +159,5 @@ void			repositionning_highest(t_stack *s);
 */
 void			clean_struct(t_stack **s);
 void			clean_tmp(char ***tmp, size_t i);
-
 
 #endif
