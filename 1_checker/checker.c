@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 16:59:19 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/19 15:45:03 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	read_checker(t_stack *s)
 {
-	operfunc	func_ptr[NB_OPE] = {swap_stack_a, swap_stack_b, swap_both,
-							push_stack_a, push_stack_b, rotate_stack_a,
-							rotate_stack_b, rotate_both, reverse_rotate_stack_a,
-							reverse_rotate_stack_b, reverse_both};
+	static t_operfunc	func_ptr[NB_OPE] = {swap_stack_a, swap_stack_b,
+										swap_both, push_stack_a, push_stack_b,
+										rotate_stack_a, rotate_stack_b,
+										rotate_both, reverse_rotate_stack_a,
+										reverse_rotate_stack_b, reverse_both};
 	char		*line;
 	size_t		count;
 
@@ -30,9 +31,10 @@ void	read_checker(t_stack *s)
 	}
 }
 
-void	operation_checker(operfunc *f_ptr, char *line, t_stack *s, size_t *count)
+void	operation_checker(t_operfunc *f_ptr, char *line, t_stack *s,
+							size_t *count)
 {
-	char		*oper[NB_OPE] = {SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR};
+	static char	*oper[NB_OPE] = {SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR};
 	uint8_t 	i;
 
 	i = 0;

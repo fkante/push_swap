@@ -1,6 +1,7 @@
 #binary
 push_swap
 checker
+sc_tester.sh
 
 # Object files
 libftprintf/build/*.o
@@ -26,3 +27,11 @@ libftprintf/*.a
 *.su
 *.idb
 *.pdb
+
+# Logs
+logs_1
+logs_5
+logs_10
+logs_100
+logs_500
+result

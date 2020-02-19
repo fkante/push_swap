@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/19 14:38:57 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/19 15:46:12 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,10 @@ enum	e_operations
 	E_RRR
 };
 
-typedef	void	(*operfunc)(t_stack *s);
+typedef	void	(*t_operfunc)(t_stack *s);
 void			read_checker(t_stack *s);
-void			operation_checker(operfunc *f, char *ln, t_stack *s, size_t *count);
+void			operation_checker(t_operfunc *f, char *ln, t_stack *s,
+									size_t *count);
 
 /*
 ** ############################################################################
