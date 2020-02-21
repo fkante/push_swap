@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/19 14:37:15 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/19 16:42:51 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 			sa(s);
 		else
 		{
+			show_result(s);
 			nb_sent_to_b = pb_all_under_nb(s, total_size);
 			repositionning_stack_a(s);
 			recursive_sort_a_to_b(s, total_size - nb_sent_to_b);

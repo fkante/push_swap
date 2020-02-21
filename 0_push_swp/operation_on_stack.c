@@ -6,22 +6,11 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/14 16:17:53 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/19 16:41:48 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	show_result(t_stack *s)
-{
-	char	*line = NULL;
-
-	while (get_next_line(0, &line) > 0)
-	{
-		print_stack(s, NO_OPE, 0);
-		ft_strdel(&line);
-	}
-}
 
 void	pb_lowest(t_stack *s, int32_t lowest)
 {
@@ -33,7 +22,7 @@ void	pb_lowest(t_stack *s, int32_t lowest)
 	while (min_index != s->size_a - 1)
 	{
 		if (min_index == s->size_a - 1)
-			break ;		
+			break ;
 		if (min_index > center)
 		{
 			ra(s);
@@ -115,8 +104,8 @@ size_t	pa_all_above_nb(t_stack *s, int32_t nth)
 {
 	size_t	last;
 	size_t	counter;
-	int32_t pivot_value;
-	size_t pivot_index;
+	int32_t	pivot_value;
+	size_t	pivot_index;
 
 	if (nth == 1)
 		nth = 2;
@@ -141,26 +130,4 @@ size_t	pa_all_above_nb(t_stack *s, int32_t nth)
 		}
 	}
 	return (counter);
-}
-
-void	repositionning_stack_a(t_stack *s)
-{
-	if (s->rotation_a == 0)
-		return ;
-	while (s->rotation_a > 0)
-	{
-		rra(s);
-		s->rotation_a--;
-	}
-}
-
-void	repositionning_stack_b(t_stack *s)
-{
-	if (s->rotation_b == 0)
-		return ;
-	while (s->rotation_b > 0)
-	{
-		rrb(s);
-		s->rotation_b--;
-	}
 }

@@ -6,11 +6,21 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 10:49:02 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/14 11:57:11 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/19 15:54:17 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort_less_three(t_stack *s)
+{
+	if (s->size_a == 3)
+		pb(s);
+	if (s->a[0] < s->a[1])
+		ra(s);
+	if (s->size_b > 0)
+		pa(s);
+}
 
 void	sort_top_three_continued(t_stack *s)
 {

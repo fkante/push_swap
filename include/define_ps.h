@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/16 14:23:28 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/21 11:14:20 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,16 @@
 # define RRA				"rra"
 # define RRB				"rrb"
 # define RRR				"rrr"
+
+/*
+** ############################################################################
+** ################################# ERROR ####################################
+** ############################################################################
+*/
+# define STD_OUT_ERROR		"couldn't write to stdout"
+# define INPUT_TOO_LONG		"GNL detected that the input was too long"
+# define DUPLICATES			"duplicates of numbers input by user"
+# define ONLY_INT			"program only accept integer value from input"
+# define ERROR_BONUS		"flag must be used once after program name"
 
 #endif

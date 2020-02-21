@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/19 15:46:12 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/21 11:10:32 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ uint8_t			check_no_double(t_stack *s);
 ssize_t			parse_args(char **av, int32_t ac);
 int8_t			check_err(char *str, size_t j);
 uint8_t			check_for_bonus(char **tab, char *chr);
+int8_t		check_for_duplicate_bonus(char **tab, size_t len);
 
 /*
 ** ############################################################################
@@ -95,7 +96,7 @@ enum	e_operations
 };
 
 typedef	void	(*t_operfunc)(t_stack *s);
-void			read_checker(t_stack *s);
+int8_t			read_checker(t_stack *s);
 void			operation_checker(t_operfunc *f, char *ln, t_stack *s,
 									size_t *count);
 
@@ -151,7 +152,8 @@ size_t			get_index(int32_t *tab, int32_t nb);
 void			sort_top_three(t_stack *s);
 int8_t			any_value_under_nb(t_stack *s, int32_t nb);
 int8_t			any_value_above_nb(t_stack *s, int32_t nb);
-void			repositionning_highest(t_stack *s);
+void			repositionning_stack_a(t_stack *s);
+void			repositionning_stack_b(t_stack *s);
 
 /*
 ** ############################################################################

@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:04:58 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/14 15:27:39 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/21 10:26:27 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int8_t		is_sorted(t_stack *s)
 
 	i = 1;
 	ret = FAILURE;
+	if (s->size_a == 1 && s->size_b == 0)
+		return (SUCCESS);
 	while (s->a[i - 1] > s->a[i])
 	{
 		if (i == s->size_a - 1)
@@ -54,7 +56,7 @@ int8_t		is_sorted_less_than_three(t_stack *s, size_t size)
 	if (size <= 3)
 	{
 		sort_top_three(s);
-		ret = SUCCESS;	
+		ret = SUCCESS;
 	}
 	return (ret);
 }

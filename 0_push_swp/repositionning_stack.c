@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_less_three.c                                  :+:      :+:    :+:   */
+/*   repositionning_stack.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/09 15:58:38 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/19 15:29:25 by fkante           ###   ########.fr       */
+/*   Created: 2020/02/19 15:56:29 by fkante            #+#    #+#             */
+/*   Updated: 2020/02/19 16:41:49 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_less_three(t_stack *s)
-{	
-	if (s->size_a == 3)
-		pb(s);
-	if (s->a[0] < s->a[1])
-		ra(s);
-	if (s->size_b > 0)
-		pa(s);
+void	repositionning_stack_a(t_stack *s)
+{
+	if (s->rotation_a == 0)
+		return ;
+	while (s->rotation_a > 0)
+	{
+		rra(s);
+		s->rotation_a--;
+	}
+}
+
+void	repositionning_stack_b(t_stack *s)
+{
+	if (s->rotation_b == 0)
+		return ;
+	while (s->rotation_b > 0)
+	{
+		rrb(s);
+		s->rotation_b--;
+	}
 }
