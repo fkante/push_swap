@@ -39,7 +39,6 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 			sa(s);
 		else
 		{
-			show_result(s);
 			nb_sent_to_b = pb_all_under_nb(s, total_size);
 			repositionning_stack_a(s);
 			recursive_sort_a_to_b(s, total_size - nb_sent_to_b);
