@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/24 15:44:26 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:10:47 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	pa_highest(t_stack *s, int32_t highest)
 
 size_t	pb_all_under_nb(t_stack *s, int32_t nth)
 {
-	size_t	last;
 	size_t	counter;
 	int32_t pivot_value;
 
@@ -82,8 +81,7 @@ size_t	pb_all_under_nb(t_stack *s, int32_t nth)
 		pivot_value = s->a[ft_get_n_smallest(s->a, nth / 2, 0, s->size_a)];
 		while (s->size_a > 0 && any_value_under_nb(s, pivot_value) == SUCCESS)
 		{
-			last = s->size_a - 1;
-			if (s->a[last] <= pivot_value)
+			if (s->a[s->size_a - 1] <= pivot_value)
 			{
 				pb(s);
 				counter++;
@@ -119,7 +117,6 @@ void	pb_all_under_nb_iterative(t_stack *s, int32_t pivot_index)
 
 size_t	pa_all_above_nb(t_stack *s, int32_t nth)
 {
-	size_t	last;
 	size_t	counter;
 	int32_t	pivot_value;
 
@@ -131,8 +128,7 @@ size_t	pa_all_above_nb(t_stack *s, int32_t nth)
 		pivot_value = s->b[ft_get_n_highest(s->b, nth / 2, 0, s->size_b)];
 		while (s->size_b > 0 && any_value_above_nb(s, pivot_value) == SUCCESS)
 		{
-			last = s->size_b - 1;
-			if (s->b[last] >= pivot_value)
+			if (s->b[s->size_b - 1] >= pivot_value)
 			{
 				pa(s);
 				counter++;
