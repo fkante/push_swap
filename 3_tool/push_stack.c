@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 15:25:33 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/15 19:30:06 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:18:40 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ void	pa(t_stack *s)
 {
 	push_stack_a(s);
 	ft_putendl_fd("pa", s->fd);
+	ft_putendl_fd("pa", 1);
 }
 
 void	pb(t_stack *s)
 {
 	push_stack_b(s);
 	ft_putendl_fd("pb", s->fd);
+	ft_putendl_fd("pb", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:28:42 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/14 16:10:23 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:02:50 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int8_t	any_value_under_nb(t_stack *s, int32_t pivot_value)
 		}
 		i--;
 	}
+	if (s->a[0] == pivot_value)
+		ret = SUCCESS;
 	return (ret);
 }
 

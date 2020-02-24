@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:59 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/21 11:11:40 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:57:39 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int8_t		check_for_duplicate_bonus(char **tb, size_t len)
 	int8_t		ret;
 
 	ret = SUCCESS;
-	if (tb[0] != NULL)
+	if (tb[0] != '\0')
 	{
 		i = ft_isdigit((int)tb[0][0]) == TRUE ? 1 : 2;
 		while (i < len)

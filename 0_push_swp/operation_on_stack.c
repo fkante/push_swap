@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/19 16:41:48 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:02:53 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ size_t	pb_all_under_nb(t_stack *s, int32_t nth)
 	{
 		pivot_index = ft_get_n_smallest(s->a, nth / 2, 0, s->size_a);
 		pivot_value = s->a[pivot_index];
-		while (any_value_under_nb(s, pivot_value) == SUCCESS)
+		while (s->size_a > 0 && any_value_under_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_a - 1;
 			if (s->a[last] <= pivot_value)

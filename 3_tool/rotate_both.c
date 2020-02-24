@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 12:35:35 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/11 17:51:19 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:19:36 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ void	rr(t_stack *s)
 {
 	rotate_both(s);
 	ft_putendl_fd("rr", s->fd);
+	ft_putendl_fd("rr", 1);
 }
 
 void	rrr(t_stack *s)
 {
 	reverse_both(s);
 	ft_putendl_fd("rrr", s->fd);
+	ft_putendl_fd("rrr", 1);
 }
