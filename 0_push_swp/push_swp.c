@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/19 16:42:51 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 11:15:48 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	push_swp(t_stack *s, int ac, char **av)
 	if (s == NULL)
 		return ;
 	mkdir("result", 0700);
-	s->fd = open("result/tmp.txt", O_RDWR | O_CREAT, 0744);
+	s->fd = open("result/tmp.txt", O_RDWR | O_CREAT | O_TRUNC, 0744);
 	if (s->fd == FAILURE)
 	{
 		clean_struct(&s);
