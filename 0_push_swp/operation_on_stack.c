@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/24 12:02:53 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 15:44:26 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,13 @@ size_t	pb_all_under_nb(t_stack *s, int32_t nth)
 	size_t	last;
 	size_t	counter;
 	int32_t pivot_value;
-	int32_t pivot_index;
 
 	if (nth == 1)
 		nth = 2;
 	counter = 0;
 	if (nth > 0)
 	{
-		pivot_index = ft_get_n_smallest(s->a, nth / 2, 0, s->size_a);
-		pivot_value = s->a[pivot_index];
+		pivot_value = s->a[ft_get_n_smallest(s->a, nth / 2, 0, s->size_a)];
 		while (s->size_a > 0 && any_value_under_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_a - 1;
@@ -100,20 +98,37 @@ size_t	pb_all_under_nb(t_stack *s, int32_t nth)
 	return (counter);
 }
 
+void	pb_all_under_nb_iterative(t_stack *s, int32_t pivot_index)
+{
+	size_t	i;
+	size_t	last;
+	int32_t pivot_value;
+
+	if (pivot_index >= 0 && pivot_index < (int32_t)s->size_a)
+	{
+		pivot_value = s->a[pivot_index];
+		i = s->size_a > 0 ? s->size_a - 1 : 0;
+		while (i > 0)
+		{
+			last = s->size_a - 1;
+			s->a[last] <= pivot_value ? pb(s) : ra(s);
+			i--;
+		}
+	}
+}
+
 size_t	pa_all_above_nb(t_stack *s, int32_t nth)
 {
 	size_t	last;
 	size_t	counter;
 	int32_t	pivot_value;
-	size_t	pivot_index;
 
 	if (nth == 1)
 		nth = 2;
 	counter = 0;
 	if (nth > 0)
 	{
-		pivot_index = ft_get_n_highest(s->b, nth / 2, 0, s->size_b);
-		pivot_value = s->b[pivot_index];
+		pivot_value = s->b[ft_get_n_highest(s->b, nth / 2, 0, s->size_b)];
 		while (s->size_b > 0 && any_value_above_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_b - 1;

@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/28 17:23:41 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 15:15:43 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,5 @@ int			main(int ac, char **av)
 		--ac;
 		push_swp(s, ac, av);
 	}
-	else
-		ft_print_err_false("Not enough arguments", STD_ERR);
 	return (SUCCESS);
 }

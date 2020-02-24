@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 12:02:51 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 15:45:01 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,28 +48,29 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 }
 
 /*
-**	iterative solution for 100 and less numbers:
-**	void	select_sort_style(t_stack *s)
-**	{
-**		t_stat	*stat;
-**		size_t	pivot;
-**
-**		while (s->size_a > 1)
-**		{
-**			stat = get_stat(s);
-**			pivot = get_index(s->a, stat->median_a);
-**			pb_all_under_nb(s, pivot);
-**			ft_memdel((void**)&stat);
-**		}
-**		while (s->size_b > 0)
-**		{
-**			stat = get_stat(s);
-**			pivot = get_index(s->b, stat->median_b);
-**			pa_highest(s, stat->max_b);
-**			ft_memdel((void**)&stat);
-**		}
-**	}
-*/
+ **	iterative solution for 100 and less numbers:
+ */
+void	select_sort_style(t_stack *s)
+{
+	t_stat	*stat;
+	size_t	pivot;
+
+	while (s->size_a > 1)
+	{
+		stat = get_stat(s);
+		pivot = get_index(s->a, stat->median_a);
+		pb_all_under_nb_iterative(s, pivot);
+		ft_memdel((void**)&stat);
+	}
+	while (s->size_b > 0)
+	{
+		stat = get_stat(s);
+		pivot = get_index(s->b, stat->median_b);
+		pa_highest(s, stat->max_b);
+		ft_memdel((void**)&stat);
+	}
+}
+
 
 void	push_swp(t_stack *s, int ac, char **av)
 {
@@ -86,8 +87,13 @@ void	push_swp(t_stack *s, int ac, char **av)
 		return (ft_print_err_void("when creating result file", STD_ERR));
 	}
 	size = s->size_a;
-	if (s->size_a > 1 && is_sorted(s) == FAILURE)
-		s->size_a <= 3 ? sort_less_three(s) : recursive_sort_a_to_b(s, size);
+	if (s->size_a > 1 && s->size_a <= 100 && is_sorted(s) == FAILURE)
+	{
+		if (s->size_a <= 100)
+			s->size_a <= 3 ? sort_less_three(s) : select_sort_style(s);
+		else
+			recursive_sort_a_to_b(s, size);
+	}
 	if (s->verbose == TRUE)
 		print_stack(s, NO_OPE, 0);
 	save_final_result_in_file(s);

@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:10 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/21 10:32:47 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 14:16:03 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		checker(t_stack *s, int ac, char **av)
 		if (s->verbose == TRUE && ret == SUCCESS)
 			print_stack(s, NO_OPE, 0);
 		if (ret == SUCCESS)
-			ret = is_sorted(s);
+			ret = is_sorted_checker(s);
 		if (ret == SUCCESS)
 		{
 			if ((ret = write(STD_OUT, "OK\n", 3)) == FAILURE)

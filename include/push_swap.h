@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 14:12:08 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 15:43:10 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ uint8_t			check_no_double(t_stack *s);
 ssize_t			parse_args(char **av, int32_t ac);
 int8_t			check_err(char *str, size_t j);
 uint8_t			check_for_bonus(char **tab, char *chr);
-int8_t		check_for_duplicate_bonus(char **tab, size_t len);
+int8_t			check_for_duplicate_bonus(char **tab, size_t len);
 
 /*
 ** ############################################################################
@@ -73,6 +73,7 @@ int8_t		is_sorted_less_than_three(t_stack *s, size_t size);
 void		recursive_sort_a_to_b(t_stack *s, size_t total_size);
 void		repositionning_stack_a(t_stack *s);
 void		repositionning_stack_b(t_stack *s);
+void		pb_all_under_nb_iterative(t_stack *s, int32_t pivot_index);
 
 /*
 ** ############################################################################
@@ -147,6 +148,7 @@ void			rr(t_stack *s);
 void			rrr(t_stack *s);
 size_t			how_many_sorted(t_stack *s);
 int8_t			is_sorted(t_stack *s);
+int8_t			is_sorted_checker(t_stack *s);
 size_t			get_index(int32_t *tab, int32_t nb);
 void			sort_top_three(t_stack *s);
 int8_t			any_value_under_nb(t_stack *s, int32_t nb);
