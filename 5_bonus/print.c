@@ -6,9 +6,11 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:23:57 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 16:31:21 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 17:46:10 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	print_command(size_t count, int8_t ope, uint8_t	color)
 {
@@ -32,8 +34,7 @@ void	print_command(size_t count, int8_t ope, uint8_t	color)
 	if (color == TRUE)
 	{
 		ft_printf("\n\tCOLOR:\n\t{c_b_green}Last action{c_end}\n");
-		ft_printf("\t{c_yellow}Minimum{c_end}\n\t{c_blue}Median{c_end}\n\t
-				{c_red}Maximum{c_end}\n");
+		ft_printf("\t{c_yellow}Minimum{c_end}\n\t{c_blue}Median{c_end}\n\t{c_red}Maximum{c_end}\n");
 		ft_printf("{c_end}\n");
 	}
 }

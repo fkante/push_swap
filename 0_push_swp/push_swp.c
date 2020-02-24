@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 16:14:35 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 17:47:07 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	select_sort_style(t_stack *s)
 	while (s->size_b > 0)
 	{
 		stat = get_stat(s);
-		pivot = get_index(s->b, stat->median_b);
 		pa_highest(s, stat->max_b);
 		ft_memdel((void**)&stat);
 	}

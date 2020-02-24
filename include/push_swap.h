@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 15:54:14 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 17:46:09 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,11 @@ ssize_t			collision_in_filename(t_vector *name, int8_t suffixe);
 void			write_final_result(ssize_t fd);
 void			save_final_result_in_file(t_stack *s);
 void			show_result(t_stack *s);
+void			print_with_color(t_stack *s, int8_t ope);
+void			print_no_color(t_stack *s);
+void			handle_stack_a(t_stack *s, size_t size, int8_t ope, t_stat *stat);
+int8_t			check_ope(t_stack *s, size_t size, int8_t ope, int8_t stack);
+void			handle_stack_b(t_stack *s, size_t size, int8_t ope, t_stat *stat);
 
 /*
 ** ############################################################################
