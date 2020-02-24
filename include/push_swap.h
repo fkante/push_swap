@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/21 11:10:32 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 14:12:08 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct	s_stack
 {
 	int32_t	*a;
 	int32_t	*b;
-	int32_t *sorted_s;
 	size_t	size_a;
 	size_t	size_b;
 	size_t	rotation_a;

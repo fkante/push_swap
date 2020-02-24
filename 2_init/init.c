@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:43 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 13:07:42 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 14:11:51 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_stack		*create_stack(char **tab, size_t len)
 {
 	t_stack		*s;
 	ssize_t		start;
-
+	
 	s = NULL;
 	if (check_for_duplicate_bonus(tab, len) == FAILURE)
 		return (ft_print_err_null(ERROR_BONUS, STD_ERR));
@@ -81,11 +81,10 @@ t_stack		*create_stack(char **tab, size_t len)
 		return (ft_print_err_null("Wrong input format", STD_ERR));
 	if ((s = ft_memalloc(sizeof(t_stack))) == NULL)
 		return (ft_print_err_null("memory allocation failed", STD_ERR));
+	fill_in_static_variable(s, tab, (len - (size_t)start));
 	s->a = ft_memalloc(sizeof(int) * (len - start));
 	s->b = ft_memalloc(sizeof(int) * (len - start));
-	fill_in_static_variable(s, tab, (len - (size_t)start));
-	if (s->a == NULL || s->b == NULL 
-			|| (s->sorted_s = ft_sort(s->a, s->size_a)) == NULL)
+	if (s->a == NULL || s->b == NULL)
 	{
 		clean_struct(&s);
 		return (ft_print_err_null("memory allocation failed", STD_ERR));
