@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 15:58:17 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:14:35 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 }
 
 /*
- **	iterative solution for 100 and less numbers:
- */
+**	iterative solution for 100 and less numbers:
+*/
+
 void	select_sort_style(t_stack *s)
 {
 	t_stat	*stat;
@@ -70,7 +71,6 @@ void	select_sort_style(t_stack *s)
 		ft_memdel((void**)&stat);
 	}
 }
-
 
 void	push_swp(t_stack *s, int ac, char **av)
 {

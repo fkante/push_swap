@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 12:35:35 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/24 12:19:36 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:20:36 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	rotate_both(t_stack *s)
 
 void	reverse_both(t_stack *s)
 {
-	reverse_rotate_stack_a(s); 
+	reverse_rotate_stack_a(s);
 	reverse_rotate_stack_b(s);
 }
 

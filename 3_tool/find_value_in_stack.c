@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:28:42 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/24 12:02:50 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:20:12 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ void	repositionning_highest(t_stack *s)
 		rra(s);
 		max_index--;
 	}
-   ft_memdel((void**)&stat);
+	ft_memdel((void**)&stat);
 }

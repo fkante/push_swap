@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/21 10:32:48 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:15:39 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int8_t	read_checker(t_stack *s)
 										rotate_stack_a, rotate_stack_b,
 										rotate_both, reverse_rotate_stack_a,
 										reverse_rotate_stack_b, reverse_both};
-	char		*line;
-	size_t		count;
-	int8_t		ret;
+	char				*line;
+	size_t				count;
+	int8_t				ret;
 
 	count = 0;
 	line = NULL;
@@ -39,7 +39,7 @@ void	operation_checker(t_operfunc *f_ptr, char *line, t_stack *s,
 							size_t *count)
 {
 	static char	*oper[NB_OPE] = {SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR};
-	uint8_t 	i;
+	uint8_t		i;
 
 	i = 0;
 	while (i < NB_OPE)

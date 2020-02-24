@@ -6,13 +6,13 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 20:01:39 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/24 12:19:11 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:20:58 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		reverse_rotate_stack_a(t_stack *s)
+void	reverse_rotate_stack_a(t_stack *s)
 {
 	int32_t	first_elem;
 	size_t	i;
@@ -28,7 +28,7 @@ void		reverse_rotate_stack_a(t_stack *s)
 	}
 }
 
-void		reverse_rotate_stack_b(t_stack *s)
+void	reverse_rotate_stack_b(t_stack *s)
 {
 	int32_t	first_elem;
 	size_t	i;

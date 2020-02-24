@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:43 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 14:16:10 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:16:18 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		fill_in_static_variable(t_stack *s, char **tab, size_t size)
 	s->size_a = size;
 	s->rotation_a = 0;
 	s->rotation_b = 0;
-	s->verbose = check_for_bonus(tab, "-v");;
+	s->verbose = check_for_bonus(tab, "-v");
 	s->color = check_for_bonus(tab, "-c");
 }
 
@@ -72,7 +72,7 @@ t_stack		*create_stack(char **tab, size_t len)
 {
 	t_stack		*s;
 	ssize_t		start;
-	
+
 	s = NULL;
 	if (check_for_duplicate_bonus(tab, len) == FAILURE)
 		return (ft_print_err_null(ERROR_BONUS, STD_ERR));
