@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/21 10:22:48 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/25 16:10:36 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define TRUE					1
 # define FAILURE				-1
 # define SUCCESS				0
-# define BUFF_SIZE				1024
+# define BUFF_SIZE				18384
 # define FD_LIMIT				4864
 
 # include <sys/types.h>
@@ -114,7 +114,6 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 void				ft_bzero(void *s, size_t n);
 void				ft_swap(void **one, void **two);
-int					get_next_line(const int fd, char **line);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
@@ -129,6 +128,7 @@ char				*ft_strlowcase(char *str);
 char				*ft_strchr_str(const char *str, char *find);
 char				*ft_strndup(const char *src, size_t size);
 int					get_next_line(const int fd, char **line);
+int					get_next_line_ps(const int fd, char **line);
 
 /*
 ** ############################################################################

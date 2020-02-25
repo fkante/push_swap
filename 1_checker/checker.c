@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/25 12:11:03 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/25 17:00:47 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ int8_t	read_checker(t_stack *s)
 	{
 		ret = operation_checker(func_ptr, line, s, &count);
 		ft_strdel(&line);
-		if (ret == FAILURE)
+		if (ret == FAILURE_OPE)
 			break ;
 	}
+	if (ret == FAILURE)
+		ft_print_err_void(INPUT_TOO_LONG, STD_ERR);
 	return (ret);
 }
 
@@ -56,10 +58,10 @@ int8_t	operation_checker(t_operfunc *f_ptr, char *line, t_stack *s,
 		i++;
 	}
 	len = ft_strlen(line);
-	if (i == NB_OPE || (i < 8 && len > 2) || (i > 7 && len > 3))
+	if (i == NB_OPE)
 	{
 		ft_print_err_void(WRONG_OPERATION, STD_ERR);
-		return (FAILURE);
+		return (FAILURE_OPE);
 	}
 	if (s->verbose == TRUE)
 		print_stack(s, i, *count);

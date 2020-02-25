@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_ps.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 16:04:57 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/25 16:06:57 by fkante           ###   ########.fr       */
+/*   Created: 2020/02/25 16:07:42 by fkante            #+#    #+#             */
+/*   Updated: 2020/02/25 16:58:49 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 /*
 ** ft_strdup allocates memory to store the copy, and returns a pointer to it
 ** ft_strjoin allocates memory, concatenate s1 and s2 and returns a fresh
 ** string ended by '\0'
 */
+
+static int8_t	is_there_newline(char *str_rest)
+{
+	size_t	i;
+	int8_t	ret;
+
+	i = 0;
+	ret = FAILURE;
+	while (str_rest[i] != '\0')
+	{
+		if (str_rest[i] == '\n')
+			ret = SUCCESS;
+		i++;
+	}
+	return (ret);
+}
 
 static int8_t	strrest_with_newline(char **line, char **str_rest)
 {
@@ -30,6 +47,8 @@ static int8_t	strrest_with_newline(char **line, char **str_rest)
 	newline_position = ft_strchr(*str_rest, '\n');
 	if (newline_position == NULL)
 	{
+		if (is_there_newline(*str_rest) == FAILURE)
+			return (FAILURE);
 		*line = ft_strdup(*str_rest);
 		ft_strdel(str_rest);
 		return (FAILURE);
@@ -50,16 +69,12 @@ static int		read_buffer(const int fd, char **line, char **str_rest)
 	char		*leaks;
 	ssize_t		ret;
 
-	while ((ret = read(fd, buff, BUFF_SIZE)) > 0 && ret < BUFF_SIZE)
+	if ((ret = read(fd, buff, BUFF_SIZE)) > 0 && ret < BUFF_SIZE)
 	{
 		buff[ret] = '\0';
 		leaks = *line;
 		if ((newline_position = ft_strchr(buff, '\n')) == NULL)
-		{
-			*line = ft_strjoin(*line, buff);
-			ft_strdel(&leaks);
-			continue ;
-		}
+			return (FAILURE);
 		if (*(newline_position + 1) != '\0')
 			*str_rest = ft_strdup(newline_position + 1);
 		*newline_position = '\0';
@@ -83,7 +98,7 @@ static int		read_buffer(const int fd, char **line, char **str_rest)
 ** TO BE ADDED: Protection for the BUFF_SIZE max
 */
 
-int				get_next_line(const int fd, char **line)
+int				get_next_line_ps(const int fd, char **line)
 {
 	static char	*str_rest[FD_LIMIT];
 

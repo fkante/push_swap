@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 17:47:07 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/25 14:24:42 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	push_swp(t_stack *s, int ac, char **av)
 	if (s->size_a > 1 && is_sorted(s) == FAILURE)
 	{
 		if (s->size_a <= 100)
-			s->size_a <= 3 ? sort_less_three(s) : select_sort_style(s);
+			s->size_a <= 3 ? sort_top_three(s) : select_sort_style(s);
 		else
 			recursive_sort_a_to_b(s, size);
 	}

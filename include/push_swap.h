@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/25 11:43:03 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/25 15:29:06 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ void			rrb(t_stack *s);
 void			rr(t_stack *s);
 void			rrr(t_stack *s);
 size_t			how_many_sorted(t_stack *s);
+void			sort_top_three(t_stack *s);
 int8_t			is_sorted(t_stack *s);
 int8_t			is_sorted_checker(t_stack *s);
 size_t			get_index(int32_t *tab, int32_t nb);

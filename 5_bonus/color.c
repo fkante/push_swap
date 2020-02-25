@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:24:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/25 11:22:28 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/25 15:29:06 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	print_no_color(t_stack *s)
 		if (a > 0)
 		{
 			a--;
-			ft_printf("\t|\t%d\t%d\t\t| |\t", a, s->a[a]);
+			ft_printf("\t|\t\t%d\t\t| |\t", s->a[a]);
 		}
 		else
 			ft_printf("\t|\t\t\t\t| |\t");
