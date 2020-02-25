@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/21 11:53:53 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/25 12:03:56 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 ** ############################################################################
 */
 # define STD_OUT_ERROR		"couldn't write to stdout"
-# define INPUT_TOO_LONG		"GNL detected that the input was too long"
+# define WRONG_OPERATION	"please type in a valid input"
 # define DUPLICATES			"duplicates of numbers input by user"
 # define ONLY_INT			"program only accept integer value from input"
 # define ERROR_BONUS		"flag must be used once after program name"

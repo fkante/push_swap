@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 16:15:39 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/25 12:11:03 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,26 @@ int8_t	read_checker(t_stack *s)
 	size_t				count;
 	int8_t				ret;
 
+	if (s->verbose == TRUE)
+		print_stack(s, NO_OPE, 0);
 	count = 0;
 	line = NULL;
 	while ((ret = get_next_line(0, &line)) > 0)
 	{
-		operation_checker(func_ptr, line, s, &count);
+		ret = operation_checker(func_ptr, line, s, &count);
 		ft_strdel(&line);
+		if (ret == FAILURE)
+			break ;
 	}
-	if (ret == FAILURE)
-		ft_print_err_failure(INPUT_TOO_LONG, STD_ERR);
 	return (ret);
 }
 
-void	operation_checker(t_operfunc *f_ptr, char *line, t_stack *s,
+int8_t	operation_checker(t_operfunc *f_ptr, char *line, t_stack *s,
 							size_t *count)
 {
 	static char	*oper[NB_OPE] = {SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR};
 	uint8_t		i;
+	size_t		len;
 
 	i = 0;
 	while (i < NB_OPE)
@@ -52,8 +55,13 @@ void	operation_checker(t_operfunc *f_ptr, char *line, t_stack *s,
 		}
 		i++;
 	}
+	len = ft_strlen(line);
+	if (i == NB_OPE || (i < 8 && len > 2) || (i > 7 && len > 3))
+	{
+		ft_print_err_void(WRONG_OPERATION, STD_ERR);
+		return (FAILURE);
+	}
 	if (s->verbose == TRUE)
 		print_stack(s, i, *count);
-	if (i == NB_OPE)
-		ft_print_err_void("wrong operation", STD_ERR);
+	return(SUCCESS);
 }
