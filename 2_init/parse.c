@@ -38,7 +38,7 @@ int8_t		check_for_duplicate_bonus(char **tb, size_t len)
 	int8_t		ret;
 
 	ret = SUCCESS;
-	if (tb[0] != '\0')
+	if (tb[0] != NULL)
 	{
 		i = ft_isdigit((int)tb[0][0]) == TRUE ? 1 : 2;
 		while (i < len)

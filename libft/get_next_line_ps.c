@@ -11,102 +11,21 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+#include <stdio.h> 
 
-/*
-** ft_strdup allocates memory to store the copy, and returns a pointer to it
-** ft_strjoin allocates memory, concatenate s1 and s2 and returns a fresh
-** string ended by '\0'
-*/
-
-static int8_t	is_there_newline(char *str_rest)
+int		get_next_line_ps(const int fd, char *line)
 {
-	size_t	i;
+	char	buff[2];
 	int8_t	ret;
 
-	i = 0;
-	ret = FAILURE;
-	while (str_rest[i] != '\0')
+	while ((ret = read(fd, buff, 1)) > 0)
 	{
-		if (str_rest[i] == '\n')
-			ret = SUCCESS;
-		i++;
+		buff[1] = '\0';
+		if (buff[0] == '\n')
+			break ;
+		ft_strcat(line, buff);
 	}
+	if (ret == 0 && buff[0] != '\0')
+		return (FAILURE);
 	return (ret);
-}
-
-static int8_t	strrest_with_newline(char **line, char **str_rest)
-{
-	char	*newline_position;
-	char	*str_after_newline;
-
-	newline_position = NULL;
-	str_after_newline = NULL;
-	if (*str_rest == NULL)
-		return (FAILURE);
-	newline_position = ft_strchr(*str_rest, '\n');
-	if (newline_position == NULL)
-	{
-		if (is_there_newline(*str_rest) == FAILURE)
-			return (FAILURE);
-		*line = ft_strdup(*str_rest);
-		ft_strdel(str_rest);
-		return (FAILURE);
-	}
-	if (*(newline_position + 1) != '\0')
-		str_after_newline = ft_strdup(newline_position + 1);
-	*newline_position = '\0';
-	*line = ft_strdup(*str_rest);
-	ft_strdel(str_rest);
-	*str_rest = str_after_newline;
-	return (SUCCESS);
-}
-
-static int		read_buffer(const int fd, char **line, char **str_rest)
-{
-	char		buff[BUFF_SIZE + 1];
-	char		*newline_position;
-	char		*leaks;
-	ssize_t		ret;
-
-	if ((ret = read(fd, buff, BUFF_SIZE)) > 0 && ret < BUFF_SIZE)
-	{
-		buff[ret] = '\0';
-		leaks = *line;
-		if ((newline_position = ft_strchr(buff, '\n')) == NULL)
-			return (FAILURE);
-		if (*(newline_position + 1) != '\0')
-			*str_rest = ft_strdup(newline_position + 1);
-		*newline_position = '\0';
-		*line = ft_strjoin(*line, buff);
-		ft_strdel(&leaks);
-		return (1);
-	}
-	if (ret == FAILURE || ret > BUFF_SIZE - 1)
-		return (FAILURE);
-	return ((*line == NULL && *str_rest == NULL) ? 0 : 1);
-}
-
-/*
-** 1st: check for errors (empty line, number of the fd invalid)
-** 2nd: check if we have already data in our static var str_rest
-** 3rd: if str_rest exist, we resume from the position it had in the file
-**      if not, we read from the fd the specific nbr of bytes "BUFF_SIZE"
-** 4th: we concatenate what we have in the stack with what we read in the heap
-** here is another read on vm and heap:
-** https://blog.holbertonschool.com/hack-the-virtual-memory-c-strings-proc/
-** TO BE ADDED: Protection for the BUFF_SIZE max
-*/
-
-int				get_next_line_ps(const int fd, char **line)
-{
-	static char	*str_rest[FD_LIMIT];
-
-	if (fd < 0 || fd > FD_LIMIT || line == NULL)
-		return (FAILURE);
-	if (str_rest[fd] == NULL || str_rest[fd][0] == '\0')
-		*line = NULL;
-	if (strrest_with_newline(line, &str_rest[fd]) == SUCCESS)
-		return (1);
-	return (read_buffer(fd, line, &str_rest[fd]));
 }

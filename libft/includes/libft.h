@@ -128,7 +128,7 @@ char				*ft_strlowcase(char *str);
 char				*ft_strchr_str(const char *str, char *find);
 char				*ft_strndup(const char *src, size_t size);
 int					get_next_line(const int fd, char **line);
-int					get_next_line_ps(const int fd, char **line);
+int					get_next_line_ps(const int fd, char *line);
 
 /*
 ** ############################################################################
