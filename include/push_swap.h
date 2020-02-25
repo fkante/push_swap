@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 17:46:09 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/25 11:36:18 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void			operation_checker(t_operfunc *f, char *ln, t_stack *s,
 ** ############################################################################
 */
 void			print_stack(t_stack *s, int8_t ope, size_t count);
-void			print_command(size_t count, int8_t ope, uint8_t	color);
+void			print_command(size_t count, int8_t ope, t_stack *s);
 t_stat 			*get_stat(t_stack *s);
 ssize_t			get_nb_of_move();
 ssize_t			collision_in_filename(t_vector *name, int8_t suffixe);
@@ -160,6 +160,7 @@ int8_t			any_value_under_nb(t_stack *s, int32_t nb);
 int8_t			any_value_above_nb(t_stack *s, int32_t nb);
 void			repositionning_stack_a(t_stack *s);
 void			repositionning_stack_b(t_stack *s);
+t_stat 			*get_stat(t_stack *s);
 
 /*
 ** ############################################################################

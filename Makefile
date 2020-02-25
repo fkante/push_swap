@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2020/02/24 14:20:33 by fkante           ###   ########.fr        #
+#    Updated: 2020/02/25 11:27:04 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -69,6 +69,7 @@ SRCS += parse
 
 # tool
 SRCS += get_index
+SRCS += get_stat
 SRCS += push_stack
 SRCS += swap_stack
 SRCS += swap_both

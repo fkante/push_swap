@@ -6,54 +6,38 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:23:57 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 17:46:10 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/25 11:36:17 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_command(size_t count, int8_t ope, uint8_t	color)
+void	print_command(size_t count, int8_t ope, t_stack *s)
 {
-	ft_printf("\tCount = %u\n\n\t", count);
-	if (color == TRUE && (ope >= 0 && ope <= 2))
+	ft_printf("\tCount = %u\n\tSize = %zu\tSize_a = %zu \tSize_b = %zu\n\n\t",
+				count, (s->size_a + s->size_b), s->size_a, s->size_b);
+	if (s->color == TRUE && (ope >= 0 && ope <= 2))
 		ft_printf("{c_b_green}Swap\t\tA: sa\tB: sb\tBoth: ss{c_end}\n", count);
 	else
 		ft_printf("Swap\t\tA: sa\tB: sb\tBoth: ss\n", count);
-	if (color == TRUE && (ope == 3 || ope == 4))
+	if (s->color == TRUE && (ope == 3 || ope == 4))
 		ft_printf("\t{c_b_green}Push\t\tA: pa\tB: pb{c_end}\n");
 	else
 		ft_printf("\tPush\t\tA: pa\tB: pb\n");
-	if (color == TRUE && (ope >= 5 && ope <= 7))
+	if (s->color == TRUE && (ope >= 5 && ope <= 7))
 		ft_printf("\t{c_b_green}Rotate up\tA: ra\tB: rb\tBoth: rr{c_end}\n");
 	else
 		ft_printf("\tRotate up\tA: ra\tB: rb\tBoth: rr\n");
-	if (color == TRUE && (ope >= 8 && ope <= 10))
-		ft_printf("\t{c_b_green}Rotate down\tA: rra\tB: rrb\tBoth: rrr{c_end}\n");
+	if (s->color == TRUE && (ope >= 8 && ope <= 10))
+		ft_printf("\t{c_b_green}Rotate down\tA: rra\tB: rrb\tBoth: rrr\n");
 	else
 		ft_printf("\tRotate down\tA: rra\tB: rrb\tBoth: rrr\n");
-	if (color == TRUE)
+	if (s->color == TRUE)
 	{
-		ft_printf("\n\tCOLOR:\n\t{c_b_green}Last action{c_end}\n");
-		ft_printf("\t{c_yellow}Minimum{c_end}\n\t{c_blue}Median{c_end}\n\t{c_red}Maximum{c_end}\n");
-		ft_printf("{c_end}\n");
+		ft_printf("{c_end}\n\tCOLOR:\n\t{c_b_green}Last action{c_end}\n");
+		ft_printf("\t{c_yellow}Minimum{c_end}\n\t{c_blue}Median{c_end}\n");
+		ft_printf("\t{c_red}Maximum{c_end}\n");
 	}
-}
-
-t_stat 	*get_stat(t_stack *s)
-{
-	t_stat		*stat;
-
-	stat = ft_memalloc(sizeof(t_stat));
-	if (stat != NULL)
-	{
-		stat->min_a = ft_low(s->a, s->size_a);
-		stat->max_a = ft_high(s->a, s->size_a);
-		ft_median(s->a, s->size_a, &stat->median_a);
-		stat->min_b = ft_low(s->b, s->size_b);
-		stat->max_b = ft_high(s->b, s->size_b);
-		ft_median(s->b, s->size_b, &stat->median_b);
-	}
-	return (stat);
 }
 
 int8_t	check_ope(t_stack *s, size_t size, int8_t ope, int8_t stack)
@@ -111,7 +95,6 @@ void	print_stack(t_stack *s, int8_t ope, size_t count)
 {
 	t_vector	*head;
 	t_vector	*foot;
-	(void)ope;
 
 	head = vct_newstr("\t _______________________________   \
 _____________________________\n\t|\t\tSTACK A\t\t| |\t\tSTACK B\t\t|\n\
@@ -125,5 +108,5 @@ _____________________________\n\t|\t\tSTACK A\t\t| |\t\tSTACK B\t\t|\n\
 	s->color == TRUE ? print_with_color(s, ope) : print_no_color(s);
 	vct_print(foot);
 	vct_del(&foot);
-	print_command(count, ope, s->color);
+	print_command(count, ope, s);
 }

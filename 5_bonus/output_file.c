@@ -6,13 +6,13 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:14:47 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 16:14:57 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/25 11:23:01 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-ssize_t		get_nb_of_move()
+ssize_t		get_nb_of_move(void)
 {
 	char		*line;
 	ssize_t		nb_of_move;
