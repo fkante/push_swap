@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:24:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 17:46:10 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/25 11:21:08 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	show_result(t_stack *s)
 {
 	char	*line;
-	
+
 	line = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
@@ -38,17 +38,11 @@ void	print_with_color(t_stack *s, int8_t ope)
 		while (size_a > 0 || size_b > 0)
 		{
 			if (size_a > 0)
-			{
-				size_a--;
-				handle_stack_a(s, size_a, ope, stat);
-			}
+				handle_stack_a(s, --size_a, ope, stat);
 			else
 				ft_printf("\t|\t\t\t\t| |\t");
 			if (size_b > 0)
-			{
-				size_b--;
-				handle_stack_b(s, size_b, ope, stat);
-			}
+				handle_stack_b(s, --size_b, ope, stat);
 			else
 				ft_printf("\t\t\t|\n");
 		}
