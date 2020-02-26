@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/24 16:14:36 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 11:51:09 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,29 +68,30 @@ void	pa_highest(t_stack *s, int32_t highest)
 	pa(s);
 }
 
-size_t	pb_all_under_nb(t_stack *s, int32_t nth)
+ssize_t	pb_all_under_nb(t_stack *s, int32_t nth)
 {
 	size_t	counter;
 	int32_t pivot_value;
+	int32_t index;
 
-	if (nth == 1)
-		nth = 2;
+	nth = nth == 1 ? 2 : nth;
 	counter = 0;
-	if (nth > 0)
+	if (nth <= 0)
+		return (counter);
+	if ((index = ft_get_n_smallest(s->a, nth / 2, 0, s->size_a)) == FAILURE)
+		return (FAILURE);
+	pivot_value = s->a[index];
+	while (s->size_a > 0 && any_value_under_nb(s, pivot_value) == SUCCESS)
 	{
-		pivot_value = s->a[ft_get_n_smallest(s->a, nth / 2, 0, s->size_a)];
-		while (s->size_a > 0 && any_value_under_nb(s, pivot_value) == SUCCESS)
+		if (s->a[s->size_a - 1] <= pivot_value)
 		{
-			if (s->a[s->size_a - 1] <= pivot_value)
-			{
-				pb(s);
-				counter++;
-			}
-			else
-			{
-				ra(s);
-				s->rotation_a++;
-			}
+			pb(s);
+			counter++;
+		}
+		else
+		{
+			ra(s);
+			s->rotation_a++;
 		}
 	}
 	return (counter);
@@ -115,29 +116,30 @@ void	pb_all_under_nb_iterative(t_stack *s, int32_t pivot_index)
 	}
 }
 
-size_t	pa_all_above_nb(t_stack *s, int32_t nth)
+ssize_t	pa_all_above_nb(t_stack *s, int32_t nth)
 {
 	size_t	counter;
 	int32_t	pivot_value;
+	int32_t index;
 
-	if (nth == 1)
-		nth = 2;
+	nth = nth == 1 ? 2 : nth;
 	counter = 0;
-	if (nth > 0)
+	if (nth <= 0)
+		return (counter);
+	if ((index = ft_get_n_highest(s->b, nth / 2, 0, s->size_b)) == FAILURE)
+		return (FAILURE);
+	pivot_value = s->b[index];
+	while (s->size_b > 0 && any_value_above_nb(s, pivot_value) == SUCCESS)
 	{
-		pivot_value = s->b[ft_get_n_highest(s->b, nth / 2, 0, s->size_b)];
-		while (s->size_b > 0 && any_value_above_nb(s, pivot_value) == SUCCESS)
+		if (s->b[s->size_b - 1] >= pivot_value)
 		{
-			if (s->b[s->size_b - 1] >= pivot_value)
-			{
-				pa(s);
-				counter++;
-			}
-			else
-			{
-				rb(s);
-				s->rotation_b++;
-			}
+			pa(s);
+			counter++;
+		}
+		else
+		{
+			rb(s);
+			s->rotation_b++;
 		}
 	}
 	return (counter);

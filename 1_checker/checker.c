@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/25 17:00:47 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 11:01:37 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int8_t	read_checker(t_stack *s)
 		if (ret == FAILURE_OPE)
 			break ;
 	}
-	ft_printf("ret = %d\n", ret);
 	if (ret == FAILURE)
 		ft_print_err_void(INPUT_TOO_LONG, STD_ERR);
 	return (ret);

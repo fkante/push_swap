@@ -6,12 +6,11 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:07:42 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/25 16:58:49 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 10:24:42 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h> 
 
 int		get_next_line_ps(const int fd, char *line)
 {
@@ -23,9 +22,11 @@ int		get_next_line_ps(const int fd, char *line)
 		buff[1] = '\0';
 		if (buff[0] == '\n')
 			break ;
+		if (ft_isalpha(buff[0]) == 0)
+			return (FAILURE);
 		ft_strcat(line, buff);
 	}
-	if (ret == 0 && buff[0] != '\0')
+	if (ret == 0 && line[0] != '\0')
 		return (FAILURE);
 	return (ret);
 }

@@ -6,13 +6,13 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 11:24:49 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/25 11:27:06 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 14:30:52 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stat 	*get_stat(t_stack *s)
+t_stat	*get_stat(t_stack *s)
 {
 	t_stat		*stat;
 

@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:23:57 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/25 15:29:05 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 14:32:14 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_command(size_t count, int8_t ope, t_stack *s)
 {
-	ft_printf("\tCount = %u\n\n\t",	count);
+	ft_printf("\tCount = %u\n\n\t", count);
 	if (s->color == TRUE && (ope >= 0 && ope <= 2))
 		ft_printf("{c_b_green}Swap\t\tA: sa\tB: sb\tBoth: ss{c_end}\n", count);
 	else

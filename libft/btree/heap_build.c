@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 11:15:55 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/15 12:05:47 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/26 13:13:37 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	fill_tree(t_heap *heap, int32_t *tab, size_t size)
 	i = 1;
 	parent_index = 1;
 	heap->A[1] = tab[0];
-	heap->A[HEAP_SIZE]++;;
+	heap->A[HEAP_SIZE]++;
 	while (i < size)
 	{
 		insert(heap, tab[i], get_left_child(parent_index));
@@ -69,7 +69,8 @@ t_heap	*heap_tree(int32_t *tab, size_t size, uint8_t type)
 	{
 		heap->type = type;
 		heap->A[HEAP_SIZE] = 0;
-		fill_tree(heap, tab, size);
+		if (size > 0)
+			fill_tree(heap, tab, size);
 	}
 	return (heap);
 }

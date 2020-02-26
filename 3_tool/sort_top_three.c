@@ -6,13 +6,13 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 10:49:02 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/25 14:32:13 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 14:31:17 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_top_three_continued(t_stack *s)
+static void	sort_top_three_continued(t_stack *s)
 {
 	size_t	top;
 
@@ -34,7 +34,7 @@ void	sort_top_three_continued(t_stack *s)
 	}
 }
 
-void	sort_top_three(t_stack *s)
+void		sort_top_three(t_stack *s)
 {
 	size_t	top;
 
@@ -61,4 +61,51 @@ void	sort_top_three(t_stack *s)
 	}
 	else
 		sort_top_three_continued(s);
+}
+
+/*
+** 3 2 1 -
+** 3 1 2 -
+** 2 3 1 -
+** 2 1 3 -
+** 1 3 2 -
+** 1 2 3 -
+*/
+
+static void	sort_only_three_continued(t_stack *s)
+{
+	size_t	top;
+
+	top = s->size_a - 1;
+	if (s->a[top - 1] < s->a[top - 2])
+		ra(s);
+	if (s->a[top - 1] > s->a[top - 2])
+	{
+		ra(s);
+		sa(s);
+	}
+}
+
+void		sort_only_three(t_stack *s)
+{
+	size_t	top;
+
+	top = s->size_a - 1;
+	if ((s->a[top] < s->a[top - 1] && s->a[top - 1] < s->a[top - 2]))
+		return ;
+	if (s->a[top] < s->a[top - 1] && s->a[top] < s->a[top - 2])
+	{
+		pb(s);
+		sa(s);
+		pa(s);
+	}
+	else if (s->a[top] < s->a[top - 1] || s->a[top] < s->a[top - 2])
+	{
+		if (s->a[top] > s->a[top - 1])
+			sa(s);
+		else if (s->a[top] > s->a[top - 2])
+			rra(s);
+	}
+	else
+		sort_only_three_continued(s);
 }
