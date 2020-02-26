@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/26 14:29:26 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 16:53:18 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_stack
 	uint8_t	color;
 }				t_stack;
 
-typedef struct 	s_stat
+typedef struct	s_stat
 {
 	int32_t		min_a;
 	int32_t		max_a;
@@ -60,20 +60,20 @@ int8_t			check_for_duplicate_bonus(char **tab, size_t len);
 ** ################################ PUSH_SWAP #################################
 ** ############################################################################
 */
-void		push_swp(t_stack *s, int ac, char **av);
-void		solve(t_stack *s);
-void		pb_lowest(t_stack *s, int32_t limit);
-void		pa_highest(t_stack *s, int32_t limit);
-ssize_t		pb_all_under_nb(t_stack *s, int32_t nth);
-ssize_t		pa_all_above_nb(t_stack *s, int32_t nth);
-void		pivot_on_top_a(t_stack *s, int32_t pivot);
-void		pivot_on_top_b(t_stack *s, int32_t pivot);
-void		sort_less_three(t_stack *s);
-int8_t		is_sorted_less_than_three(t_stack *s, size_t size);
-void		recursive_sort_a_to_b(t_stack *s, size_t total_size);
-void		repositionning_stack_a(t_stack *s);
-void		repositionning_stack_b(t_stack *s);
-void		pb_all_under_nb_iterative(t_stack *s, int32_t pivot_index);
+void			push_swp(t_stack *s, int ac, char **av);
+void			solve(t_stack *s);
+void			pb_lowest(t_stack *s, int32_t limit);
+void			pa_highest(t_stack *s, int32_t limit);
+ssize_t			pb_all_under_nb(t_stack *s, ssize_t nth);
+ssize_t			pa_all_above_nb(t_stack *s, ssize_t nth);
+void			pivot_on_top_a(t_stack *s, int32_t pivot);
+void			pivot_on_top_b(t_stack *s, int32_t pivot);
+void			sort_less_three(t_stack *s);
+int8_t			is_sorted_less_than_three(t_stack *s, size_t size);
+void			recursive_sort_a_to_b(t_stack *s, ssize_t total_size);
+void			repositionning_stack_a(t_stack *s);
+void			repositionning_stack_b(t_stack *s);
+void			pb_all_under_nb_iterative(t_stack *s, int32_t pivot_index);
 
 /*
 ** ############################################################################
@@ -107,17 +107,17 @@ int8_t			operation_checker(t_operfunc *f, char *ln, t_stack *s,
 */
 void			print_stack(t_stack *s, int8_t ope, size_t count);
 void			print_command(size_t count, int8_t ope, t_stack *s);
-t_stat 			*get_stat(t_stack *s);
-ssize_t			get_nb_of_move();
+t_stat			*get_stat(t_stack *s);
+ssize_t			get_nb_of_move(void);
 ssize_t			collision_in_filename(t_vector *name, int8_t suffixe);
 void			write_final_result(ssize_t fd);
 void			save_final_result_in_file(t_stack *s);
 void			show_result(t_stack *s);
 void			print_with_color(t_stack *s, int8_t ope);
 void			print_no_color(t_stack *s);
-void			handle_stack_a(t_stack *s, size_t size, int8_t ope, t_stat *stat);
+void			handle_stack_a(t_stack *s, size_t siz, int8_t ope, t_stat *st);
 int8_t			check_ope(t_stack *s, size_t size, int8_t ope, int8_t stack);
-void			handle_stack_b(t_stack *s, size_t size, int8_t ope, t_stat *stat);
+void			handle_stack_b(t_stack *s, size_t siz, int8_t ope, t_stat *st);
 
 /*
 ** ############################################################################
@@ -162,7 +162,6 @@ int8_t			any_value_under_nb(t_stack *s, int32_t nb);
 int8_t			any_value_above_nb(t_stack *s, int32_t nb);
 void			repositionning_stack_a(t_stack *s);
 void			repositionning_stack_b(t_stack *s);
-t_stat 			*get_stat(t_stack *s);
 
 /*
 ** ############################################################################

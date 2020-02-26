@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:10 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/26 10:40:02 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 17:17:45 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ void		checker(t_stack *s, int ac, char **av)
 	s = init_struct(av, ac);
 	if (s != NULL)
 	{
-//		s->color = TRUE;
-//		s->verbose = TRUE;
 		ret = read_checker(s);
-		if (s->verbose == TRUE && ret == SUCCESS)
-			print_stack(s, NO_OPE, 0);
 		if (ret == SUCCESS)
 		{
 			ret = is_sorted_checker(s);

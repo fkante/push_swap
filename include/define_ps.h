@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/25 16:34:15 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 16:50:52 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define STD_IN				0
 # define STD_OUT			1
 # define STD_ERR			2
-
 
 # define VERBOSE 			0
 # define NB_OPE				11

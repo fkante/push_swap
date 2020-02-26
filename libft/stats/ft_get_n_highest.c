@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 15:49:09 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/26 13:13:38 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 17:14:47 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ssize_t		ft_get_n_highest(int32_t *tab, size_t nth, size_t start,
 	}
 	while (i < (limit + start))
 	{
-		if (tab[i] == heap->A[ROOT])
+		if (tab[i] == heap->a[ROOT])
 			break ;
 		i++;
 	}

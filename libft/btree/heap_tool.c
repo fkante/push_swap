@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 10:52:13 by amartino          #+#    #+#             */
-/*   Updated: 2019/11/29 12:18:17 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/26 17:06:24 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	swap(t_heap *heap, size_t parent, size_t child)
 {
 	int32_t		tmp;
 
-	tmp = heap->A[parent];
-	heap->A[parent] = heap->A[child];
-	heap->A[child] = tmp;
+	tmp = heap->a[parent];
+	heap->a[parent] = heap->a[child];
+	heap->a[child] = tmp;
 }
 
 size_t	get_parent(size_t index)

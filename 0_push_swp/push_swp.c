@@ -6,15 +6,15 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/26 14:29:52 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 15:15:48 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	second_step_recursive(t_stack *s, size_t total_size)
+static void	second_step_recursive(t_stack *s, ssize_t total_size)
 {
-	size_t	nb_sent_to_a;
+	ssize_t	nb_sent_to_a;
 
 	nb_sent_to_a = pa_all_above_nb(s, total_size);
 	repositionning_stack_b(s);
@@ -24,9 +24,9 @@ void	second_step_recursive(t_stack *s, size_t total_size)
 	second_step_recursive(s, total_size - nb_sent_to_a);
 }
 
-void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
+void		recursive_sort_a_to_b(t_stack *s, ssize_t total_size)
 {
-	size_t	nb_sent_to_b;
+	ssize_t	nb_sent_to_b;
 
 	if (is_sorted(s) == FAILURE)
 	{
@@ -51,7 +51,7 @@ void	recursive_sort_a_to_b(t_stack *s, size_t total_size)
 **	iterative solution for 100 and less numbers:
 */
 
-void	select_sort_style(t_stack *s)
+static void	select_sort_style(t_stack *s)
 {
 	t_stat	*stat;
 	size_t	pivot;
@@ -71,9 +71,9 @@ void	select_sort_style(t_stack *s)
 	}
 }
 
-void	push_swp(t_stack *s, int ac, char **av)
+void		push_swp(t_stack *s, int ac, char **av)
 {
-	size_t	size;
+	ssize_t	size;
 
 	s = init_struct(av, ac);
 	if (s == NULL)
@@ -83,7 +83,8 @@ void	push_swp(t_stack *s, int ac, char **av)
 	if (s->fd == FAILURE)
 	{
 		clean_struct(&s);
-		return (ft_print_err_void("when creating result file", STD_ERR));
+		ft_print_err_void("when creating result file", STD_ERR);
+		return ;
 	}
 	size = s->size_a;
 	if (s->size_a > 1 && is_sorted(s) == FAILURE)

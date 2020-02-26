@@ -6,15 +6,14 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 10:49:04 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/06 17:17:48 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 17:08:01 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef BTREE_H
 # define BTREE_H
 
-#include "libft.h"
+# include "libft.h"
 
 # define HEAP_SIZE		0
 # define NB_OF_SPACE	10
@@ -30,11 +29,11 @@
 ** ################################# HEAP #####################################
 ** ############################################################################
 */
-typedef struct			s_heap
+typedef struct		s_heap
 {
-	int32_t			*A;
+	int32_t			*a;
 	uint8_t			type;
-}						t_heap;
+}					t_heap;
 
 /*
 *****************************************************************************
@@ -45,22 +44,18 @@ typedef struct			s_heap
 **	Doc : https://s.42l.fr/heap_tree
 *****************************************************************************
 */
-t_heap		*heap_tree(int32_t *tab, size_t size, uint8_t type);
-void		fill_tree(t_heap *heap, int32_t *tab, size_t size);
-void		insert(t_heap *heap, int32_t nb, size_t index);
-void		delete_root(t_heap *heap);
-void		clean_heap_tree(t_heap **heap);
-
-
-void 		is_parent_valid(t_heap *heap, size_t child);
-void		heapify(t_heap *heap, size_t parent);
-
-size_t		get_parent(size_t index);
-size_t		get_left_child(size_t index);
-size_t		get_right_child(size_t index);
-size_t		deepness(size_t max);
-void		swap(t_heap *heap, size_t parent, size_t child);
-
-void		print_heap_tree(t_heap *heap, size_t index, size_t deep);
+t_heap				*heap_tree(int32_t *tab, size_t size, uint8_t type);
+void				fill_tree(t_heap *heap, int32_t *tab, size_t size);
+void				insert(t_heap *heap, int32_t nb, size_t index);
+void				delete_root(t_heap *heap);
+void				clean_heap_tree(t_heap **heap);
+void				is_parent_valid(t_heap *heap, size_t child);
+void				heapify(t_heap *heap, size_t parent);
+size_t				get_parent(size_t index);
+size_t				get_left_child(size_t index);
+size_t				get_right_child(size_t index);
+size_t				deepness(size_t max);
+void				swap(t_heap *heap, size_t parent, size_t child);
+void				print_heap_tree(t_heap *heap, size_t index, size_t deep);
 
 #endif

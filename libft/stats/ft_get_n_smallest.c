@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 17:01:16 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/24 11:41:05 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 17:15:03 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ssize_t		ft_get_n_smallest(int32_t *tab, size_t nth, size_t start,
 	}
 	while (i < (limit + start))
 	{
-		if (tab[i] == heap->A[ROOT])
+		if (tab[i] == heap->a[ROOT])
 			break ;
 		i++;
 	}

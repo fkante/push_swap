@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/26 13:43:16 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 17:09:28 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@
 # include <time.h>
 
 /*
-** # for linux set-up #
+** #define ft_memalloc(X) ft_malloc_debug(X, __FILE__, __LINE__, __func__)
 */
-
-//#define ft_memalloc(X) ft_malloc_debug(X, __FILE__, __LINE__, __func__)
 
 # define FALSE					0
 # define TRUE					1
@@ -69,7 +67,10 @@ t_list				*ft_lstfindone(t_list *lst, size_t rank);
 ** ########################### MEM MANIPULATION ###############################
 ** ############################################################################
 */
-//void				*ft_malloc_debug(size_t size, const char *file, int line, const char *function);
+/*
+** void				*ft_malloc_debug(size_t size, const char *file, int line,
+**										const char *function);
+*/
 void				*ft_memalloc(size_t size);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				ft_memdel(void **ap);

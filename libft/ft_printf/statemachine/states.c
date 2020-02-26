@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:27:50 by amartino          #+#    #+#             */
-/*   Updated: 2019/09/20 12:15:12 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/26 17:01:00 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int8_t		flags(t_state_machine *ptf, char *input, va_list *arg_pf)
 			if (i < NB_OF_MODIFIER)
 				ptf->option &= ~ALL_MOD;
 			ptf->option |= (1 << i);
-			return (ft_strcmp(flags[i], POINT) == 0 ? is_precision(ptf, input + 1, arg_pf)
-										: len);
+			return (ft_strcmp(flags[i], POINT) == 0 ? is_precision(ptf,
+						input + 1, arg_pf) : len);
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:34:04 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/26 11:51:09 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 15:09:34 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	pa_highest(t_stack *s, int32_t highest)
 	pa(s);
 }
 
-ssize_t	pb_all_under_nb(t_stack *s, int32_t nth)
+ssize_t	pb_all_under_nb(t_stack *s, ssize_t nth)
 {
 	size_t	counter;
 	int32_t pivot_value;
@@ -116,7 +116,7 @@ void	pb_all_under_nb_iterative(t_stack *s, int32_t pivot_index)
 	}
 }
 
-ssize_t	pa_all_above_nb(t_stack *s, int32_t nth)
+ssize_t	pa_all_above_nb(t_stack *s, ssize_t nth)
 {
 	size_t	counter;
 	int32_t	pivot_value;

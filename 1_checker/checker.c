@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/26 11:01:37 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 16:46:59 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ int8_t	operation_checker(t_operfunc *f_ptr, char *line, t_stack *s,
 	}
 	if (s->verbose == TRUE)
 		print_stack(s, i, *count);
-	return(SUCCESS);
+	return (SUCCESS);
 }

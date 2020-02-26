@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:25:09 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 11:45:59 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/26 17:11:20 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define BOTH					3
 # define NB_OF_APPLY_FUNC		3
 # define NB_OF_TEST_FUNC		4
-# define NB_TOTAL_OF_FUNC		NB_OF_APPLY_FUNC + NB_OF_TEST_FUNC
+# define NB_TOTAL_OF_FUNC		7
 
 /*
 *****************************************************************************

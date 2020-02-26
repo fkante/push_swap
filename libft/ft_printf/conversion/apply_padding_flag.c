@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 17:05:02 by amartino          #+#    #+#             */
-/*   Updated: 2019/10/02 12:11:37 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/26 16:59:00 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,28 +82,28 @@ int8_t		apply_precision(t_vector *vector, t_flag *flag)
 	return (ret);
 }
 
-int8_t		apply_width(t_vector *vector, t_flag *flag)
+int8_t		apply_width(t_vector *vct, t_flag *flag)
 {
 	uint64_t	len;
 	int8_t		ret;
 
 	ret = SUCCESS;
-	len = (ssize_t)flag->width < vct_len(vector) ? 0 : flag->width - vct_len(vector);
+	len = (ssize_t)flag->width < vct_len(vct) ? 0 : flag->width - vct_len(vct);
 	if (len > 0)
 	{
 		if (flag->option & FLAG_MINUS)
-			ret = vct_fill_after(vector, ' ', len);
+			ret = vct_fill_after(vct, ' ', len);
 		else if (flag->option & FLAG_ZERO)
 		{
-			ret = vct_fill_before(vector, '0', len);
+			ret = vct_fill_before(vct, '0', len);
 			if (flag->option & CONV_X || flag->option & CONV_X_MAJ)
 			{
 				if (ret == SUCCESS)
-					apply_hash_flag_zero(vector, flag);
+					apply_hash_flag_zero(vct, flag);
 			}
 		}
 		else
-			ret = vct_fill_before(vector, ' ', len);
+			ret = vct_fill_before(vct, ' ', len);
 	}
 	return (ret);
 }
