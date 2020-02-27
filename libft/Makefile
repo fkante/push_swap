@@ -224,13 +224,13 @@ else ifeq ($(f), f)
 CFLAGS = $(DFLAGS)
 endif
 
-RED = \x1b[31m
-GREEN = \x1b[32m
-YELLOW = \x1b[33m
-BLUE = \x1b[34m
-MAGENTA = \x1b[35m
-CYAN = \x1b[36m
-END = \x1b[0m
+RED = \033[0;31m
+GREEN = \033[0;32m 
+YELLOW = \033[0;33m 
+BLUE = \033[0;34m
+MAGENTA = \033[0;35m
+CYAN = \033[0;36m 
+END = \033[0m
 
 #Linux
 #RED = \e[31m
