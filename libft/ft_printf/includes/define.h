@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 14:13:45 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/26 17:00:08 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/27 11:42:10 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,5 @@
 # define CONV_R				0x04000000
 # define CONV_B				0x08000000
 # define CONV_NONE			0x10000000
-
-# define C_RED   			\033[31m
-# define C_GREEN			\033[32m
-# define C_YELLOW			\033[33m
-# define C_BLUE				\033[34m
-# define C_MAGENTA			\033[35m
-# define C_CYAN				\033[36m
-# define C_END				\033[0m
 
 #endif

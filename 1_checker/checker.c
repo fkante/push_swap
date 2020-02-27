@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/26 16:46:59 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 19:35:44 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ int8_t	read_checker(t_stack *s)
 										rotate_stack_a, rotate_stack_b,
 										rotate_both, reverse_rotate_stack_a,
 										reverse_rotate_stack_b, reverse_both};
-	char				line[4];
+	char				line[5];
 	size_t				count;
 	int8_t				ret;
 
 	if (s->verbose == TRUE)
 		print_stack(s, NO_OPE, 0);
 	count = 0;
-	ft_bzero((void*)&line, 4);
+	ft_bzero((void*)&line, 5);
 	while ((ret = get_next_line_ps(0, line)) > 0)
 	{
 		ret = operation_checker(func_ptr, line, s, &count);
-		ft_bzero((void*)&line, 4);
+		ft_bzero((void*)&line, 5);
 		if (ret == FAILURE_OPE)
 			break ;
 	}

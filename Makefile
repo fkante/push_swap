@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2020/02/26 14:58:39 by fkante           ###   ########.fr        #
+#    Updated: 2020/02/26 20:58:04 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -18,8 +18,9 @@ NAME_PUSH_SWP = push_swap
 NAME_CHECKER = checker
 LIB_DIR = ./libft/ft_printf
 LIB = libftprintf.a
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CC = clang
+#override CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -Wall -Wextra -Werror
 DFLAGS =  -Wall -Wextra -Werror -fsanitize=address,undefined -g3
 INCLUDES += -I./include
 INCLUDES += -I./libft/includes
@@ -140,7 +141,7 @@ $(OBJS): $(BUILD_DIR)%.o: %.c $(HEAD) Makefile
 	echo "$(CFLAGS) \t\t $(GREEN)$<$(END)"
 
 $(LIB_PATH): FORCE
-	make -C $(LIB_DIR)
+	$(MAKE) -C $(LIB_DIR)
 
 t: all $(VAL)
 	$(VALGRIND) ./ft_printf examples/$(T) #to be changed
@@ -160,9 +161,11 @@ fclean: clean
 re: fclean
 	$(MAKE)
 
+FORCE:
+	true
+
 .PHONY: clean fclean all re t FORCE git
 .SILENT: $(NAME) $(OBJS) $(BUILD_DIR) $(MAIN_OBJ_PS) $(MAIN_OBJ_C) $(LIB_PATH) clean fclean re t FORCE
-FORCE:
 
 
                      ####################################

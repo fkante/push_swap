@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/26 17:09:28 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/26 20:41:51 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
+int					ft_all_isdigit(char *str);
 int					ft_isprint(int c);
 int					ft_strisupcase(char *str);
 int					ft_strislowcase(char *str);

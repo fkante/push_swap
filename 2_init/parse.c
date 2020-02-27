@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:59 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/24 12:57:39 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/27 11:14:26 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ uint8_t		check_for_bonus(char **tab, char *chr)
 	uint8_t		ret;
 
 	ret = FALSE;
+	if (tab[0] == NULL)
+		return (ret);
 	if ((ft_strequ(tab[0], chr) == TRUE) || (ft_strequ(tab[1], chr) == TRUE))
 		ret = TRUE;
 	return (ret);
@@ -74,9 +76,9 @@ int8_t		check_err(char *str, size_t j)
 		j++;
 		while (str[j] != '\0')
 		{
-			if (ft_isdigit((int)str[j]) == FALSE)
+			if (ft_all_isdigit(&str[1]) == FALSE)
 			{
-				if (str[j] != 'v' && str[j] != 'c')
+				if ((str[j] != 'v' && str[j] != 'c'))
 					return (FAILURE);
 				else
 					count++;

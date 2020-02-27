@@ -6,13 +6,16 @@
 #    By: fkante <fkante@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2020/02/26 17:02:58 by fkante           ###   ########.fr        #
+#    Updated: 2020/02/26 20:58:34 by fkante           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = gcc 
 AR = ar -rcs
+#override CFLAGS += -Wall
+#override CFLAGS += -Wextra
+#override CFLAGS += -Werror
 CFLAGS += -Wall
 CFLAGS += -Wextra
 CFLAGS += -Werror

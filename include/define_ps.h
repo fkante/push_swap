@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/26 16:50:52 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/27 10:31:52 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 */
 # define STD_OUT_ERROR		"couldn't write to stdout"
 # define WRONG_OPERATION	"please type in a valid input"
-# define INPUT_TOO_LONG		"[read] input exceeds the buffer limit"
+# define INPUT_TOO_LONG		"read error"
 # define DUPLICATES			"duplicates of numbers input by user"
 # define ONLY_INT			"program only accept integer value from input"
 # define ERROR_BONUS		"flag must be used once after program name"

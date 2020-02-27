@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/26 16:53:18 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/27 12:26:00 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ int8_t			any_value_under_nb(t_stack *s, int32_t nb);
 int8_t			any_value_above_nb(t_stack *s, int32_t nb);
 void			repositionning_stack_a(t_stack *s);
 void			repositionning_stack_b(t_stack *s);
+void			sort_last(t_stack *s);
 
 /*
 ** ############################################################################

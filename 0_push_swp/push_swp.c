@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/26 15:15:48 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/27 13:11:38 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ void		recursive_sort_a_to_b(t_stack *s, ssize_t total_size)
 
 	if (is_sorted(s) == FAILURE)
 	{
-		if (total_size == 3)
+		if (total_size == 3 || (total_size == 0 && s->size_b == 3))
 		{
 			sort_top_three(s);
+			while (total_size == 0 && s->size_b > 0)
+				sort_last(s);
 			return ;
 		}
 		else if (total_size == 2)
