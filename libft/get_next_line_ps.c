@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:07:42 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/27 17:04:54 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/27 18:01:20 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 int		get_next_line_ps(int fd, char *line)
 {
-	char	buff[2];
+	char	buff[1024];
+	size_t	i;
 	int8_t	ret;
 	int8_t	count;
-	int32_t	max_buff;
 
+	i = 0;
 	count = 0;
-	max_buff = 0;
-	while ((ret = read(fd, buff, 1)) > 0 && max_buff < BUFF_SIZE)
+	if ((ret = read(fd, buff, 1024)) > 0)
 	{
-		max_buff++;
-		if (count == 4)
-		{
-			if (buff[0] == '\n') 
-				return (FAILURE);
-			continue ;
-		}
-		count++;
-		if (buff[0] == '\n')
-			break ;
+		if (buff[0] == '\0')
+			return (FAILURE);
+		buff[4] = '\0';
+		if (ft_isalpha (buff[0]) == FALSE)
+			return (FAILURE);
 		ft_strcat(line, buff);
+		while (line[i] != '\n' || line[i] != '\0')
+			i++;
+		line[i] = '\0';
 	}
 	if (ret == 0 && line[0] != '\0')
 		return (FAILURE);
