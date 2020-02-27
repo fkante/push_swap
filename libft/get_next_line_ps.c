@@ -6,32 +6,35 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:07:42 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/27 18:01:20 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/27 18:53:06 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		get_next_line_ps(int fd, char *line)
+int		get_next_line_ps(const int fd, char *line)
 {
-	char	buff[1024];
-	size_t	i;
+	char	buff[8192];
 	int8_t	ret;
 	int8_t	count;
 
-	i = 0;
 	count = 0;
-	if ((ret = read(fd, buff, 1024)) > 0)
+	while ((ret = read(fd, buff, 1)) > 0)
 	{
-		if (buff[0] == '\0')
-			return (FAILURE);
-		buff[4] = '\0';
-		if (ft_isalpha (buff[0]) == FALSE)
-			return (FAILURE);
+		buff[1] = '\0';
+		if (count == 4 || buff[0] == '\0')
+		{
+			if (buff[0] == '\n' || buff[0] == '\0')
+			{
+				read(fd, buff, 8000);
+				return (FAILURE);
+			}
+			continue ;
+		}
+		count++;
+		if (buff[0] == '\n')
+			break ;
 		ft_strcat(line, buff);
-		while (line[i] != '\n' || line[i] != '\0')
-			i++;
-		line[i] = '\0';
 	}
 	if (ret == 0 && line[0] != '\0')
 		return (FAILURE);
