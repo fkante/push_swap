@@ -74,6 +74,7 @@ void			recursive_sort_a_to_b(t_stack *s, ssize_t total_size);
 void			repositionning_stack_a(t_stack *s);
 void			repositionning_stack_b(t_stack *s);
 void			pb_all_under_nb_iterative(t_stack *s, int32_t pivot_index);
+void			pb_all_under_nb_five(t_stack *s, int32_t pivot_index);
 
 /*
 ** ############################################################################
@@ -111,6 +112,7 @@ t_stat			*get_stat(t_stack *s);
 ssize_t			get_nb_of_move(void);
 ssize_t			collision_in_filename(t_vector *name, int8_t suffixe);
 void			write_final_result(ssize_t fd);
+ssize_t			write_in_std_out(void);
 void			save_final_result_in_file(t_stack *s);
 void			show_result(t_stack *s);
 void			print_with_color(t_stack *s, int8_t ope);

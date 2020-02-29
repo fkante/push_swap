@@ -59,6 +59,7 @@ MAIN_CHECK = main_check
 SRCS += push_swp
 SRCS += pivot_on_top
 SRCS += operation_on_stack
+SRCS +=	pb_all_under_five 
 SRCS += repositionning_stack
 
 # checker

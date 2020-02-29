@@ -22,5 +22,4 @@ void	ss(t_stack *s)
 {
 	swap_both(s);
 	ft_putendl_fd("ss", s->fd);
-	ft_putendl_fd("ss", 1);
 }

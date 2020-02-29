@@ -71,6 +71,31 @@ void		write_final_result(ssize_t fd)
 	ft_strdel(&line);
 }
 
+ssize_t		write_in_std_out(void)
+{
+	char		*line;
+	ssize_t		ret;
+	ssize_t		ret_fd;
+	ssize_t		fd_tmp;
+
+	fd_tmp = open("result/tmp.txt", O_RDWR);
+	ret = FAILURE;
+	if (fd_tmp != FAILURE)
+	{
+		while ((ret = get_next_line(fd_tmp, &line)) > 0)
+		{
+
+			if ((ret_fd = ft_dprintf(STD_OUT, "%s\n", line)) == FAILURE)
+				break ;
+////			ft_dprintf(STD_ERR, "%d\n", ret_fd);
+			ft_strdel(&line);
+		}
+	}
+	close(fd_tmp);
+	ft_strdel(&line);
+	return (ret);
+}
+
 void		save_final_result_in_file(t_stack *s)
 {
 	t_vector	*name;

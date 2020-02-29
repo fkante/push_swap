@@ -48,12 +48,10 @@ void	ra(t_stack *s)
 {
 	rotate_stack_a(s);
 	ft_putendl_fd("ra", s->fd);
-	ft_putendl_fd("ra", 1);
 }
 
 void	rb(t_stack *s)
 {
 	rotate_stack_b(s);
 	ft_putendl_fd("rb", s->fd);
-	ft_putendl_fd("rb", 1);
 }

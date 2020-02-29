@@ -46,12 +46,10 @@ void	sa(t_stack *s)
 {
 	swap_stack_a(s);
 	ft_putendl_fd("sa", s->fd);
-	ft_putendl_fd("sa", 1);
 }
 
 void	sb(t_stack *s)
 {
 	swap_stack_b(s);
 	ft_putendl_fd("sb", s->fd);
-	ft_putendl_fd("sb", 1);
 }

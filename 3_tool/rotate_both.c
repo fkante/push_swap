@@ -28,12 +28,10 @@ void	rr(t_stack *s)
 {
 	rotate_both(s);
 	ft_putendl_fd("rr", s->fd);
-	ft_putendl_fd("rr", 1);
 }
 
 void	rrr(t_stack *s)
 {
 	reverse_both(s);
 	ft_putendl_fd("rrr", s->fd);
-	ft_putendl_fd("rrr", 1);
 }

@@ -46,14 +46,12 @@ void	pa(t_stack *s)
 {
 	push_stack_a(s);
 	ft_putendl_fd("pa", s->fd);
-	ft_putendl_fd("pa", 1);
 }
 
 void	pb(t_stack *s)
 {
 	push_stack_b(s);
 	ft_putendl_fd("pb", s->fd);
-	ft_putendl_fd("pb", 1);
 }
 
 void	sort_last(t_stack *s)

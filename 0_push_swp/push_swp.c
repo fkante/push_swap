@@ -52,18 +52,15 @@ void		recursive_sort_a_to_b(t_stack *s, ssize_t total_size)
 /*
 **	iterative solution for 100 and less numbers:
 */
-static void	sort_for_twelve(t_stack *s)
+static void	sort_for_five(t_stack *s)
 {
 	t_stat	*stat;
 	size_t	pivot;
 
-	while (s->size_a > 3)
-	{
-		stat = get_stat(s);
-		pivot = get_index(s->a, stat->median_a);
-		pb_all_under_nb_iterative(s, pivot);
-		ft_memdel((void**)&stat);
-	}
+	stat = get_stat(s);
+	pivot = get_index(s->a, stat->median_a);
+	pb_all_under_nb_five(s, pivot);
+	ft_memdel((void**)&stat);
 	sort_only_three(s);
 	while (s->size_b > 0)
 	{
@@ -80,7 +77,7 @@ static void	select_sort_style(t_stack *s)
 
 	if (s->size_a == 5)
 	{
-		sort_for_twelve(s);
+		sort_for_five(s);
 		return ;
 	}
 	while (s->size_a > 1)

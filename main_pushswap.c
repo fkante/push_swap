@@ -23,12 +23,10 @@ int			main(int ac, char **av)
 	{
 		++av;
 		--ac;
-		if ((ret = write(STD_OUT, "", 0)) == FAILURE)
-		{
-			ft_print_err_void(STD_OUT_ERROR, STD_ERR);
-			return (FAILURE);
-		}
 		push_swp(s, ac, av);
+		if (write_in_std_out() == FAILURE)
+			ft_print_err_void(STD_OUT_ERROR, STD_ERR);
+
 	}
 	return (ret);
 }
