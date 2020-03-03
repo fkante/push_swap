@@ -56,11 +56,14 @@ static void	sort_for_five(t_stack *s)
 {
 	t_stat	*stat;
 	size_t	pivot;
-
-	stat = get_stat(s);
-	pivot = get_index(s->a, stat->median_a);
-	pb_all_under_nb_five(s, pivot);
-	ft_memdel((void**)&stat);
+	
+	while(s->size_a > 3)
+	{
+		stat = get_stat(s);
+		pivot = get_index(s->a, stat->median_a);
+		pb_all_under_nb_five(s, pivot);
+		ft_memdel((void**)&stat);
+	}
 	sort_only_three(s);
 	while (s->size_b > 0)
 	{

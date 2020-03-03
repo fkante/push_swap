@@ -75,7 +75,6 @@ void		sort_top_three(t_stack *s)
 static void	sort_only_two(t_stack *s)
 {
 	size_t top;
-
 	top = s->size_a - 1;
 	if (s->a[top] > s->a[top - 1])
 		sa(s);
@@ -100,6 +99,7 @@ static void	sort_only_three_continued(t_stack *s)
 void		sort_only_three(t_stack *s)
 {
 	size_t	top;
+	
 
 	if (s->size_a == 2)
 	{
