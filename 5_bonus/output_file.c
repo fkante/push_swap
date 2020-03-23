@@ -75,21 +75,23 @@ ssize_t		write_in_std_out(void)
 {
 	char		*line;
 	ssize_t		ret;
-	ssize_t		ret_fd;
+	ssize_t		read_limit;
 	ssize_t		fd_tmp;
 
 	fd_tmp = open("result/tmp.txt", O_RDWR);
 	ret = FAILURE;
+	read_limit = 0;
 	if (fd_tmp != FAILURE)
 	{
-		while ((ret = get_next_line(fd_tmp, &line)) > 0)
+		while ((ret = get_next_line(fd_tmp, &line)) > 0 && read_limit < READ_LIMIT)
 		{
-
-			if ((ret_fd = ft_dprintf(STD_OUT, "%s\n", line)) == FAILURE)
+			if ((ret = ft_dprintf(STD_OUT, "%s\n", line)) == FAILURE)
 				break ;
-////			ft_dprintf(STD_ERR, "%d\n", ret_fd);
 			ft_strdel(&line);
+			read_limit++;
 		}
+		if (read_limit == READ_LIMIT)
+			ret = FAILURE;
 	}
 	close(fd_tmp);
 	ft_strdel(&line);

@@ -28,7 +28,7 @@
 # define TRUE					1
 # define FAILURE				-1
 # define SUCCESS				0
-# define BUFF_SIZE				18384
+# define BUFF_SIZE				25128
 # define FD_LIMIT				4864
 
 # include <sys/types.h>

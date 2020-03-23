@@ -1,20 +1,41 @@
 #include "push_swap.h"
 
+static int8_t	val_under_nb(t_stack *s, int32_t pivot_value)
+{
+	int8_t	ret;
+	size_t	i;
+
+	ret = FAILURE;
+	i = s->size_a - 1;
+	while (i > 0)
+	{
+		if (s->a[i] < pivot_value)
+		{
+			ret = SUCCESS;
+			break ;
+		}
+		i--;
+	}
+	if (s->a[0] == pivot_value)
+		ret = SUCCESS;
+	return (ret);
+}
+
 void	pb_all_under_nb_five(t_stack *s, int32_t pivot_index)
 {
-	size_t	i;
 	size_t	last;
 	int32_t pivot_value;
 
 	if (pivot_index >= 0 && pivot_index < (int32_t)s->size_a)
 	{
 		pivot_value = s->a[pivot_index];
-		i = s->size_a > 0 ? s->size_a - 1 : 0;
-		while (i > 0)
+		while (s->size_a > 0 && val_under_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_a - 1;
-			s->a[last] < pivot_value ? pb(s) : ra(s);
-			i--;
+			if (s->a[last] < pivot_value)
+				pb(s); 
+			else
+				ra(s);
 		}
 	}
 }
