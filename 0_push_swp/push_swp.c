@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/27 13:11:38 by fkante           ###   ########.fr       */
+/*   Updated: 2020/04/27 09:43:10 by francis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ void		recursive_sort_a_to_b(t_stack *s, ssize_t total_size)
 /*
 **	iterative solution for 100 and less numbers:
 */
+
 static void	sort_for_five(t_stack *s)
 {
 	t_stat	*stat;
 	size_t	pivot;
-	
+
 	while(s->size_a > 3)
 	{
 		stat = get_stat(s);

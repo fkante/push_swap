@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pb_all_under_five.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: francis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/27 09:42:20 by francis           #+#    #+#             */
+/*   Updated: 2020/04/27 09:42:31 by francis          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int8_t	val_under_nb(t_stack *s, int32_t pivot_value)
@@ -21,7 +33,7 @@ static int8_t	val_under_nb(t_stack *s, int32_t pivot_value)
 	return (ret);
 }
 
-void	pb_all_under_nb_five(t_stack *s, int32_t pivot_index)
+void			pb_all_under_nb_five(t_stack *s, int32_t pivot_index)
 {
 	size_t	last;
 	int32_t pivot_value;
@@ -33,7 +45,7 @@ void	pb_all_under_nb_five(t_stack *s, int32_t pivot_index)
 		{
 			last = s->size_a - 1;
 			if (s->a[last] < pivot_value)
-				pb(s); 
+				pb(s);
 			else
 				ra(s);
 		}
