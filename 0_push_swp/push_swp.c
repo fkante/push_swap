@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/04/27 21:13:58 by francis          ###   ########.fr       */
+/*   Updated: 2020/04/27 21:45:13 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,11 @@ static void	select_sort_style(t_stack *s)
 	}
 }
 
+/*
+**	add this line before the return save_final_result_in_file(s);
+**  this will save all results in files to have archives
+*/
+
 void		push_swp(t_stack *s, int ac, char **av)
 {
 	ssize_t	size;
@@ -124,6 +129,5 @@ void		push_swp(t_stack *s, int ac, char **av)
 	}
 	if (s->verbose == TRUE)
 		print_stack(s, NO_OPE, 0);
-//	save_final_result_in_file(s);
 	clean_struct(&s);
 }
