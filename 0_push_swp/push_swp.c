@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/04/27 09:43:10 by francis          ###   ########.fr       */
+/*   Updated: 2020/04/27 09:50:05 by francis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	sort_for_five(t_stack *s)
 	t_stat	*stat;
 	size_t	pivot;
 
-	while(s->size_a > 3)
+	while (s->size_a > 3)
 	{
 		stat = get_stat(s);
 		pivot = get_index(s->a, stat->median_a);

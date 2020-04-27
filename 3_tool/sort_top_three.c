@@ -6,7 +6,7 @@
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 10:49:02 by fkante            #+#    #+#             */
-/*   Updated: 2020/04/27 09:43:59 by francis          ###   ########.fr       */
+/*   Updated: 2020/04/27 09:50:44 by francis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static void	sort_only_three_continued(t_stack *s)
 void		sort_only_three(t_stack *s)
 {
 	size_t	top;
-	
+
 	if (s->size_a == 2)
 	{
 		sort_only_two(s);
