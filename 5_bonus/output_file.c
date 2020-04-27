@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:14:47 by amartino          #+#    #+#             */
-/*   Updated: 2020/04/27 21:11:19 by francis          ###   ########.fr       */
+/*   Updated: 2020/04/27 21:12:56 by francis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,14 @@ ssize_t		collision_in_filename(t_vector *name, int8_t suffixe)
 {
 	ssize_t		fd;
 
-	fd = FAILURE;
 	vct_addstr(name, "_");
-	if (vct_addnb(name, suffixe) == SUCCESS)
-	{
+	vct_addnb(name, suffixe);
 	fd = open(vct_getstr(name), O_RDWR | O_CREAT | O_EXCL, 0744);
 	if (fd == FAILURE)
 	{
 		vct_pop(name, (1 + ft_int64_t_len((int64_t)suffixe, 10)));
 		suffixe++;
 		fd = collision_in_filename(name, suffixe);
-	}
 	}
 	return (fd);
 }

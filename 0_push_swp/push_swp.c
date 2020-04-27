@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:28:51 by amartino          #+#    #+#             */
-/*   Updated: 2020/04/27 21:00:39 by francis          ###   ########.fr       */
+/*   Updated: 2020/04/27 21:13:58 by francis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,6 @@ void		push_swp(t_stack *s, int ac, char **av)
 	}
 	if (s->verbose == TRUE)
 		print_stack(s, NO_OPE, 0);
-	save_final_result_in_file(s);
+//	save_final_result_in_file(s);
 	clean_struct(&s);
 }
