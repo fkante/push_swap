@@ -1,7 +1,6 @@
 #binary
 push_swap
 checker
-sc_tester.sh
 
 # Object files
 libftprintf/build/*.o
