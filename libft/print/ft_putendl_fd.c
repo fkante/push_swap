@@ -21,11 +21,9 @@ ssize_t	ft_putendl_ret_fd(char const *s, int fd)
 	if (s != NULL)
 	{
 		len = ft_strlen(s);
-		if ((ret = write(fd, s, len)) == FAILURE)
-		{
-			ret = FAILURE;
+		ret = write(fd, s, len);
+		if (ret == FAILURE)
 			return (ret);
-		}
 		ft_putchar_fd('\n', fd);
 	}
 	return (ret);

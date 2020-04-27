@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:14:47 by amartino          #+#    #+#             */
-/*   Updated: 2020/02/26 13:41:47 by fkante           ###   ########.fr       */
+/*   Updated: 2020/04/27 09:27:54 by francis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ ssize_t		write_in_std_out(void)
 	read_limit = 0;
 	if (fd_tmp != FAILURE)
 	{
-		while ((ret = get_next_line(fd_tmp, &line)) > 0 && read_limit < READ_LIMIT)
+		while ((ret = get_next_line(fd_tmp, &line)) > 0
+				&& read_limit < READ_LIMIT)
 		{
 			if ((ret = ft_dprintf(STD_OUT, "%s\n", line)) == FAILURE)
 				break ;
