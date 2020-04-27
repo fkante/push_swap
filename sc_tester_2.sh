@@ -39,7 +39,7 @@ test_inst_5 ()
 			max=$ret
 		fi
 		ave=$(($ave + $ret))
-		((count++))
+		((count=count+1))
 	done
 
 	ave=$(($ave / count))
@@ -57,7 +57,7 @@ test_ok_5 ()
 			echo False
 			return 0
 		fi
-		((count++))
+		((count=count+1))
 	done
 	echo True
 }

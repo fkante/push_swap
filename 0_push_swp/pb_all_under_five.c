@@ -6,7 +6,7 @@
 /*   By: francis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 09:42:20 by francis           #+#    #+#             */
-/*   Updated: 2020/04/27 09:42:31 by francis          ###   ########.fr       */
+/*   Updated: 2020/04/27 20:48:21 by francis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int8_t	val_under_nb(t_stack *s, int32_t pivot_value)
 
 	ret = FAILURE;
 	i = s->size_a - 1;
-	while (i > 0)
+	while (i >= 0)
 	{
 		if (s->a[i] < pivot_value)
 		{
@@ -41,7 +41,7 @@ void			pb_all_under_nb_five(t_stack *s, int32_t pivot_index)
 	if (pivot_index >= 0 && pivot_index < (int32_t)s->size_a)
 	{
 		pivot_value = s->a[pivot_index];
-		while (s->size_a > 0 && val_under_nb(s, pivot_value) == SUCCESS)
+		while (s->size_a > 3 && val_under_nb(s, pivot_value) == SUCCESS)
 		{
 			last = s->size_a - 1;
 			if (s->a[last] < pivot_value)

@@ -72,7 +72,7 @@ test_inst_5 ()
 			max=$ret
 		fi
 		ave=$(($ave + $ret))
-		((count++))
+		((count=count+1))
 	done
 
 	ave=$(($ave / count))
@@ -95,7 +95,7 @@ test_inst_10 ()
 			max=$ret
 		fi
 		ave=$(($ave + $ret))
-		((count++))
+		((count=count+1))
 	done
 
 	ave=$(($ave / count))
@@ -118,7 +118,7 @@ test_inst_100 ()
 			max=$ret
 		fi
 		ave=$(($ave + $ret))
-		((count++))
+		((count=count+1))
 	done
 
 	ave=$(($ave / count))
@@ -141,7 +141,7 @@ test_inst_500 ()
 			max=$ret
 		fi
 		ave=$(($ave + $ret))
-		((count++))
+		((count=count+1))
 	done
 
 	ave=$(($ave / count))
@@ -159,7 +159,7 @@ test_ok_5 ()
 			echo False
 			return 0
 		fi
-		((count++))
+		((count=count+1))
 	done
 	echo True
 }
@@ -174,7 +174,7 @@ test_ok_10 ()
 			echo False
 			return 0
 		fi
-		((count++))
+		((count=count+1))
 	done
 	echo True
 }
@@ -189,7 +189,7 @@ test_ok_100 ()
 			echo False
 			return 0
 		fi
-		((count++))
+		((count=count+1))
 	done
 	echo True
 }
@@ -204,7 +204,7 @@ test_ok_500 ()
 			echo False
 			return 0
 		fi
-		((count++))
+		((count=count+1))
 	done
 	echo True
 }
