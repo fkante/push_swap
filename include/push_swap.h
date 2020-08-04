@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 11:16:29 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 16:53:34 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:26:00 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ typedef struct	s_stack
 {
 	int32_t	*a;
 	int32_t	*b;
-	int32_t *sorted_s;
 	size_t	size_a;
 	size_t	size_b;
+	size_t	rotation_a;
+	size_t	rotation_b;
 	int32_t	color_nb;
 	int8_t	fd;
 	uint8_t	verbose;
 	uint8_t	color;
 }				t_stack;
 
-typedef struct 	s_stat
+typedef struct	s_stat
 {
 	int32_t		min_a;
 	int32_t		max_a;
@@ -52,20 +53,28 @@ uint8_t			check_no_double(t_stack *s);
 ssize_t			parse_args(char **av, int32_t ac);
 int8_t			check_err(char *str, size_t j);
 uint8_t			check_for_bonus(char **tab, char *chr);
+int8_t			check_for_duplicate_bonus(char **tab, size_t len);
 
 /*
 ** ############################################################################
 ** ################################ PUSH_SWAP #################################
 ** ############################################################################
 */
-void		push_swp(t_stack *s, int ac, char **av);
-void		solve(t_stack *s, t_stat *stat);
-void		pb_lowest(t_stack *s, int32_t limit);
-void		pa_highest(t_stack *s, int32_t limit);
-void		pb_all_under_nb(t_stack *s, int32_t pivot);
-void		pa_all_above_nb(t_stack *s, int32_t pivot);
-void		pivot_on_top_a(t_stack *s, int32_t pivot);
-void		pivot_on_top_b(t_stack *s, int32_t pivot);
+void			push_swp(t_stack *s, int ac, char **av);
+void			solve(t_stack *s);
+void			pb_lowest(t_stack *s, int32_t limit);
+void			pa_highest(t_stack *s, int32_t limit);
+ssize_t			pb_all_under_nb(t_stack *s, ssize_t nth);
+ssize_t			pa_all_above_nb(t_stack *s, ssize_t nth);
+void			pivot_on_top_a(t_stack *s, int32_t pivot);
+void			pivot_on_top_b(t_stack *s, int32_t pivot);
+void			sort_less_three(t_stack *s);
+int8_t			is_sorted_less_than_three(t_stack *s, size_t size);
+void			recursive_sort_a_to_b(t_stack *s, ssize_t total_size);
+void			repositionning_stack_a(t_stack *s);
+void			repositionning_stack_b(t_stack *s);
+void			pb_all_under_nb_iterative(t_stack *s, int32_t pivot_index);
+void			pb_all_under_nb_five(t_stack *s, int32_t pivot_index);
 
 /*
 ** ############################################################################
@@ -87,9 +96,10 @@ enum	e_operations
 	E_RRR
 };
 
-typedef	void	(*operfunc)(t_stack *s);
-void			read_checker(t_stack *s);
-void			operation_checker(operfunc *f, char *ln, t_stack *s, size_t *count);
+typedef	void	(*t_operfunc)(t_stack *s);
+int8_t			read_checker(t_stack *s);
+int8_t			operation_checker(t_operfunc *f, char *ln, t_stack *s,
+									size_t *count);
 
 /*
 ** ############################################################################
@@ -97,13 +107,19 @@ void			operation_checker(operfunc *f, char *ln, t_stack *s, size_t *count);
 ** ############################################################################
 */
 void			print_stack(t_stack *s, int8_t ope, size_t count);
-void			print_command(size_t count, int8_t ope, uint8_t	color);
-t_stat 			*get_stat(t_stack *s);
-ssize_t			get_nb_of_move();
+void			print_command(size_t count, int8_t ope, t_stack *s);
+t_stat			*get_stat(t_stack *s);
+ssize_t			get_nb_of_move(void);
 ssize_t			collision_in_filename(t_vector *name, int8_t suffixe);
 void			write_final_result(ssize_t fd);
+ssize_t			write_in_std_out(void);
 void			save_final_result_in_file(t_stack *s);
-
+void			show_result(t_stack *s);
+void			print_with_color(t_stack *s, int8_t ope);
+void			print_no_color(t_stack *s);
+void			handle_stack_a(t_stack *s, size_t siz, int8_t ope, t_stat *st);
+int8_t			check_ope(t_stack *s, size_t size, int8_t ope, int8_t stack);
+void			handle_stack_b(t_stack *s, size_t siz, int8_t ope, t_stat *st);
 
 /*
 ** ############################################################################
@@ -137,6 +153,18 @@ void			rra(t_stack *s);
 void			rrb(t_stack *s);
 void			rr(t_stack *s);
 void			rrr(t_stack *s);
+size_t			how_many_sorted(t_stack *s);
+void			sort_top_three(t_stack *s);
+void			sort_only_three(t_stack *s);
+int8_t			is_sorted(t_stack *s);
+int8_t			is_sorted_checker(t_stack *s);
+size_t			get_index(int32_t *tab, int32_t nb);
+void			sort_top_three(t_stack *s);
+int8_t			any_value_under_nb(t_stack *s, int32_t nb);
+int8_t			any_value_above_nb(t_stack *s, int32_t nb);
+void			repositionning_stack_a(t_stack *s);
+void			repositionning_stack_b(t_stack *s);
+void			sort_last(t_stack *s);
 
 /*
 ** ############################################################################
@@ -145,6 +173,5 @@ void			rrr(t_stack *s);
 */
 void			clean_struct(t_stack **s);
 void			clean_tmp(char ***tmp, size_t i);
-
 
 #endif

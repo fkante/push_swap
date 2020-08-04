@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_err_failure.c                             :+:      :+:    :+:   */
+/*   get_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/16 15:35:04 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 16:58:30 by amartino         ###   ########.fr       */
+/*   Created: 2020/02/07 11:00:39 by fkante            #+#    #+#             */
+/*   Updated: 2020/02/07 11:00:53 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_printf.h"
+#include "push_swap.h"
 
-int8_t		print_err_failure(char *str, int8_t fd)
+size_t		get_index(int32_t *tab, int32_t nb)
 {
-	if (str && *str != '\0')
-		ft_dprintf(fd, "Error: %s\n", str);
-	return (FAILURE);
+	size_t	i;
+
+	i = 0;
+	while (tab[i] != nb)
+		i++;
+	return (i);
 }

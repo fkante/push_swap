@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 16:04:57 by fkante            #+#    #+#             */
-/*   Updated: 2019/11/17 15:33:56 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/25 16:06:57 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static int		read_buffer(const int fd, char **line, char **str_rest)
 	char		buff[BUFF_SIZE + 1];
 	char		*newline_position;
 	char		*leaks;
-	ssize_t		read_return;
+	ssize_t		ret;
 
-	while ((read_return = read(fd, buff, BUFF_SIZE)) > 0)
+	while ((ret = read(fd, buff, BUFF_SIZE)) > 0 && ret < BUFF_SIZE)
 	{
-		buff[read_return] = '\0';
+		buff[ret] = '\0';
 		leaks = *line;
 		if ((newline_position = ft_strchr(buff, '\n')) == NULL)
 		{
@@ -67,7 +67,7 @@ static int		read_buffer(const int fd, char **line, char **str_rest)
 		ft_strdel(&leaks);
 		return (1);
 	}
-	if (read_return == FAILURE)
+	if (ret == FAILURE || ret > BUFF_SIZE - 1)
 		return (FAILURE);
 	return ((*line == NULL && *str_rest == NULL) ? 0 : 1);
 }

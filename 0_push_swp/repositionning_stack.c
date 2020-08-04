@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_both.c                                        :+:      :+:    :+:   */
+/*   repositionning_stack.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/15 19:28:01 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/24 12:20:22 by fkante           ###   ########.fr       */
+/*   Created: 2020/02/19 15:56:29 by fkante            #+#    #+#             */
+/*   Updated: 2020/02/19 16:41:49 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_both(t_stack *s)
+void	repositionning_stack_a(t_stack *s)
 {
-	swap_stack_a(s);
-	swap_stack_b(s);
+	if (s->rotation_a == 0)
+		return ;
+	while (s->rotation_a > 0)
+	{
+		rra(s);
+		s->rotation_a--;
+	}
 }
 
-void	ss(t_stack *s)
+void	repositionning_stack_b(t_stack *s)
 {
-	swap_both(s);
-	ft_putendl_fd("ss", s->fd);
+	if (s->rotation_b == 0)
+		return ;
+	while (s->rotation_b > 0)
+	{
+		rrb(s);
+		s->rotation_b--;
+	}
 }

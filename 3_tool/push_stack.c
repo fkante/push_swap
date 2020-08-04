@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 15:25:33 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/15 19:30:06 by fkante           ###   ########.fr       */
+/*   Updated: 2020/02/27 12:26:00 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,23 @@ void	pb(t_stack *s)
 {
 	push_stack_b(s);
 	ft_putendl_fd("pb", s->fd);
+}
+
+void	sort_last(t_stack *s)
+{
+	size_t	i;
+	t_stat	*stat;
+
+	i = 4;
+	while (i > 0)
+	{
+		pb(s);
+		i--;
+	}
+	while (s->size_b > 0)
+	{
+		stat = get_stat(s);
+		pa_highest(s, stat->max_b);
+		ft_memdel((void**)&stat);
+	}
 }

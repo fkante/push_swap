@@ -6,13 +6,13 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:14:47 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 16:14:57 by amartino         ###   ########.fr       */
+/*   Updated: 2020/04/27 21:12:56 by francis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-ssize_t		get_nb_of_move()
+ssize_t		get_nb_of_move(void)
 {
 	char		*line;
 	ssize_t		nb_of_move;
@@ -69,6 +69,34 @@ void		write_final_result(ssize_t fd)
 	}
 	close(fd_tmp);
 	ft_strdel(&line);
+}
+
+ssize_t		write_in_std_out(void)
+{
+	char		*line;
+	ssize_t		ret;
+	ssize_t		read_limit;
+	ssize_t		fd_tmp;
+
+	fd_tmp = open("result/tmp.txt", O_RDWR);
+	ret = FAILURE;
+	read_limit = 0;
+	if (fd_tmp != FAILURE)
+	{
+		while ((ret = get_next_line(fd_tmp, &line)) > 0
+				&& read_limit < READ_LIMIT)
+		{
+			if ((ret = ft_dprintf(STD_OUT, "%s\n", line)) == FAILURE)
+				break ;
+			ft_strdel(&line);
+			read_limit++;
+		}
+		if (read_limit == READ_LIMIT)
+			ret = FAILURE;
+	}
+	close(fd_tmp);
+	ft_strdel(&line);
+	return (ret);
 }
 
 void		save_final_result_in_file(t_stack *s)

@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_both.c                                        :+:      :+:    :+:   */
+/*   ft_print_err_failure.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/15 19:28:01 by fkante            #+#    #+#             */
-/*   Updated: 2020/02/24 12:20:22 by fkante           ###   ########.fr       */
+/*   Created: 2020/01/16 15:35:04 by amartino          #+#    #+#             */
+/*   Updated: 2020/02/21 10:06:27 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include "ft_printf.h"
 
-void	swap_both(t_stack *s)
+int8_t		ft_print_err_failure(char *str, int8_t fd)
 {
-	swap_stack_a(s);
-	swap_stack_b(s);
-}
-
-void	ss(t_stack *s)
-{
-	swap_both(s);
-	ft_putendl_fd("ss", s->fd);
+	if (str && *str != '\0')
+		ft_dprintf(fd, "Error: %s\n", str);
+	return (FAILURE);
 }

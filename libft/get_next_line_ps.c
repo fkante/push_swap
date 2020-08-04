@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   get_next_line_ps.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkante <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 16:31:04 by fkante            #+#    #+#             */
-/*   Updated: 2019/04/25 12:12:05 by fkante           ###   ########.fr       */
+/*   Created: 2020/02/25 16:07:42 by fkante            #+#    #+#             */
+/*   Updated: 2020/02/27 18:53:06 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-ssize_t	ft_putendl_ret_fd(char const *s, int fd)
+int		get_next_line_ps(const int fd, char *line)
 {
-	size_t	len;
-	ssize_t	ret;
+	char	buff[8192];
+	int8_t	ret;
+	int8_t	count;
 
-	ret = FAILURE;
-	if (s != NULL)
+	count = 0;
+	while ((ret = read(fd, buff, 1)) > 0)
 	{
-		len = ft_strlen(s);
-		ret = write(fd, s, len);
-		if (ret == FAILURE)
-			return (ret);
-		ft_putchar_fd('\n', fd);
+		buff[1] = '\0';
+		if (count == 4 || buff[0] == '\0')
+		{
+			if (buff[0] == '\n' || buff[0] == '\0')
+			{
+				read(fd, buff, 8000);
+				return (FAILURE);
+			}
+			continue ;
+		}
+		count++;
+		if (buff[0] == '\n')
+			break ;
+		ft_strcat(line, buff);
 	}
+	if (ret == 0 && line[0] != '\0')
+		return (FAILURE);
 	return (ret);
-}
-
-void	ft_putendl_fd(char const *s, int fd)
-{
-	size_t l;
-
-	if (s == NULL)
-		return ;
-	l = ft_strlen(s);
-	write(fd, s, l);
-	ft_putchar_fd('\n', fd);
 }

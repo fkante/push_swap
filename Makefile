@@ -6,7 +6,7 @@
 #    By: amartino <amartino@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 11:56:39 by amartino          #+#    #+#              #
-#    Updated: 2020/01/20 16:20:49 by amartino         ###   ########.fr        #
+#    Updated: 2020/05/04 10:13:31 by francis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
                      ####################################
@@ -18,8 +18,9 @@ NAME_PUSH_SWP = push_swap
 NAME_CHECKER = checker
 LIB_DIR = ./libft/ft_printf
 LIB = libftprintf.a
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CC = clang
+#override CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -Wall -Wextra -Werror
 DFLAGS =  -Wall -Wextra -Werror -fsanitize=address,undefined -g3
 INCLUDES += -I./include
 INCLUDES += -I./libft/includes
@@ -56,8 +57,10 @@ MAIN_CHECK = main_check
 
 # push_swap
 SRCS += push_swp
-SRCS += operation_on_stack
 SRCS += pivot_on_top
+SRCS += operation_on_stack
+SRCS +=	pb_all_under_five 
+SRCS += repositionning_stack
 
 # checker
 SRCS += checker
@@ -67,13 +70,18 @@ SRCS += init
 SRCS += parse
 
 # tool
+SRCS += get_index
+SRCS += get_stat
 SRCS += push_stack
 SRCS += swap_stack
 SRCS += swap_both
 SRCS += shift_stack
 SRCS += rotate_both
 SRCS += rotate_stack
+SRCS += sorted_check
+SRCS += sort_top_three 
 SRCS += reverse_rotate_stack
+SRCS += find_value_in_stack 
 
 # clean
 SRCS += clean
@@ -134,13 +142,14 @@ $(OBJS): $(BUILD_DIR)%.o: %.c $(HEAD) Makefile
 	echo "$(CFLAGS) \t\t $(GREEN)$<$(END)"
 
 $(LIB_PATH): FORCE
-	make -C $(LIB_DIR)
+	$(MAKE) -C $(LIB_DIR)
 
 t: all $(VAL)
 	$(VALGRIND) ./ft_printf examples/$(T) #to be changed
 
 clean:
 	rm -f $(OBJS)
+	rm -f $(MAIN_OBJ_PS) $(MAIN_OBJ_C)
 	rm -rf ./$(BUILD_DIR)
 	echo "$(YELLOW)OBJS$(END) \t\t were \t\t $(GREEN)clean$(END)\n"
 	$(MAKE) clean -C $(LIB_DIR)
@@ -150,11 +159,14 @@ fclean: clean
 	echo "$(YELLOW)$(NAME_PUSH_SWP)$(END) and $(YELLOW)$(NAME_CHECKER)$(END) \t were \t $(GREEN)clean$(END)\n"
 	$(MAKE) fclean -C $(LIB_DIR)
 
-re: fclean all
+re: fclean
+	$(MAKE)
+
+FORCE:
+	true
 
 .PHONY: clean fclean all re t FORCE git
 .SILENT: $(NAME) $(OBJS) $(BUILD_DIR) $(MAIN_OBJ_PS) $(MAIN_OBJ_C) $(LIB_PATH) clean fclean re t FORCE
-FORCE:
 
 
                      ####################################
@@ -195,10 +207,19 @@ git:
                      #       		COLOR     			#
                      #                  				#
                      ####################################
-RED = \x1b[31m
-GREEN = \x1b[32m
-YELLOW = \x1b[33m
-BLUE = \x1b[34m
-MAGENTA = \x1b[35m
-CYAN = \x1b[36m
-END = \x1b[0m
+RED = \033[0;31m
+GREEN = \033[0;32m 
+YELLOW = \033[0;33m 
+BLUE = \033[0;34m
+MAGENTA = \033[0;35m
+CYAN = \033[0;36m 
+END = \033[0m
+
+#Linux
+#RED = \e[31m
+#GREEN = \e[32m
+#YELLOW = \e[33m
+#BLUE = \e[34m
+#MAGENTA = \e[35m
+#CYAN = \e[36m
+#END = \e[0m

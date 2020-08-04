@@ -6,13 +6,16 @@
 #    By: fkante <fkante@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/19 17:11:38 by fkante            #+#    #+#              #
-#    Updated: 2020/01/20 16:56:41 by amartino         ###   ########.fr        #
+#    Updated: 2020/05/04 10:13:51 by francis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = clang
+CC = gcc 
 AR = ar -rcs
+#override CFLAGS += -Wall
+#override CFLAGS += -Wextra
+#override CFLAGS += -Werror
 CFLAGS += -Wall
 CFLAGS += -Wextra
 CFLAGS += -Werror
@@ -23,6 +26,8 @@ INCLUDES = -I./includes
 HEAD += ./includes/libft.h
 HEAD += ./includes/vector.h
 
+SRCS += ft_memalloc.c
+# SRCS += ft_malloc_debug.c
 SRCS += ft_atoi.c
 SRCS += ft_bzero.c
 SRCS += ft_isalnum.c
@@ -39,7 +44,6 @@ SRCS += ft_lstiter.c
 SRCS += ft_lstnew.c
 SRCS += ft_lstmap.c
 SRCS += ft_lstfindone.c
-SRCS += ft_memalloc.c
 SRCS += ft_memccpy.c
 SRCS += ft_memchr.c
 SRCS += ft_memcmp.c
@@ -106,6 +110,7 @@ SRCS += ft_len_printf.c
 SRCS += ft_ftoa.c
 SRCS += ft_fldtoa.c
 SRCS += get_next_line.c
+SRCS += get_next_line_ps.c
 SRCS += ft_printf.c
 SRCS += ft_atol.c
 
@@ -121,6 +126,7 @@ SRCS += ft_median.c
 SRCS += ft_range.c
 SRCS += ft_get_median.c
 SRCS += ft_get_n_highest.c
+SRCS += ft_get_n_smallest.c
 SRCS += ft_sort.c
 
 #----------------------------------- VECTOR -----------------------------------#
@@ -156,7 +162,7 @@ SRCS += vct_addnb.c
 #----------------------------------- BTREE ------------------------------------#
 SRCS += heap_build.c
 SRCS += heap_order.c
-SRCS += heap_print.c
+#SRCS += heap_print.c
 SRCS += heap_tool.c
 
 #----------------------------------- ERROR ------------------------------------#
@@ -205,7 +211,8 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: fclean
+	$(MAKE)
 
 .PHONY: clean fclean re
 .SILENT: $(NAME) $(OBJS) $(BUILD_DIR) clean fclean re
@@ -217,10 +224,19 @@ else ifeq ($(f), f)
 CFLAGS = $(DFLAGS)
 endif
 
-RED = \x1b[31m
-GREEN = \x1b[32m
-YELLOW = \x1b[33m
-BLUE = \x1b[34m
-MAGENTA = \x1b[35m
-CYAN = \x1b[36m
-END = \x1b[0m
+RED = \033[0;31m
+GREEN = \033[0;32m 
+YELLOW = \033[0;33m 
+BLUE = \033[0;34m
+MAGENTA = \033[0;35m
+CYAN = \033[0;36m 
+END = \033[0m
+
+#Linux
+#RED = \e[31m
+#GREEN = \e[32m
+#YELLOW = \e[33m
+#BLUE = \e[34m
+#MAGENTA = \e[35m
+#CYAN = \e[36m
+#END = \e[0m

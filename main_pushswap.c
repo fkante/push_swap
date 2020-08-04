@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 11:02:18 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 17:00:20 by amartino         ###   ########.fr       */
+/*   Updated: 2020/04/27 09:40:52 by francis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 int			main(int ac, char **av)
 {
 	t_stack		*s;
+	int8_t		ret;
 
 	s = NULL;
+	ret = SUCCESS;
 	if (ac >= 2)
 	{
 		++av;
 		--ac;
 		push_swp(s, ac, av);
+		if (write_in_std_out() == FAILURE)
+			ft_print_err_void(STD_OUT_ERROR, STD_ERR);
 	}
-	else
-		ft_print_err_false("Not enough arguments", STD_ERR);
-	return (SUCCESS);
+	return (ret);
 }

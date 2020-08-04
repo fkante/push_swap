@@ -6,7 +6,7 @@
 /*   By: fkante <fkante@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 12:58:24 by fkante            #+#    #+#             */
-/*   Updated: 2020/01/20 16:56:02 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/27 16:20:23 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <string.h>
+# include <time.h>
 
 /*
-** # for linux set-up #
+** #define ft_memalloc(X) ft_malloc_debug(X, __FILE__, __LINE__, __func__)
 */
 
 # define FALSE					0
 # define TRUE					1
 # define FAILURE				-1
 # define SUCCESS				0
-# define BUFF_SIZE				1024
+# define BUFF_SIZE				25128
 # define FD_LIMIT				4864
 
 # include <sys/types.h>
@@ -66,10 +67,13 @@ t_list				*ft_lstfindone(t_list *lst, size_t rank);
 ** ########################### MEM MANIPULATION ###############################
 ** ############################################################################
 */
-
+/*
+** void				*ft_malloc_debug(size_t size, const char *file, int line,
+**										const char *function);
+*/
+void				*ft_memalloc(size_t size);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				ft_memdel(void **ap);
-void				*ft_memalloc(size_t size);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
@@ -114,11 +118,11 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 void				ft_bzero(void *s, size_t n);
 void				ft_swap(void **one, void **two);
-int					get_next_line(const int fd, char **line);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
+int					ft_all_isdigit(char *str);
 int					ft_isprint(int c);
 int					ft_strisupcase(char *str);
 int					ft_strislowcase(char *str);
@@ -129,6 +133,7 @@ char				*ft_strlowcase(char *str);
 char				*ft_strchr_str(const char *str, char *find);
 char				*ft_strndup(const char *src, size_t size);
 int					get_next_line(const int fd, char **line);
+int					get_next_line_ps(const int fd, char *line);
 
 /*
 ** ############################################################################
@@ -164,7 +169,10 @@ int32_t				ft_mean(int32_t *tab, size_t size);
 int8_t				ft_median(int32_t *tab, size_t size, int32_t *median);
 int32_t				ft_range(int32_t *tab, size_t size);
 size_t				ft_get_median(int32_t *tab, size_t size);
-ssize_t				ft_get_n_highest(int32_t *tab, size_t nth, size_t size);
+ssize_t				ft_get_n_highest(int32_t *tab, size_t nth, size_t start,
+								size_t limit);
+ssize_t				ft_get_n_smallest(int32_t *tab, size_t nth, size_t start,
+								size_t limit);
 int32_t				*ft_sort(int32_t *tab, size_t size);
 
 /*
@@ -176,6 +184,7 @@ void				ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
+ssize_t				ft_putendl_ret_fd(char const *s, int fd);
 void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr(const char *str);

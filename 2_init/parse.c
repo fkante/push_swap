@@ -6,7 +6,7 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:32:59 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/17 13:20:59 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/27 11:14:26 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,35 @@ uint8_t		check_no_double(t_stack *s)
 	return (TRUE);
 }
 
+int8_t		check_for_duplicate_bonus(char **tb, size_t len)
+{
+	size_t		i;
+	int8_t		ret;
+
+	ret = SUCCESS;
+	if (tb[0] != NULL)
+	{
+		i = ft_isdigit((int)tb[0][0]) == TRUE ? 1 : 2;
+		while (i < len)
+		{
+			if ((ft_strequ(tb[i], "-v") == 1) || (ft_strequ(tb[i], "-c") == 1))
+			{
+				ret = FAILURE;
+				break ;
+			}
+			i++;
+		}
+	}
+	return (ret);
+}
+
 uint8_t		check_for_bonus(char **tab, char *chr)
 {
 	uint8_t		ret;
 
 	ret = FALSE;
+	if (tab[0] == NULL)
+		return (ret);
 	if ((ft_strequ(tab[0], chr) == TRUE) || (ft_strequ(tab[1], chr) == TRUE))
 		ret = TRUE;
 	return (ret);
@@ -52,9 +76,9 @@ int8_t		check_err(char *str, size_t j)
 		j++;
 		while (str[j] != '\0')
 		{
-			if (ft_isdigit((int)str[j]) == FALSE)
+			if (ft_all_isdigit(&str[1]) == FALSE)
 			{
-				if (str[j] != 'v' && str[j] != 'c')
+				if ((str[j] != 'v' && str[j] != 'c'))
 					return (FAILURE);
 				else
 					count++;

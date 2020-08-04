@@ -6,34 +6,44 @@
 /*   By: amartino <amartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:39:19 by amartino          #+#    #+#             */
-/*   Updated: 2020/01/20 16:59:19 by amartino         ###   ########.fr       */
+/*   Updated: 2020/02/27 18:26:52 by fkante           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	read_checker(t_stack *s)
+int8_t	read_checker(t_stack *s)
 {
-	operfunc	func_ptr[NB_OPE] = {swap_stack_a, swap_stack_b, swap_both,
-							push_stack_a, push_stack_b, rotate_stack_a,
-							rotate_stack_b, rotate_both, reverse_rotate_stack_a,
-							reverse_rotate_stack_b, reverse_both};
-	char		*line;
-	size_t		count;
+	static t_operfunc	func_ptr[NB_OPE] = {swap_stack_a, swap_stack_b,
+										swap_both, push_stack_a, push_stack_b,
+										rotate_stack_a, rotate_stack_b,
+										rotate_both, reverse_rotate_stack_a,
+										reverse_rotate_stack_b, reverse_both};
+	char				line[5];
+	size_t				count;
+	int8_t				ret;
 
+	if (s->verbose == TRUE)
+		print_stack(s, NO_OPE, 0);
 	count = 0;
-	line = NULL;
-	while (get_next_line(0, &line) > 0)
+	ft_bzero((void*)&line, 5);
+	while ((ret = get_next_line_ps(0, line)) > 0)
 	{
-		operation_checker(func_ptr, line, s, &count);
-		ft_strdel(&line);
+		ret = operation_checker(func_ptr, line, s, &count);
+		ft_bzero((void*)&line, 5);
+		if (ret == FAILURE_OPE)
+			break ;
 	}
+	if (ret == FAILURE)
+		ft_print_err_void(INPUT_TOO_LONG, STD_ERR);
+	return (ret);
 }
 
-void	operation_checker(operfunc *f_ptr, char *line, t_stack *s, size_t *count)
+int8_t	operation_checker(t_operfunc *f_ptr, char *line, t_stack *s,
+							size_t *count)
 {
-	char		*oper[NB_OPE] = {SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR};
-	uint8_t 	i;
+	static char	*oper[NB_OPE] = {SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR};
+	uint8_t		i;
 
 	i = 0;
 	while (i < NB_OPE)
@@ -46,8 +56,12 @@ void	operation_checker(operfunc *f_ptr, char *line, t_stack *s, size_t *count)
 		}
 		i++;
 	}
+	if (i == NB_OPE)
+	{
+		ft_print_err_void(WRONG_OPERATION, STD_ERR);
+		return (FAILURE_OPE);
+	}
 	if (s->verbose == TRUE)
 		print_stack(s, i, *count);
-	if (i == NB_OPE)
-		ft_print_err_void("Wrong input", STD_ERR);
+	return (SUCCESS);
 }
